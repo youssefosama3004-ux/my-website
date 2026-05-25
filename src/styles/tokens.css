@@ -1,0 +1,212 @@
+/* ============================================
+   DESIGN TOKENS
+   Single source of truth for colors, type, 
+   spacing, radii, shadows. Mirrors Figma 1:1.
+   ============================================ */
+
+/* Geist Sans — Variable font */
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geist Mono — Variable font */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* ============================================ */
+  /* COLOR PRIMITIVES                             */
+  /* ============================================ */
+
+  /* Blue */
+  --color-blue-50: #EBF2FF;
+  --color-blue-100: #CCE0FF;
+  --color-blue-200: #99C2FF;
+  --color-blue-300: #66A3FF;
+  --color-blue-400: #3385FF;
+  --color-blue-500: #0066FF;
+  --color-blue-600: #0052CC;
+  --color-blue-700: #003D99;
+  --color-blue-800: #002966;
+  --color-blue-900: #001433;
+
+  /* Grey */
+  --color-grey-0: #FFFFFF;
+  --color-grey-50: #F5F5F5;
+  --color-grey-100: #E5E5E5;
+  --color-grey-200: #CCCCCC;
+  --color-grey-300: #B3B3B3;
+  --color-grey-400: #a1a1a1;
+  --color-grey-500: #666666;
+  --color-grey-600: #444444;
+  --color-grey-700: #2A2A2A;
+  --color-grey-800: #1A1A1A;
+  --color-grey-900: #111111;
+  --color-grey-950: #0A0A0A;
+
+  /* Semantic */
+  --color-success: #00875A;
+  --color-error: #E53E3E;
+  --color-warning: #F5A623;
+
+  /* ============================================ */
+  /* TYPOGRAPHY                                   */
+  /* ============================================ */
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  /* Font sizes (paired with line-height) */
+  --text-display: 72px;
+  --text-display--line-height: 80px;
+  --text-display--font-weight: 700;
+
+  --text-h1: 56px;
+  --text-h1--line-height: 64px;
+  --text-h1--font-weight: 700;
+
+  --text-h2: 40px;
+  --text-h2--line-height: 48px;
+  --text-h2--font-weight: 700;
+
+  --text-h3: 32px;
+  --text-h3--line-height: 40px;
+  --text-h3--font-weight: 700;
+
+  --text-h4: 24px;
+  --text-h4--line-height: 32px;
+  --text-h4--font-weight: 600;
+
+  --text-h5: 20px;
+  --text-h5--line-height: 28px;
+  --text-h5--font-weight: 600;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 20px;
+  --text-body-sm--font-weight: 400;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-caption--font-weight: 400;
+
+  --text-label: 12px;
+  --text-label--line-height: 16px;
+  --text-label--font-weight: 600;
+
+  /* ============================================ */
+  /* SPACING SCALE                                */
+  /* ============================================ */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 32px;
+  --spacing-7: 48px;
+  --spacing-8: 64px;
+  --spacing-9: 96px;
+  --spacing-10: 128px;
+
+  /* ============================================ */
+  /* RADIUS SCALE                                 */
+  /* ============================================ */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+/* ============================================ */
+/* SEMANTIC TOKENS — dark mode is default       */
+/* ============================================ */
+
+:root {
+  /* Dark mode values (default) */
+  --bg-primary: var(--color-grey-950);
+  --bg-surface: var(--color-grey-900);
+  --bg-elevated: var(--color-grey-800);
+
+  --text-primary: var(--color-grey-0);
+  --text-secondary: var(--color-grey-300);
+  --text-muted: var(--color-grey-400);
+  --text-inverse: var(--color-grey-950);
+
+  --border-default: var(--color-grey-700);
+  --border-strong: var(--color-grey-600);
+
+  --accent: var(--color-blue-500);
+  --accent-hover: var(--color-blue-400);
+  --accent-fg: var(--color-grey-0);
+
+  --feedback-success: var(--color-success);
+  --feedback-error: var(--color-error);
+  --feedback-warning: var(--color-warning);
+}
+
+[data-theme="light"] {
+  --bg-primary: var(--color-grey-0);
+  --bg-surface: var(--color-grey-50);
+  --bg-elevated: var(--color-grey-0);
+
+  --text-primary: var(--color-grey-950);
+  --text-secondary: var(--color-grey-600);
+  --text-muted: var(--color-grey-500);
+  --text-inverse: var(--color-grey-0);
+
+  --border-default: var(--color-grey-100);
+  --border-strong: var(--color-grey-200);
+
+  --accent: var(--color-blue-500);
+  --accent-hover: var(--color-blue-600);
+  --accent-fg: var(--color-grey-0);
+
+  --feedback-success: var(--color-success);
+  --feedback-error: var(--color-error);
+  --feedback-warning: var(--color-warning);
+}
+
+/* Expose semantic tokens as Tailwind utilities */
+@theme inline {
+  /* Backgrounds: bg-primary, bg-surface, bg-elevated */
+  --color-primary: var(--bg-primary);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+
+  /* Foreground (text) tokens: text-fg, text-muted, text-secondary, text-inverse */
+  --color-fg: var(--text-primary);
+  --color-fg-secondary: var(--text-secondary);
+  --color-fg-muted: var(--text-muted);
+  --color-fg-inverse: var(--text-inverse);
+
+  /* Borders */
+  --color-border: var(--border-default);
+  --color-border-strong: var(--border-strong);
+
+  /* Accent */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+
+  /* Feedback */
+  --color-feedback-success: var(--feedback-success);
+  --color-feedback-error: var(--feedback-error);
+  --color-feedback-warning: var(--feedback-warning);
+}

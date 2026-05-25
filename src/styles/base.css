@@ -1,0 +1,27 @@
+/* ============================================
+   BASE STYLES
+   Resets, body defaults, global element styles.
+   Uses semantic tokens (not primitives) so theme
+   switching via [data-theme] works correctly.
+   ============================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  ::selection {
+    background-color: var(--color-blue-500);
+    color: var(--color-grey-0);
+  }
+}

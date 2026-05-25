@@ -1,0 +1,12 @@
+/* ============================================
+   GLOBAL ENTRY POINT
+   Imports Tailwind + all custom layers in order.
+   Order matters: tokens → base → typography → utilities.
+   ============================================ */
+
+@import "tailwindcss";
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./typography.css";
+@import "./utilities.css";

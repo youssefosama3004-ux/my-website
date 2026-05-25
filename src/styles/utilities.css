@@ -1,0 +1,13 @@
+/* ============================================
+   CUSTOM UTILITIES
+   One-off classes Tailwind doesn't ship with.
+   Add sparingly — prefer utility composition.
+   ============================================ */
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
