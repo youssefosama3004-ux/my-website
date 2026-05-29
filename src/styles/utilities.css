@@ -11,3 +11,14 @@
 @utility text-pretty {
   text-wrap: pretty;
 }
+
+@utility aurora-char {
+  background-image: linear-gradient(135deg, #3B82F6, #06B6D4, #0EA5E9, #22D3EE, #3B82F6);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: aurora 8s ease-in-out infinite alternate;
+  display: inline-block;
+}

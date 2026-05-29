@@ -159,6 +159,12 @@
   --feedback-success: var(--color-success);
   --feedback-error: var(--color-error);
   --feedback-warning: var(--color-warning);
+
+  /* Figma Grid tokens */
+  --grid-minor: rgba(255, 255, 255, 0.03);
+  --grid-major: rgba(255, 255, 255, 0.06);
+  --ruler-bg: rgba(255, 255, 255, 0.02);
+  --ruler-text: rgba(255, 255, 255, 0.25);
 }
 
 [data-theme="light"] {
@@ -181,6 +187,12 @@
   --feedback-success: var(--color-success);
   --feedback-error: var(--color-error);
   --feedback-warning: var(--color-warning);
+
+  /* Figma Grid tokens */
+  --grid-minor: rgba(0, 0, 0, 0.04);
+  --grid-major: rgba(0, 0, 0, 0.08);
+  --ruler-bg: rgba(0, 0, 0, 0.02);
+  --ruler-text: rgba(0, 0, 0, 0.3);
 }
 
 /* Expose semantic tokens as Tailwind utilities */
