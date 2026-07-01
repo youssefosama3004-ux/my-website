@@ -3,8 +3,14 @@ import "../styles/global.css";
 import Nav from "../components/Nav.jsx";
 import GradualBlur from "../components/GradualBlur.jsx";
 import Hero from "../components/Hero.jsx";
-import { SmoothCursor } from "../components/ui/smooth-cursor";
 import { AnimatedThemeToggler } from "../components/ui/animated-theme-toggler";
+import Clients from "../components/Clients.jsx";
+import About from "../components/About.jsx";
+import Services from "../components/Services.jsx";
+import Projects from "../components/Projects.astro";
+import ExperienceTimeline from "../components/ExperienceTimeline.jsx";
+import Contact from "../components/Contact.jsx";
+
 ---
 
 <html lang="en">
@@ -23,7 +29,6 @@ import { AnimatedThemeToggler } from "../components/ui/animated-theme-toggler";
     </script>
   </head>
   <body class="transition-colors duration-300">
-    <SmoothCursor client:load />
 
     <!-- Navigation -->
     <Nav client:load />
@@ -36,6 +41,12 @@ import { AnimatedThemeToggler } from "../components/ui/animated-theme-toggler";
 
     <main>
       <Hero client:load />
+      <Clients client:visible />
+      <About client:load />
+      <ExperienceTimeline client:load />
+      <Contact client:load />
+      <Services client:load />
+      <Projects />
     </main>
 
     <GradualBlur
@@ -49,6 +60,8 @@ import { AnimatedThemeToggler } from "../components/ui/animated-theme-toggler";
       exponential
       opacity={1}
     />
+
+
 
   </body>
 </html>

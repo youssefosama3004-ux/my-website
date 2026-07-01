@@ -39,6 +39,11 @@
   --color-blue-800: #002966;
   --color-blue-900: #001433;
 
+  /* Cyan */
+  --color-cyan-400: #67E8F9;
+  --color-cyan-500: #22D3EE;
+  --color-cyan-600: #0891B2;
+
   /* Grey */
   --color-grey-0: #FFFFFF;
   --color-grey-50: #F5F5F5;
@@ -110,6 +115,8 @@
   --text-label--line-height: 16px;
   --text-label--font-weight: 600;
 
+  --text-5xl: clamp(1.75rem, 1.5rem + 1.25vw, 2rem);
+
   /* ============================================ */
   /* SPACING SCALE                                */
   /* ============================================ */
@@ -142,7 +149,10 @@
   /* Dark mode values (default) */
   --bg-primary: var(--color-grey-950);
   --bg-surface: var(--color-grey-900);
-  --bg-elevated: var(--color-grey-800);
+  --bg-elevated: #0F1115;
+  --bg-deepest: #070707;
+  --bg-about: #3A6EC6;
+  --color-card: #16181D;
 
   --text-primary: var(--color-grey-0);
   --text-secondary: var(--color-grey-300);
@@ -153,6 +163,7 @@
   --border-strong: var(--color-grey-600);
 
   --accent: var(--color-blue-500);
+  --color-accent-2: var(--color-cyan-500);
   --accent-hover: var(--color-blue-400);
   --accent-fg: var(--color-grey-0);
 
@@ -160,17 +171,15 @@
   --feedback-error: var(--color-error);
   --feedback-warning: var(--color-warning);
 
-  /* Figma Grid tokens */
-  --grid-minor: rgba(255, 255, 255, 0.03);
-  --grid-major: rgba(255, 255, 255, 0.06);
-  --ruler-bg: rgba(255, 255, 255, 0.02);
-  --ruler-text: rgba(255, 255, 255, 0.25);
 }
 
 [data-theme="light"] {
   --bg-primary: var(--color-grey-0);
   --bg-surface: var(--color-grey-50);
-  --bg-elevated: var(--color-grey-0);
+  --bg-elevated: #F6F7F9;
+  --bg-deepest: #ECEEF1;
+  --bg-about: #3A6EC6;
+  --color-card: #FFFFFF;
 
   --text-primary: var(--color-grey-950);
   --text-secondary: var(--color-grey-600);
@@ -181,6 +190,7 @@
   --border-strong: var(--color-grey-200);
 
   --accent: var(--color-blue-500);
+  --color-accent-2: var(--color-cyan-600);
   --accent-hover: var(--color-blue-600);
   --accent-fg: var(--color-grey-0);
 
@@ -188,19 +198,18 @@
   --feedback-error: var(--color-error);
   --feedback-warning: var(--color-warning);
 
-  /* Figma Grid tokens */
-  --grid-minor: rgba(0, 0, 0, 0.04);
-  --grid-major: rgba(0, 0, 0, 0.08);
-  --ruler-bg: rgba(0, 0, 0, 0.02);
-  --ruler-text: rgba(0, 0, 0, 0.3);
 }
 
 /* Expose semantic tokens as Tailwind utilities */
 @theme inline {
-  /* Backgrounds: bg-primary, bg-surface, bg-elevated */
+  /* Backgrounds: bg-primary, bg-surface, bg-card, bg-elevated, bg-deepest, bg-about */
   --color-primary: var(--bg-primary);
   --color-surface: var(--bg-surface);
+  --color-card: var(--color-card);
   --color-elevated: var(--bg-elevated);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-deepest: var(--bg-deepest);
+  --color-bg-about: var(--bg-about);
 
   /* Foreground (text) tokens: text-fg, text-muted, text-secondary, text-inverse */
   --color-fg: var(--text-primary);
@@ -214,6 +223,7 @@
 
   /* Accent */
   --color-accent: var(--accent);
+  --color-accent-2: var(--color-accent-2);
   --color-accent-hover: var(--accent-hover);
   --color-accent-fg: var(--accent-fg);
 

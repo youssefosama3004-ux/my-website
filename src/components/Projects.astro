@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
+import ProjectsCarousel from "./ProjectsCarousel.jsx";
+
+const allProjects = await getCollection("projects");
+const featured = allProjects
+  .filter((project) => project.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const projects = await Promise.all(
+  featured.map(async (project) => {
+    const optimized = await getImage({
+      src: project.data.cover,
+      width: 1200,
+      height: 1500,
+    });
+
+    return {
+      slug: project.id.replace(/\.mdx?$/, ""),
+      title: project.data.title,
+      services: project.data.services,
+      cover: optimized.src,
+    };
+  }),
+);
+---
+
+<ProjectsCarousel client:load projects={projects} />

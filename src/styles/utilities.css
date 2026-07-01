@@ -12,13 +12,64 @@
   text-wrap: pretty;
 }
 
-@utility aurora-char {
-  background-image: linear-gradient(135deg, #3B82F6, #06B6D4, #0EA5E9, #22D3EE, #3B82F6);
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  animation: aurora 8s ease-in-out infinite alternate;
-  display: inline-block;
+/* Logo visibility fix — dark theme inverts dark logos to light */
+.logo-loop-wrapper img {
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  transition: opacity 200ms ease, filter 200ms ease;
+}
+
+.logo-loop-wrapper img:hover {
+  opacity: 1;
+}
+
+/* Light theme — invert back so logos stay dark */
+[data-theme="light"] .logo-loop-wrapper img {
+  filter: brightness(0) invert(0);
+  opacity: 0.6;
+}
+
+[data-theme="light"] .logo-loop-wrapper img:hover {
+  opacity: 1;
+}
+
+/* Concept B hero marquee */
+.concept-b-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: concept-b-marquee 24s linear infinite;
+  will-change: transform;
+}
+
+.concept-b-marquee-text {
+  flex-shrink: 0;
+  font-size: 15vw;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  opacity: 0.08;
+  user-select: none;
+}
+
+@media (max-width: 767px) {
+  .concept-b-marquee-text {
+    font-size: 18vw;
+  }
+}
+
+@keyframes concept-b-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (pointer: fine) {
+  #work a.group {
+    cursor: none;
+  }
 }

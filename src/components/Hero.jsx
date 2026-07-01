@@ -1,60 +1,41 @@
-import RotatingText from "./RotatingText";
-
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-      {/* Figma-style grid background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px),
-            linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px)
-          `,
-          backgroundSize: "8px 8px, 8px 8px, 80px 80px, 80px 80px"
-        }}
-      />
-
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-        {/* LEFT — Text content (60% on desktop = 7/12 cols) */}
-        <div className="md:col-span-7 text-left">
-          {/* Main headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-[var(--text-primary)] leading-[1.1] flex flex-wrap items-baseline gap-x-3">
-            <span>I make your idea</span>
-            <RotatingText
-              texts={["real", "shipped", "live", "launched"]}
-              rotationInterval={3000}
-              staggerDuration={0.025}
-              splitBy="characters"
-              mainClassName="inline-block"
-              splitLevelClassName="overflow-hidden"
-              elementLevelClassName="aurora-char"
-              transition={{ type: "spring", damping: 35, stiffness: 150 }}
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: "-100%", opacity: 0 }}
-            />
-            <span>.</span>
-          </h1>
-
-          {/* Name + role block */}
-          <div className="mt-5 leading-snug">
-            <h3 className="text-xl md:text-2xl font-semibold text-[var(--text-primary)]">Hi, I am Youssef</h3>
-            <h3 className="text-lg md:text-xl font-normal text-[var(--text-secondary)]">UX Specialist at egabi Solutions</h3>
+    <section className="relative min-h-screen overflow-hidden">
+      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center px-6">
+        {/* Photo zone — marquee, blue block, and photo share this center */}
+        <div className="relative flex items-center justify-center">
+          {/* Infinite name marquee centered on the photo zone */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 flex w-screen -translate-x-1/2 -translate-y-1/2 items-center overflow-hidden">
+            <h1 className="concept-b-marquee-track whitespace-nowrap" aria-label="Youssef Kader">
+              <span className="concept-b-marquee-text">Youssef Kader&nbsp;&nbsp;&nbsp;</span>
+              <span className="concept-b-marquee-text" aria-hidden="true">Youssef Kader&nbsp;&nbsp;&nbsp;</span>
+            </h1>
           </div>
 
-          {/* Supporting line */}
-          <p className="mt-3 text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
-            Helping startups and agencies design conversion-focused products — from research to shipped product.
-          </p>
+          {/* Blue block */}
+          <div className="absolute left-1/2 top-1/2 z-[1] h-[330px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-[var(--color-blue-500)] md:h-[380px] md:w-[300px]" />
 
-          {/* CTA group — primary + secondary */}
-          <div className="mt-6 flex items-center gap-3">
+          {/* Photo */}
+          <img
+            src="/images/youssef-osama-image-v3.png"
+            alt="Youssef Kader"
+            className="relative z-[2] h-[42vh] w-auto object-contain md:h-[50vh]"
+            draggable={false}
+          />
+        </div>
+
+        {/* Content stack below the photo zone */}
+        <div className="relative z-10 mt-10 flex flex-col items-center text-center">
+          <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)] md:text-4xl">
+            UX Specialist &amp; Product Designer
+          </h2>
+          <p className="mt-3 text-sm uppercase tracking-[0.2em] text-[var(--text-secondary)] md:text-base">
+            Designing conversion-focused digital products
+          </p>
+          <div className="mt-8 flex items-center gap-3">
             <a
               href="#work"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[var(--text-secondary)] text-[var(--text-primary)] font-medium transition-all duration-300 hover:bg-[var(--bg-surface)] hover:border-[var(--text-primary)]"
+              className="rounded-full border border-[var(--text-secondary)] px-5 py-2.5 text-sm text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
             >
               View my work
             </a>
@@ -62,34 +43,12 @@ export default function Hero() {
               href="https://calendly.com/YOUR-LINK"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-blue-500)] text-white font-medium transition-transform duration-300 hover:scale-105"
+              className="rounded-full bg-[var(--color-blue-500)] px-5 py-2.5 text-sm text-white transition-transform duration-300 hover:scale-105"
             >
               Book a call →
             </a>
           </div>
         </div>
-
-        {/* RIGHT — Photo (40% on desktop = 5/12 cols) with slight upward offset */}
-        <div className="md:col-span-5 flex justify-center md:justify-end md:-mt-12">
-          <div className="w-72 md:w-full max-w-md aspect-[4/5] relative">
-            <img
-              src="/images/youssef-hero.jpg"
-              alt="Youssef-UX-Designer"
-              className="w-full h-full object-cover"
-              draggable={false}
-              style={{
-                maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-                WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Availability indicator (bottom-right) */}
-      <div className="fixed bottom-[80px] right-[40px] z-[1200] flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-        <span className="w-2 h-2 rounded-full bg-[var(--color-success)] animate-pulse" />
-        Available for Q3 work
       </div>
     </section>
   );

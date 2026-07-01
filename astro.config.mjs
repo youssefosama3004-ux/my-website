@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 
 import react from '@astrojs/react';
 
@@ -14,6 +14,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), mdx()],
+  image: {
+    service: passthroughImageService(),
+  },
 
   vite: {
     plugins: [tailwindcss()],
