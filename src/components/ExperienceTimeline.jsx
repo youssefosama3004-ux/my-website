@@ -18,7 +18,7 @@ function ExperienceCard({ job }) {
             />
           </div>
           <div>
-            <h3 className="text-base font-semibold leading-tight text-[var(--text-primary)] md:text-lg">
+            <h3 className="text-base font-bold leading-tight text-[var(--text-primary)] md:text-lg">
               {job.role}
             </h3>
             <p className="text-sm text-[var(--text-secondary)]">
@@ -119,7 +119,7 @@ export default function ExperienceTimeline() {
       />
 
       <div className="pointer-events-none absolute inset-0 z-[1] flex items-center justify-center overflow-hidden">
-        <span className="select-none whitespace-nowrap text-[18vw] font-bold uppercase leading-none tracking-tighter text-[var(--text-primary)] opacity-[0.05]">
+        <span className="select-none whitespace-nowrap text-[18vw] font-bold uppercase leading-none tracking-wide text-[var(--text-primary)] opacity-[0.05] font-[family-name:var(--font-display)]">
           My Journey
         </span>
       </div>
@@ -129,9 +129,9 @@ export default function ExperienceTimeline() {
           className="h-2.5 w-2.5 rounded-full bg-[var(--color-accent-2)]"
           aria-hidden="true"
         />
-        <p className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
+        <h3 className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
           My Journey
-        </p>
+        </h3>
       </div>
 
       <div className="relative z-10 flex h-screen items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">

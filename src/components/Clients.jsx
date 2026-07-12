@@ -17,9 +17,9 @@ export default function Clients() {
     <section className="relative py-24 md:py-32 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
-        <p className="text-sm md:text-base uppercase tracking-widest text-[var(--text-secondary)] mb-12 text-center">
+        <h2 className="text-sm md:text-base uppercase tracking-widest text-[var(--text-secondary)] mb-12 text-center">
           I've worked with
-        </p>
+        </h2>
 
         {/* Logo loop */}
         <div className="logo-loop-wrapper text-[var(--text-secondary)]">

@@ -13,12 +13,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
+  devToolbar: {
+    enabled: false,
+  },
   integrations: [react(), mdx()],
   image: {
     service: passthroughImageService(),
   },
 
   vite: {
+    cacheDir: path.resolve(__dirname, './.vite'),
     plugins: [tailwindcss()],
     resolve: {
       alias: {

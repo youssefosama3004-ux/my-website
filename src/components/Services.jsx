@@ -45,9 +45,9 @@ export default function Services() {
             className="h-2.5 w-2.5 rounded-full bg-[var(--color-accent-2,var(--color-blue-500))]"
             aria-hidden="true"
           />
-          <p className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
+          <h3 className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
             What I do
-          </p>
+          </h3>
         </div>
 
         <div className="border-t border-[var(--border-default,rgba(255,255,255,0.12))]">
@@ -66,11 +66,11 @@ export default function Services() {
                   aria-expanded={isOpen}
                   aria-controls={`service-panel-${index}`}
                 >
-                  <h3 className="shrink-0 tabular-nums text-3xl font-semibold tracking-tight text-[var(--text-primary)] md:text-5xl">
+                  <h3 className="shrink-0 tabular-nums text-3xl font-bold tracking-wide text-[var(--text-primary)] md:text-5xl">
                     0{index + 1}
                   </h3>
 
-                  <h3 className="flex-1 text-3xl font-semibold tracking-tight text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--color-blue-500)] md:text-5xl">
+                  <h3 className="flex-1 text-3xl font-bold tracking-wide text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--color-blue-500)] md:text-5xl">
                     {service.title}
                   </h3>
 
@@ -181,7 +181,7 @@ export default function Services() {
               )}
             </div>
 
-            <h3 className="mb-3 text-2xl font-semibold text-fg md:text-3xl">
+            <h3 className="mb-3 text-2xl font-bold text-fg md:text-3xl">
               Built on the right platform
             </h3>
             <p className="max-w-md text-base leading-relaxed text-fg-secondary">
@@ -192,10 +192,10 @@ export default function Services() {
           </div>
 
           <div className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
-            <p className="mb-3 text-center text-xs uppercase tracking-widest text-fg-secondary">
+            <h3 className="mb-3 text-center text-xs uppercase tracking-widest text-fg-secondary">
               AI-first, not AI generated
-            </p>
-            <h3 className="mb-3 text-center text-2xl font-semibold text-fg md:text-3xl">
+            </h3>
+            <h3 className="mb-3 text-center text-2xl font-bold text-fg md:text-3xl">
               Tools and workflows
             </h3>
             <p className="mx-auto mb-10 max-w-sm text-center text-base leading-relaxed text-fg-secondary">

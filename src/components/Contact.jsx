@@ -136,9 +136,9 @@ export default function Contact() {
             className="h-2.5 w-2.5 rounded-full bg-[var(--color-blue-500)]"
             aria-hidden="true"
           />
-          <p className="text-sm uppercase tracking-widest text-fg md:text-base">
+          <h3 className="text-sm uppercase tracking-widest text-fg md:text-base">
             Contact
-          </p>
+          </h3>
         </div>
 
         <div className="grid overflow-hidden rounded-3xl border border-border bg-card md:grid-cols-2">
@@ -206,7 +206,7 @@ export default function Contact() {
           </div>
 
           <div className="p-8 md:p-10 lg:p-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-fg md:text-5xl">
+            <h2 className="text-3xl font-bold tracking-wide text-fg md:text-5xl">
               Book a call
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-fg-secondary">

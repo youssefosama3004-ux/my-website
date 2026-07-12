@@ -17,9 +17,9 @@ export default function About() {
             className="h-2.5 w-2.5 rounded-full bg-[var(--color-grey-100)]"
             aria-hidden="true"
           />
-          <p className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
+          <h3 className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
             About me
-          </p>
+          </h3>
         </div>
 
         <div className="mb-24 max-w-5xl md:mb-32">
@@ -30,7 +30,8 @@ export default function About() {
             blurStrength={4}
             wordAnimationEnd="bottom center"
             rotationEnd="bottom center"
-            containerClassName="text-3xl font-semibold leading-[1.1] tracking-tight text-[var(--text-primary)] md:text-5xl lg:text-6xl"
+            containerClassName="text-3xl font-bold leading-[1.1] tracking-wide text-[var(--text-primary)] font-[family-name:var(--font-display)] md:text-5xl lg:text-6xl"
+            as="h2"
           >
             A product designer who started in code, crossed into UX, and never
             stopped shipping for founders, startups, and teams who need things
@@ -50,25 +51,25 @@ export default function About() {
 
           <div className="grid grid-cols-1 gap-8 md:col-span-6 md:col-start-7 md:grid-cols-3">
             <div className="flex flex-col items-start gap-3 border-t border-[var(--color-grey-100)] pt-6">
-              <p className="shrink-0 text-4xl font-semibold tabular-nums text-[var(--text-primary)] md:text-6xl">
+              <h3 className="shrink-0 text-4xl font-semibold tabular-nums text-[var(--text-primary)] md:text-6xl">
                 98%
-              </p>
+              </h3>
               <p className="text-sm leading-snug text-[var(--text-secondary)] md:text-base">
                 Clients satisfied and repeating
               </p>
             </div>
             <div className="flex flex-col items-start gap-3 border-t border-[var(--color-grey-100)] pt-6">
-              <p className="shrink-0 text-4xl font-semibold tabular-nums text-[var(--text-primary)] md:text-6xl">
+              <h3 className="shrink-0 text-4xl font-semibold tabular-nums text-[var(--text-primary)] md:text-6xl">
                 125+
-              </p>
+              </h3>
               <p className="text-sm leading-snug text-[var(--text-secondary)] md:text-base">
                 Projects completed across industries
               </p>
             </div>
             <div className="flex flex-col items-start gap-3 border-t border-[var(--color-grey-100)] pt-6">
-              <p className="shrink-0 text-4xl font-semibold tabular-nums text-[var(--text-primary)] md:text-6xl">
+              <h3 className="shrink-0 text-4xl font-semibold tabular-nums text-[var(--text-primary)] md:text-6xl">
                 4
-              </p>
+              </h3>
               <p className="text-sm leading-snug text-[var(--text-secondary)] md:text-base">
                 Active projects
               </p>

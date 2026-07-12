@@ -7,8 +7,8 @@ export default function Hero() {
           {/* Infinite name marquee centered on the photo zone */}
           <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 flex w-screen -translate-x-1/2 -translate-y-1/2 items-center overflow-hidden">
             <h1 className="concept-b-marquee-track whitespace-nowrap" aria-label="Youssef Kader">
-              <span className="concept-b-marquee-text">Youssef Kader&nbsp;&nbsp;&nbsp;</span>
-              <span className="concept-b-marquee-text" aria-hidden="true">Youssef Kader&nbsp;&nbsp;&nbsp;</span>
+              <span className="concept-b-marquee-text font-[family-name:var(--font-display)]">Youssef Kader&nbsp;&nbsp;&nbsp;</span>
+              <span className="concept-b-marquee-text font-[family-name:var(--font-display)]" aria-hidden="true">Youssef Kader&nbsp;&nbsp;&nbsp;</span>
             </h1>
           </div>
 
@@ -26,7 +26,7 @@ export default function Hero() {
 
         {/* Content stack below the photo zone */}
         <div className="relative z-10 mt-10 flex flex-col items-center text-center">
-          <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)] md:text-4xl">
+          <h2 className="text-2xl font-bold tracking-wide text-[var(--text-primary)] md:text-4xl">
             UX Specialist &amp; Product Designer
           </h2>
           <p className="mt-3 text-sm uppercase tracking-[0.2em] text-[var(--text-secondary)] md:text-base">

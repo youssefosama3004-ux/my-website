@@ -68,6 +68,7 @@
   /* ============================================ */
 
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "rift", "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;
 
   /* Font sizes (paired with line-height) */
@@ -146,6 +147,9 @@
 /* ============================================ */
 
 :root {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "rift", "Geist", ui-sans-serif, system-ui, sans-serif;
+
   /* Dark mode values (default) */
   --bg-primary: var(--color-grey-950);
   --bg-surface: var(--color-grey-900);

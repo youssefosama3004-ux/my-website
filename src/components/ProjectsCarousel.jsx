@@ -72,9 +72,9 @@ export default function ProjectsCarousel({ projects = [] }) {
           className="h-2.5 w-2.5 rounded-full bg-[var(--color-blue-500)]"
           aria-hidden="true"
         />
-        <p className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
+        <h3 className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
           My Work
-        </p>
+        </h3>
       </div>
 
       <div className="relative z-10 flex h-screen items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
@@ -99,17 +99,17 @@ export default function ProjectsCarousel({ projects = [] }) {
 
               <div className="absolute left-5 top-5 z-10 flex flex-wrap gap-2">
                 {project.services.slice(0, 2).map((service) => (
-                  <span
+                  <h4
                     key={service}
                     className="rounded-md bg-black/40 px-3 py-1.5 text-xs uppercase tracking-wide text-white backdrop-blur-sm"
                   >
                     {service}
-                  </span>
+                  </h4>
                 ))}
               </div>
 
               <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <h3 className="text-2xl font-semibold text-white md:text-3xl">
+                <h3 className="text-2xl font-bold text-white md:text-3xl">
                   {project.title}
                 </h3>
               </div>

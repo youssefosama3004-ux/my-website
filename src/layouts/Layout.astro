@@ -1,0 +1,24 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "Youssef Kader - Digital Product Designer & Developer",
+  description = "Helping agencies and founders launch websites, apps, and brands - from strategy to design to development.",
+  bodyClass = "",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/bsx0nwx.css" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <slot />
+  </body>
+</html>

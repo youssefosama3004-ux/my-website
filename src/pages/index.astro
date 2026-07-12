@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.jsx";
 import GradualBlur from "../components/GradualBlur.jsx";
 import Hero from "../components/Hero.jsx";
@@ -10,58 +10,50 @@ import Services from "../components/Services.jsx";
 import Projects from "../components/Projects.astro";
 import ExperienceTimeline from "../components/ExperienceTimeline.jsx";
 import Contact from "../components/Contact.jsx";
-
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Youssef Kader — Digital Product Designer & Developer</title>
-    <meta name="description" content="Helping agencies and founders launch websites, apps, and brands — from strategy to design to development." />
-    <script is:inline>
-      const saved = localStorage.getItem("theme") || "dark";
-      if (saved === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
-      } else {
-        document.documentElement.removeAttribute("data-theme");
-      }
-    </script>
-  </head>
-  <body class="transition-colors duration-300">
+<Layout
+  title="Youssef Kader - Digital Product Designer & Developer"
+  description="Helping agencies and founders launch websites, apps, and brands - from strategy to design to development."
+  bodyClass="transition-colors duration-300"
+>
+  <script slot="head" is:inline>
+    const saved = localStorage.getItem("theme") || "dark";
+    if (saved === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  </script>
 
-    <!-- Navigation -->
-    <Nav client:load />
+  <!-- Navigation -->
+  <Nav client:load />
 
-    <!-- Theme Toggle -->
-    <AnimatedThemeToggler
-      client:load
-      className="fixed bottom-[80px] left-[40px] z-[1200] flex items-center justify-center bg-elevated border border-border w-7 h-7 rounded-full text-fg hover:border-border-strong transition-all duration-300 cursor-pointer [&_svg]:w-5 [&_svg]:h-5"
-    />
+  <!-- Theme Toggle -->
+  <AnimatedThemeToggler
+    client:load
+    className="fixed bottom-[80px] left-[40px] z-[1200] flex items-center justify-center bg-elevated border border-border w-7 h-7 rounded-full text-fg hover:border-border-strong transition-all duration-300 cursor-pointer [&_svg]:w-5 [&_svg]:h-5"
+  />
 
-    <main>
-      <Hero client:load />
-      <Clients client:visible />
-      <About client:load />
-      <ExperienceTimeline client:load />
-      <Contact client:load />
-      <Services client:load />
-      <Projects />
-    </main>
+  <main>
+    <Hero client:load />
+    <Clients client:visible />
+    <About client:load />
+    <ExperienceTimeline client:load />
+    <Contact client:load />
+    <Services client:load />
+    <Projects />
+  </main>
 
-    <GradualBlur
-      client:load
-      target="page"
-      position="bottom"
-      height="6rem"
-      strength={2}
-      divCount={5}
-      curve="bezier"
-      exponential
-      opacity={1}
-    />
-
-
-
-  </body>
-</html>
+  <GradualBlur
+    client:load
+    target="page"
+    position="bottom"
+    height="6rem"
+    strength={2}
+    divCount={5}
+    curve="bezier"
+    exponential
+    opacity={1}
+  />
+</Layout>

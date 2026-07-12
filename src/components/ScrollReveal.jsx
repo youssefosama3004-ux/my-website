@@ -16,6 +16,7 @@ const ScrollReveal = ({
   blurStrength = 4,
   containerClassName = '',
   textClassName = '',
+  as: Tag = 'p',
   rotationEnd = 'bottom bottom',
   wordAnimationEnd = 'bottom bottom'
 }) => {
@@ -141,7 +142,7 @@ const ScrollReveal = ({
 
   return (
     <div ref={containerRef} className={containerClassName}>
-      <p className={textClassName}>{splitText}</p>
+      <Tag className={textClassName}>{splitText}</Tag>
     </div>
   );
 };
