@@ -93,6 +93,10 @@ export default function ExperienceTimeline() {
       ScrollTrigger.refresh();
     });
 
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
+
     return () => {
       cancelAnimationFrame(refreshFrame);
       triggers.forEach((trigger) => trigger.kill());

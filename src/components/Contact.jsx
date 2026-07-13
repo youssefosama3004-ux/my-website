@@ -129,7 +129,7 @@ export default function Contact() {
     "w-full rounded-2xl border border-border bg-surface px-4 py-3.5 text-base text-fg outline-none transition-colors duration-200 placeholder:text-fg-muted focus:border-[var(--color-blue-500)]";
 
   return (
-    <section id="contact" className="relative bg-primary px-6 py-24 md:py-32">
+    <section id="contact" className="relative z-10 bg-primary px-6 py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex items-center gap-3">
           <span
@@ -281,7 +281,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--color-blue-500)] px-5 py-4 font-semibold text-accent-fg transition-colors duration-300 hover:bg-[var(--color-blue-600)]"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--color-blue-500)] px-5 py-4 font-bold tracking-wide text-accent-fg transition-colors duration-300 hover:bg-[var(--color-blue-600)] font-[family-name:var(--font-display)]"
               >
                 Proceed with call booking <span aria-hidden="true">→</span>
               </button>

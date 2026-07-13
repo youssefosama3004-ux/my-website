@@ -35,7 +35,7 @@ export default function Hero() {
           <div className="mt-8 flex items-center gap-3">
             <a
               href="#work"
-              className="rounded-full border border-[var(--text-secondary)] px-5 py-2.5 text-sm text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
+              className="rounded-full border border-[var(--text-secondary)] px-5 py-2.5 text-sm font-bold tracking-wide text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)] font-[family-name:var(--font-display)]"
             >
               View my work
             </a>
@@ -43,7 +43,7 @@ export default function Hero() {
               href="https://calendly.com/YOUR-LINK"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-[var(--color-blue-500)] px-5 py-2.5 text-sm text-white transition-transform duration-300 hover:scale-105"
+              className="rounded-full bg-[var(--color-blue-500)] px-5 py-2.5 text-sm font-bold tracking-wide text-white transition-transform duration-300 hover:scale-105 font-[family-name:var(--font-display)]"
             >
               Book a call →
             </a>

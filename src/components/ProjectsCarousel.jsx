@@ -47,6 +47,10 @@ export default function ProjectsCarousel({ projects = [] }) {
       ScrollTrigger.refresh();
     });
 
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
+
     return () => {
       cancelAnimationFrame(refreshFrame);
       triggers.forEach((trigger) => trigger.kill());
@@ -125,7 +129,7 @@ export default function ProjectsCarousel({ projects = [] }) {
         aria-hidden="true"
       >
         <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white">
-          <span className="text-center text-xs font-medium uppercase tracking-wide text-black">
+          <span className="text-center text-xs font-bold uppercase tracking-wide text-black font-[family-name:var(--font-display)]">
             View
             <br />
             Project
