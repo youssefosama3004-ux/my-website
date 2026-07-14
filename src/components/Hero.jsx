@@ -1,53 +1,78 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center px-6">
-        {/* Photo zone — marquee, blue block, and photo share this center */}
-        <div className="relative flex items-center justify-center">
-          {/* Infinite name marquee centered on the photo zone */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 flex w-screen -translate-x-1/2 -translate-y-1/2 items-center overflow-hidden">
-            <h1 className="concept-b-marquee-track whitespace-nowrap" aria-label="Youssef Kader">
-              <span className="concept-b-marquee-text font-[family-name:var(--font-display)]">Youssef Kader&nbsp;&nbsp;&nbsp;</span>
-              <span className="concept-b-marquee-text font-[family-name:var(--font-display)]" aria-hidden="true">Youssef Kader&nbsp;&nbsp;&nbsp;</span>
-            </h1>
-          </div>
+    <section
+      className="relative min-h-screen w-full max-w-[100vw] overflow-hidden bg-[#0A0A0A]"
+      style={{
+        "--text-primary": "#ffffff",
+        "--text-secondary": "rgba(255, 255, 255, 0.72)",
+        "--bg-surface": "rgba(255, 255, 255, 0.1)",
+      }}
+    >
+      <img
+        src="/images/youssef-hero-fullbleed.png"
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover object-[49%_22%] md:object-[center_22%]"
+        draggable={false}
+      />
 
-          {/* Blue block */}
-          <div className="absolute left-1/2 top-1/2 z-[1] h-[330px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-[var(--color-blue-500)] md:h-[380px] md:w-[300px]" />
-
-          {/* Photo */}
-          <img
-            src="/images/youssef-osama-image-v3.png"
-            alt="Youssef Kader"
-            className="relative z-[2] h-[42vh] w-auto object-contain md:h-[50vh]"
-            draggable={false}
-          />
+      <div className="pointer-events-none absolute left-0 right-0 top-[42%] -translate-y-1/2 overflow-hidden">
+        <div className="marquee-track flex w-max whitespace-nowrap">
+          <span className="hero-wordmark">Youssef Kader UX Specialist&nbsp;&nbsp;&nbsp;</span>
+          <span className="hero-wordmark" aria-hidden="true">Youssef Kader UX Specialist&nbsp;&nbsp;&nbsp;</span>
         </div>
+      </div>
 
-        {/* Content stack below the photo zone */}
-        <div className="relative z-10 mt-10 flex flex-col items-center text-center">
-          <h2 className="text-2xl font-bold tracking-wide text-[var(--text-primary)] md:text-4xl">
-            UX Specialist &amp; Product Designer
-          </h2>
-          <p className="mt-3 text-sm uppercase tracking-[0.2em] text-[var(--text-secondary)] md:text-base">
-            Designing conversion-focused digital products
-          </p>
-          <div className="mt-8 flex items-center gap-3">
-            <a
-              href="#work"
-              className="rounded-full border border-[var(--text-secondary)] px-5 py-2.5 text-sm font-bold tracking-wide text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)] font-[family-name:var(--font-display)]"
-            >
-              View my work
-            </a>
-            <a
-              href="https://calendly.com/YOUR-LINK"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[var(--color-blue-500)] px-5 py-2.5 text-sm font-bold tracking-wide text-white transition-transform duration-300 hover:scale-105 font-[family-name:var(--font-display)]"
-            >
-              Book a call →
-            </a>
-          </div>
+      <img
+        src="/images/youssef-hero-fullbleed.png"
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover object-[49%_22%] md:object-[center_22%]"
+        style={{
+          WebkitMaskImage:
+            "radial-gradient(ellipse 34% 62% at 50% 55%, black 62%, transparent 100%)",
+          maskImage:
+            "radial-gradient(ellipse 34% 62% at 50% 55%, black 62%, transparent 100%)",
+        }}
+        draggable={false}
+      />
+
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `
+            linear-gradient(to bottom, rgba(10, 10, 10, 0.55) 0%, transparent 22%, transparent 55%, #0A0A0A 96%),
+            radial-gradient(ellipse 90% 90% at 50% 40%, transparent 55%, rgba(10, 10, 10, 0.85) 100%)
+          `,
+        }}
+      />
+
+      <div className="relative z-10 flex min-h-screen w-full min-w-0 flex-col items-center justify-end px-6 pb-20 text-center md:pb-24">
+        <h1 className="max-w-[18rem] text-2xl font-bold leading-tight text-[var(--text-primary)] sm:max-w-none sm:text-3xl md:text-5xl">
+          <span className="block md:inline">UX Specialist &amp;</span>{" "}
+          <span className="block md:inline">Product Designer</span>
+        </h1>
+        <p className="mt-3 max-w-[18rem] text-xs uppercase leading-relaxed tracking-[0.16em] text-[var(--text-secondary)] sm:max-w-none sm:text-sm md:text-base md:tracking-[0.25em]">
+          <span className="block md:inline">Designing</span>{" "}
+          <span className="block md:inline">conversion-focused</span>{" "}
+          <span className="block md:inline">digital products</span>
+        </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="#work"
+            className="rounded-full border border-[var(--text-secondary)] px-5 py-2.5 text-sm font-bold tracking-wide text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)] font-[family-name:var(--font-display)]"
+          >
+            View my work
+          </a>
+          <a
+            href="https://calendly.com/YOUR-LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-[var(--color-blue-500)] px-5 py-2.5 text-sm font-bold tracking-wide text-white transition-transform duration-300 hover:scale-105 font-[family-name:var(--font-display)]"
+          >
+            Book a call &rarr;
+          </a>
         </div>
       </div>
     </section>

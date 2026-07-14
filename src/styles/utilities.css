@@ -33,7 +33,31 @@
   opacity: 1;
 }
 
-/* Concept B hero marquee */
+.hero-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16vw;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  opacity: 0.07;
+  user-select: none;
+}
+
+.marquee-track {
+  animation: hero-marquee 40s linear infinite;
+}
+
+@keyframes hero-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .concept-b-marquee-track {
   display: flex;
   width: max-content;

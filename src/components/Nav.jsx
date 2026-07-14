@@ -91,7 +91,9 @@ export default function Nav() {
           onClick={handleToggle}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
-          className="w-12 h-12 flex flex-col items-center justify-center gap-1.5 cursor-pointer text-[var(--text-primary)] pointer-events-auto"
+          className={`w-12 h-12 flex flex-col items-center justify-center gap-1.5 cursor-pointer pointer-events-auto ${
+            collapsed ? "text-[var(--text-primary)]" : "text-white"
+          }`}
         >
           <span className={`block w-6 h-px bg-current transition-transform duration-300 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
           <span className={`block w-6 h-px bg-current transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
