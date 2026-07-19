@@ -1,45 +1,47 @@
+const HERO_IMAGE = "/images/youssef-hero-fullbleed.png";
+
 export default function Hero() {
   return (
     <section
-      className="relative min-h-screen w-full max-w-[100vw] overflow-hidden bg-[#0A0A0A]"
+      className="hero-shell relative w-full max-w-[100vw] overflow-hidden bg-[#0A0A0A]"
       style={{
         "--text-primary": "#ffffff",
         "--text-secondary": "rgba(255, 255, 255, 0.72)",
         "--bg-surface": "rgba(255, 255, 255, 0.1)",
       }}
     >
-      <img
-        src="/images/youssef-hero-fullbleed.png"
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover object-[49%_22%] md:object-[center_22%]"
-        draggable={false}
-      />
+      <picture className="hero-photo-frame">
+        <source media="(max-width: 767px)" srcSet={HERO_IMAGE} />
+        <img
+          src={HERO_IMAGE}
+          alt=""
+          aria-hidden
+          className="hero-photo"
+          draggable={false}
+        />
+      </picture>
 
-      <div className="pointer-events-none absolute left-0 right-0 top-[42%] -translate-y-1/2 overflow-hidden">
+      <div className="hero-marquee-window pointer-events-none absolute left-0 right-0 -translate-y-1/2 overflow-hidden">
         <div className="marquee-track flex w-max whitespace-nowrap">
           <span className="hero-wordmark">Youssef Kader UX Specialist&nbsp;&nbsp;&nbsp;</span>
           <span className="hero-wordmark" aria-hidden="true">Youssef Kader UX Specialist&nbsp;&nbsp;&nbsp;</span>
         </div>
       </div>
 
-      <img
-        src="/images/youssef-hero-fullbleed.png"
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover object-[49%_22%] md:object-[center_22%]"
-        style={{
-          WebkitMaskImage:
-            "radial-gradient(ellipse 34% 62% at 50% 55%, black 62%, transparent 100%)",
-          maskImage:
-            "radial-gradient(ellipse 34% 62% at 50% 55%, black 62%, transparent 100%)",
-        }}
-        draggable={false}
-      />
+      <picture className="hero-photo-frame">
+        <source media="(max-width: 767px)" srcSet={HERO_IMAGE} />
+        <img
+          src={HERO_IMAGE}
+          alt=""
+          aria-hidden
+          className="hero-photo hero-photo--masked"
+          draggable={false}
+        />
+      </picture>
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="hero-desktop-overlay pointer-events-none absolute inset-0"
         style={{
           background: `
             linear-gradient(to bottom, rgba(10, 10, 10, 0.55) 0%, transparent 22%, transparent 55%, #0A0A0A 96%),
@@ -48,7 +50,9 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 flex min-h-screen w-full min-w-0 flex-col items-center justify-end px-6 pb-20 text-center md:pb-24">
+      <div aria-hidden className="hero-compact-overlay pointer-events-none absolute inset-x-0 top-0" />
+
+      <div className="hero-content relative z-[1101] flex w-full min-w-0 flex-col items-center justify-end text-center">
         <h1 className="max-w-[18rem] text-2xl font-bold leading-tight text-[var(--text-primary)] sm:max-w-none sm:text-3xl md:text-5xl">
           <span className="block md:inline">UX Specialist &amp;</span>{" "}
           <span className="block md:inline">Product Designer</span>
