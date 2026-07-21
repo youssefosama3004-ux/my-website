@@ -12,7 +12,7 @@ export default function About() {
       }}
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 flex items-center gap-3">
+        <div className="mb-5 flex items-center gap-3">
           <span
             className="h-2.5 w-2.5 rounded-full bg-[var(--color-grey-100)]"
             aria-hidden="true"

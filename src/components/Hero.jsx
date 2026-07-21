@@ -1,4 +1,5 @@
-const HERO_IMAGE = "/images/youssef-hero-fullbleed.png";
+const HERO_AURORA = "/images/hero-aurora.png";
+const HERO_PORTRAIT = "/images/youssef-product-design-v3.png";
 
 export default function Hero() {
   return (
@@ -10,16 +11,15 @@ export default function Hero() {
         "--bg-surface": "rgba(255, 255, 255, 0.1)",
       }}
     >
-      <picture className="hero-photo-frame">
-        <source media="(max-width: 767px)" srcSet={HERO_IMAGE} />
-        <img
-          src={HERO_IMAGE}
-          alt=""
-          aria-hidden
-          className="hero-photo"
-          draggable={false}
-        />
-      </picture>
+      <img
+        src={HERO_AURORA}
+        alt=""
+        aria-hidden
+        className="hero-aurora"
+        draggable={false}
+      />
+
+      <div aria-hidden className="hero-visual-overlay" />
 
       <div className="hero-marquee-window pointer-events-none absolute left-0 right-0 -translate-y-1/2 overflow-hidden">
         <div className="marquee-track flex w-max whitespace-nowrap">
@@ -28,44 +28,28 @@ export default function Hero() {
         </div>
       </div>
 
-      <picture className="hero-photo-frame">
-        <source media="(max-width: 767px)" srcSet={HERO_IMAGE} />
+      <picture className="hero-portrait-zone">
         <img
-          src={HERO_IMAGE}
+          src={HERO_PORTRAIT}
           alt=""
           aria-hidden
-          className="hero-photo hero-photo--masked"
+          className="hero-portrait"
           draggable={false}
         />
       </picture>
 
-      <div
-        aria-hidden
-        className="hero-desktop-overlay pointer-events-none absolute inset-0"
-        style={{
-          background: `
-            linear-gradient(to bottom, rgba(10, 10, 10, 0.55) 0%, transparent 22%, transparent 55%, #0A0A0A 96%),
-            radial-gradient(ellipse 90% 90% at 50% 40%, transparent 55%, rgba(10, 10, 10, 0.85) 100%)
-          `,
-        }}
-      />
-
-      <div aria-hidden className="hero-compact-overlay pointer-events-none absolute inset-x-0 top-0" />
-
       <div className="hero-content relative z-[1101] flex w-full min-w-0 flex-col items-center justify-end text-center">
-        <h1 className="max-w-[18rem] text-2xl font-bold leading-tight text-[var(--text-primary)] sm:max-w-none sm:text-3xl md:text-5xl">
-          <span className="block md:inline">UX Specialist &amp;</span>{" "}
-          <span className="block md:inline">Product Designer</span>
+        <h1 className="max-w-[22rem] text-[clamp(2.275rem,4.2vw,3.75rem)] font-bold leading-tight text-[var(--text-primary)] sm:max-w-none">
+          Business-Minded Product Designer
         </h1>
-        <p className="mt-3 max-w-[18rem] text-xs uppercase leading-relaxed tracking-[0.16em] text-[var(--text-secondary)] sm:max-w-none sm:text-sm md:text-base md:tracking-[0.25em]">
-          <span className="block md:inline">Designing</span>{" "}
-          <span className="block md:inline">conversion-focused</span>{" "}
-          <span className="block md:inline">digital products</span>
+        <p className="mt-3 max-w-[23rem] text-[length:var(--text-body-sm)] leading-[1.65] tracking-normal text-white/80 sm:max-w-[38rem] md:max-w-[48rem] md:text-xl">
+          I help startups turn messy ideas into clear digital products
+          <br className="hidden sm:block" /> people can actually use.
         </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-5 flex w-full max-w-[23rem] flex-col items-center justify-center gap-3 sm:mt-8 sm:w-auto sm:max-w-none sm:flex-row">
           <a
             href="#work"
-            className="rounded-full border border-[var(--text-secondary)] px-5 py-2.5 text-sm font-bold tracking-wide text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)] font-[family-name:var(--font-display)]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[var(--text-secondary)] px-6 text-sm font-bold tracking-wide text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)] sm:w-auto lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
           >
             View my work
           </a>
@@ -73,7 +57,7 @@ export default function Hero() {
             href="https://calendly.com/YOUR-LINK"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[var(--color-blue-500)] px-5 py-2.5 text-sm font-bold tracking-wide text-white transition-transform duration-300 hover:scale-105 font-[family-name:var(--font-display)]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-blue-500)] px-6 text-sm font-bold tracking-wide text-white transition-transform duration-300 hover:scale-105 sm:w-auto lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
           >
             Book a call &rarr;
           </a>
