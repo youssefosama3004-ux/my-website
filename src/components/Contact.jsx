@@ -129,9 +129,9 @@ export default function Contact() {
     "w-full rounded-2xl border border-border bg-surface px-4 py-3.5 text-base text-fg outline-none transition-colors duration-200 placeholder:text-fg-muted focus:border-[var(--color-blue-500)]";
 
   return (
-    <section id="contact" className="relative z-10 bg-primary px-6 py-24 md:py-32">
+    <section id="contact" className="contact-section relative z-10 bg-primary px-6 py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 flex items-center gap-3">
+        <div className="contact-label mb-12 flex items-center gap-3">
           <span
             className="h-2.5 w-2.5 rounded-full bg-[var(--color-blue-500)]"
             aria-hidden="true"
@@ -141,14 +141,14 @@ export default function Contact() {
           </h3>
         </div>
 
-        <div className="grid overflow-hidden rounded-3xl border border-border bg-card md:grid-cols-2">
+        <div className="contact-card grid overflow-hidden rounded-3xl border border-border bg-card lg:grid-cols-2">
           <div
-            className="relative flex min-h-[520px] flex-col border-b border-border p-8 md:border-b-0 md:border-r md:p-10 lg:p-12"
+            className="contact-testimonial relative flex min-h-[520px] flex-col border-b border-border p-8 md:p-[var(--spacing-7)] lg:border-b-0 lg:border-r lg:p-12"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
             <span
-              className="mb-8 block text-7xl font-semibold leading-none text-fg opacity-15"
+              className="contact-quote mb-8 block text-7xl font-semibold leading-none text-fg opacity-15"
               aria-hidden="true"
             >
               “
@@ -162,7 +162,7 @@ export default function Contact() {
                 {activeTestimonial.quote}
               </blockquote>
 
-              <div className="mt-auto pt-12">
+              <div className="contact-identity mt-auto pt-12">
                 <div className="flex items-center gap-4">
                   <Avatar testimonial={activeTestimonial} />
                   <div>
@@ -173,7 +173,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="mt-10 grid grid-cols-5 gap-2">
+                <div className="contact-progress mt-10 grid grid-cols-5 gap-2">
                   {testimonials.map((testimonial, index) => {
                     const fill =
                       index < activeIndex
@@ -205,8 +205,8 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="p-8 md:p-10 lg:p-12">
-            <h2 className="text-3xl font-bold tracking-wide text-fg md:text-5xl">
+          <div className="contact-form-panel p-8 md:p-[var(--spacing-7)] lg:p-12">
+            <h2 className="whitespace-nowrap text-3xl font-bold tracking-wide text-fg md:text-5xl">
               Book a call
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-fg-secondary">
@@ -214,8 +214,8 @@ export default function Contact() {
               clearest next step.
             </p>
 
-            <form className="mt-10 space-y-4" onSubmit={submitForm}>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <form className="contact-form mt-10 space-y-4" onSubmit={submitForm}>
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <label className="block">
                   <span className="sr-only">Full name</span>
                   <input
@@ -281,7 +281,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--color-blue-500)] px-5 py-4 font-bold tracking-wide text-accent-fg transition-colors duration-300 hover:bg-[var(--color-blue-600)] font-[family-name:var(--font-display)]"
+                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-[var(--color-blue-500)] px-5 py-4 font-bold tracking-wide text-accent-fg transition-colors duration-300 hover:bg-[var(--color-blue-600)] font-[family-name:var(--font-display)]"
               >
                 Proceed with call booking <span aria-hidden="true">→</span>
               </button>

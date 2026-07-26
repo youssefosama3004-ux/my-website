@@ -150,9 +150,9 @@ export default function Services() {
           })}
         </div>
 
-        <div className="mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
-          <div className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
-            <div className="mb-8 flex flex-wrap items-center gap-5 md:gap-6">
+        <div className="services-feature-grid mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
+          <div className="services-feature-card services-platform-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
+            <div className="services-platform-icons mb-8 flex flex-wrap items-center gap-5 md:gap-6">
               {["wordpress", "shopify", "salla", "webflow", "react"].map(
                 (platform) => (
                   <div
@@ -191,7 +191,7 @@ export default function Services() {
             </p>
           </div>
 
-          <div className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
+          <div className="services-feature-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
             <h3 className="mb-3 text-center text-xs uppercase tracking-widest text-fg-secondary">
               AI-first, not AI generated
             </h3>

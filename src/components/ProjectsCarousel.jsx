@@ -12,7 +12,7 @@ export default function ProjectsCarousel({ projects = [] }) {
 
   useEffect(() => {
     const useNativeScroll = window.matchMedia(
-      "(pointer: coarse), (max-width: 767px)",
+      "(pointer: coarse), (max-width: 767px), (prefers-reduced-motion: reduce)",
     ).matches;
     if (useNativeScroll) return undefined;
 
@@ -68,7 +68,7 @@ export default function ProjectsCarousel({ projects = [] }) {
     <section
       id="work"
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden"
+      className="work-section relative min-h-screen overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       <div className="absolute left-6 top-24 z-20 flex items-center gap-3 md:left-12 md:top-32">
@@ -81,7 +81,7 @@ export default function ProjectsCarousel({ projects = [] }) {
         </h3>
       </div>
 
-      <div className="relative z-10 flex h-screen items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
+      <div className="work-viewport relative z-10 flex h-screen items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
         <div
           ref={trackRef}
           className="flex w-max gap-6 px-6 will-change-transform md:px-12"
@@ -90,7 +90,7 @@ export default function ProjectsCarousel({ projects = [] }) {
             <a
               key={project.slug}
               href={`/work/${project.slug}`}
-              className="group relative h-[62vh] w-[80vw] shrink-0 overflow-hidden rounded-2xl max-md:snap-center md:w-[60vw] lg:w-[42vw]"
+              className="work-card group relative h-[62vh] w-[80vw] shrink-0 overflow-hidden rounded-2xl max-md:snap-center md:w-[60vw] lg:w-[42vw]"
               onMouseEnter={() => setCursorVisible(true)}
               onMouseLeave={() => setCursorVisible(false)}
             >

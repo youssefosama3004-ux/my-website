@@ -6,10 +6,19 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [forceExpanded, setForceExpanded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [aboutActive, setAboutActive] = useState(false);
   const sequenceTimerRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 80);
+
+      const about = document.getElementById("about");
+      if (!about) return;
+      const bounds = about.getBoundingClientRect();
+      const navFocusLine = Math.min(104, window.innerHeight * 0.16);
+      setAboutActive(bounds.top <= navFocusLine && bounds.bottom > navFocusLine);
+    };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -33,10 +42,7 @@ export default function Nav() {
   const openMenu = () => {
     clearSequenceTimer();
     setForceExpanded(true);
-    sequenceTimerRef.current = window.setTimeout(() => {
-      setMenuOpen(true);
-      sequenceTimerRef.current = null;
-    }, 500);
+    setMenuOpen(true);
   };
 
   const closeMenu = () => {
@@ -45,7 +51,7 @@ export default function Nav() {
     sequenceTimerRef.current = window.setTimeout(() => {
       setForceExpanded(false);
       sequenceTimerRef.current = null;
-    }, 500);
+    }, 320);
   };
 
   const handleToggle = () => {
@@ -67,7 +73,7 @@ export default function Nav() {
     <>
       {/* Fixed header bar */}
       <header
-        className={`pointer-events-none fixed left-1/2 top-0 z-[1300] flex -translate-x-1/2 items-center justify-between border transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`site-nav-header pointer-events-none fixed left-1/2 top-0 z-[1300] flex -translate-x-1/2 items-center justify-between border transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
           collapsed
             ? "mt-4 w-[90%] max-w-md rounded-full border-[color-mix(in_srgb,var(--text-primary)_12%,transparent)] bg-[color-mix(in_srgb,var(--text-primary)_6%,transparent)] px-5 py-3 backdrop-blur-xl"
             : "mt-0 w-full max-w-none rounded-none border-transparent bg-transparent px-6 py-6 backdrop-blur-0 md:px-12"
@@ -82,7 +88,7 @@ export default function Nav() {
           <img
             src={logo.src}
             alt="Youssef logo"
-            className={`w-auto transition-all duration-500 ${collapsed ? "h-7" : "h-8"}`}
+            className={`w-auto transition-all duration-500 ${collapsed ? "h-7" : "h-8"} ${aboutActive ? "nav-logo-about" : ""}`}
           />
         </a>
 

@@ -32,7 +32,7 @@ import Contact from "../components/Contact.jsx";
   <!-- Theme Toggle -->
   <AnimatedThemeToggler
     client:load
-    className="fixed bottom-[80px] left-[40px] z-[1200] flex items-center justify-center bg-elevated border border-border w-7 h-7 rounded-full text-fg hover:border-border-strong transition-all duration-300 cursor-pointer [&_svg]:w-5 [&_svg]:h-5"
+    className="site-theme-toggle fixed z-[1200] flex items-center justify-center bg-elevated border border-border w-7 h-7 rounded-full text-fg hover:border-border-strong transition-all duration-300 cursor-pointer [&_svg]:w-5 [&_svg]:h-5"
   />
 
   <main>
@@ -49,11 +49,13 @@ import Contact from "../components/Contact.jsx";
     client:load
     target="page"
     position="bottom"
-    height="6rem"
-    strength={2}
-    divCount={5}
+    height="3.5rem"
+    strength={1.15}
+    divCount={4}
     curve="bezier"
     exponential
-    opacity={1}
+    opacity={0.45}
+    zIndex={5}
+    className="site-bottom-fade"
   />
 </Layout>

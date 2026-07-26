@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ExperienceCard({ job }) {
   return (
-    <article className="w-[85vw] rounded-2xl border border-[var(--border-default,rgba(255,255,255,0.1))] bg-[var(--bg-surface)] p-6 md:w-[440px]">
-      <div className="mb-4 flex items-start justify-between gap-3">
+    <article className="journey-card w-[85vw] rounded-2xl border border-[var(--border-default,rgba(255,255,255,0.1))] bg-[var(--bg-surface)] p-6 md:w-[440px]">
+      <div className="journey-card-header mb-4 flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--border-default,rgba(255,255,255,0.1))] bg-[color-mix(in_srgb,var(--text-primary)_10%,var(--bg-surface))]">
             <img
@@ -32,9 +32,9 @@ function ExperienceCard({ job }) {
         </span>
       </div>
 
-      <div className="mb-4 border-t border-[var(--border-default,rgba(255,255,255,0.1))]" />
+      <div className="journey-card-divider mb-4 border-t border-[var(--border-default,rgba(255,255,255,0.1))]" />
 
-      <ul className="space-y-2.5">
+      <ul className="journey-card-bullets space-y-2.5">
         {job.bullets.map((bullet) => (
           <li
             key={bullet}
@@ -58,7 +58,7 @@ export default function ExperienceTimeline() {
 
   useEffect(() => {
     const useNativeScroll = window.matchMedia(
-      "(pointer: coarse), (max-width: 767px)",
+      "(pointer: coarse), (max-width: 767px), (prefers-reduced-motion: reduce)",
     ).matches;
     if (useNativeScroll) return undefined;
 
@@ -108,7 +108,7 @@ export default function ExperienceTimeline() {
     <section
       id="journey"
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden border-t border-[color-mix(in_srgb,var(--color-accent-2)_12%,transparent)] bg-[var(--bg-elevated)]"
+      className="journey-section relative min-h-screen overflow-hidden border-t border-[color-mix(in_srgb,var(--color-accent-2)_12%,transparent)] bg-[var(--bg-elevated)]"
     >
       {/* Atmospheric background glow */}
       <div
@@ -128,7 +128,7 @@ export default function ExperienceTimeline() {
         </span>
       </div>
 
-      <div className="absolute left-6 top-12 z-20 flex items-center gap-3 md:left-12">
+      <div className="journey-label absolute left-6 top-12 z-20 flex items-center gap-3 md:left-12">
         <span
           className="h-2.5 w-2.5 rounded-full bg-[var(--color-accent-2)]"
           aria-hidden="true"
@@ -138,13 +138,13 @@ export default function ExperienceTimeline() {
         </h3>
       </div>
 
-      <div className="relative z-10 flex h-screen items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
+      <div className="journey-viewport relative z-10 flex h-screen items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
         <div
           ref={trackRef}
-          className="relative flex w-max items-center px-6 will-change-transform md:px-12"
+          className="journey-track relative flex w-max items-center px-6 will-change-transform md:px-12"
         >
           <div
-            className="absolute inset-x-0 top-1/2 z-0 h-px -translate-y-1/2 bg-[var(--border-default,rgba(255,255,255,0.15))]"
+            className="journey-line absolute inset-x-0 top-1/2 z-0 h-px -translate-y-1/2 bg-[var(--border-default,rgba(255,255,255,0.15))]"
             aria-hidden="true"
           />
 
@@ -158,34 +158,34 @@ export default function ExperienceTimeline() {
             return (
               <div
                 key={`${job.company}-${job.date}`}
-                className="relative flex h-[88vh] w-[85vw] shrink-0 snap-center flex-col items-center px-4 md:w-[480px]"
+                className="journey-item relative flex h-[88vh] w-[85vw] shrink-0 snap-center flex-col items-center px-4 md:w-[480px]"
               >
                 <div
-                  className="absolute left-1/2 top-1/2 z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-blue-500)] ring-4 ring-[var(--bg-primary)]"
+                  className="journey-dot absolute left-1/2 top-1/2 z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-blue-500)] ring-4 ring-[var(--bg-primary)]"
                   aria-hidden="true"
                 />
 
                 <div
-                  className={`absolute left-1/2 w-px -translate-x-1/2 bg-[var(--border-default,rgba(255,255,255,0.15))] ${
+                  className={`journey-connector absolute left-1/2 w-px -translate-x-1/2 bg-[var(--border-default,rgba(255,255,255,0.15))] ${
                     cardOnTop ? "bottom-1/2 h-[8%]" : "top-1/2 h-[8%]"
                   }`}
                   aria-hidden="true"
                 />
 
                 {cardOnTop ? (
-                  <div className="absolute bottom-1/2 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4 pb-[8%]">
+                  <div className="journey-card-group journey-card-group-top absolute bottom-1/2 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4 pb-[8%]">
                     <span
-                      className={`whitespace-nowrap rounded-full px-4 py-1.5 text-xs uppercase tracking-wide ${datePillClass}`}
+                      className={`journey-date whitespace-nowrap rounded-full px-4 py-1.5 text-xs uppercase tracking-wide ${datePillClass}`}
                     >
                       {job.date}
                     </span>
                     <ExperienceCard job={job} />
                   </div>
                 ) : (
-                  <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 flex-col items-center gap-4 pt-[8%]">
+                  <div className="journey-card-group journey-card-group-bottom absolute left-1/2 top-1/2 flex -translate-x-1/2 flex-col items-center gap-4 pt-[8%]">
                     <ExperienceCard job={job} />
                     <span
-                      className={`whitespace-nowrap rounded-full px-4 py-1.5 text-xs uppercase tracking-wide ${datePillClass}`}
+                      className={`journey-date whitespace-nowrap rounded-full px-4 py-1.5 text-xs uppercase tracking-wide ${datePillClass}`}
                     >
                       {job.date}
                     </span>

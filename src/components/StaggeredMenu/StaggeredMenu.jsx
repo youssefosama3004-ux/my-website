@@ -96,6 +96,7 @@ export const StaggeredMenu = ({
     const offscreen = position === 'left' ? -100 : 100;
     const layerStates = layers.map(el => ({ el, start: offscreen }));
     const panelStart = offscreen;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (itemEls.length) {
       gsap.set(itemEls, { yPercent: 140, rotate: 10 });
@@ -113,11 +114,16 @@ export const StaggeredMenu = ({
     const tl = gsap.timeline({ paused: true });
 
     layerStates.forEach((ls, i) => {
-      tl.fromTo(ls.el, { xPercent: ls.start }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
+      tl.fromTo(
+        ls.el,
+        { xPercent: ls.start },
+        { xPercent: 0, duration: reduceMotion ? 0.01 : 0.38, ease: 'power4.out' },
+        reduceMotion ? 0 : i * 0.05
+      );
     });
-    const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
-    const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
-    const panelDuration = 0.65;
+    const lastTime = reduceMotion ? 0 : layerStates.length ? (layerStates.length - 1) * 0.05 : 0;
+    const panelInsertTime = reduceMotion ? 0 : lastTime + (layerStates.length ? 0.04 : 0);
+    const panelDuration = reduceMotion ? 0.01 : 0.45;
     tl.fromTo(
       panel,
       { xPercent: panelStart },
@@ -126,16 +132,16 @@ export const StaggeredMenu = ({
     );
 
     if (itemEls.length) {
-      const itemsStartRatio = 0.15;
+      const itemsStartRatio = 0.12;
       const itemsStart = panelInsertTime + panelDuration * itemsStartRatio;
       tl.to(
         itemEls,
         {
           yPercent: 0,
           rotate: 0,
-          duration: 1,
+          duration: reduceMotion ? 0.01 : 0.38,
           ease: 'power4.out',
-          stagger: { each: 0.1, from: 'start' }
+          stagger: { each: reduceMotion ? 0 : 0.035, from: 'start' }
         },
         itemsStart
       );
@@ -143,10 +149,10 @@ export const StaggeredMenu = ({
         tl.to(
           numberEls,
           {
-            duration: 0.6,
+            duration: reduceMotion ? 0.01 : 0.3,
             ease: 'power2.out',
             '--sm-num-opacity': 1,
-            stagger: { each: 0.08, from: 'start' }
+            stagger: { each: reduceMotion ? 0 : 0.03, from: 'start' }
           },
           itemsStart + 0.1
         );
@@ -212,11 +218,12 @@ export const StaggeredMenu = ({
     if (!panel) return;
 
     const all = [...layers, panel];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     closeTweenRef.current?.kill();
     const offscreen = position === 'left' ? -100 : 100;
     closeTweenRef.current = gsap.to(all, {
       xPercent: offscreen,
-      duration: 0.32,
+      duration: reduceMotion ? 0.01 : 0.28,
       ease: 'power3.in',
       overwrite: 'auto',
       onComplete: () => {
