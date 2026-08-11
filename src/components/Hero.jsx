@@ -39,7 +39,7 @@ export default function Hero() {
       </picture>
 
       <div className="hero-content relative z-[1101] flex w-full min-w-0 flex-col items-center justify-end text-center">
-        <h1 className="max-w-[22rem] text-[clamp(2.275rem,4.2vw,3.75rem)] font-bold leading-tight text-[var(--text-primary)] sm:max-w-none">
+        <h1 className="max-w-[22rem] text-[clamp(2.275rem,4.2vw,2.25rem)] font-bold leading-tight text-[var(--text-primary)] sm:max-w-none">
           Business-Minded Product Designer
         </h1>
         <p className="mt-3 max-w-[23rem] text-[length:var(--text-body-sm)] leading-[1.65] tracking-normal text-white/80 sm:max-w-[38rem] md:max-w-[48rem] md:text-xl">
