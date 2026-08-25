@@ -71,7 +71,7 @@ export default function ProjectsCarousel({ projects = [] }) {
       className="work-section relative min-h-screen overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute left-6 top-24 z-20 flex items-center gap-3 md:left-12 md:top-32">
+      <div className="absolute left-[5%] top-24 z-20 flex items-center gap-3 md:top-32">
         <span
           className="h-2.5 w-2.5 rounded-full bg-[var(--color-blue-500)]"
           aria-hidden="true"
@@ -84,7 +84,7 @@ export default function ProjectsCarousel({ projects = [] }) {
       <div className="work-viewport relative z-10 flex h-screen items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
         <div
           ref={trackRef}
-          className="flex w-max gap-6 px-6 will-change-transform md:px-12"
+          className="flex w-max gap-6 px-[5vw] will-change-transform"
         >
           {projects.map((project) => (
             <a

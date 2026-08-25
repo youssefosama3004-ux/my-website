@@ -37,9 +37,9 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative border-t border-[color-mix(in_srgb,var(--color-accent-2)_12%,transparent)] bg-[var(--bg-elevated)] px-6 py-24 md:py-32"
+      className="relative border-t border-[color-mix(in_srgb,var(--color-accent-2)_12%,transparent)] bg-[var(--bg-elevated)] py-24 md:py-32"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="site-container">
         <div className="mb-12 flex items-center gap-3">
           <span
             className="h-2.5 w-2.5 rounded-full bg-[var(--color-accent-2,var(--color-blue-500))]"

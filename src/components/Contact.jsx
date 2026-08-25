@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { testimonials } from "../data/testimonials";
+import FlipAction from "./ui/FlipAction.jsx";
 
 const SLIDE_DURATION = 6000;
 const CALENDLY_EVENT_URL = "https://calendly.com/YOUR-SLUG/intro";
@@ -129,8 +130,8 @@ export default function Contact() {
     "w-full rounded-2xl border border-border bg-surface px-4 py-3.5 text-base text-fg outline-none transition-colors duration-200 placeholder:text-fg-muted focus:border-[var(--color-blue-500)]";
 
   return (
-    <section id="contact" className="contact-section relative z-10 bg-primary px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-7xl">
+    <section id="contact" className="contact-section relative z-10 bg-primary py-24 md:py-32">
+      <div className="site-container">
         <div className="contact-label mb-12 flex items-center gap-3">
           <span
             className="h-2.5 w-2.5 rounded-full bg-[var(--color-blue-500)]"
@@ -279,12 +280,13 @@ export default function Contact() {
                 </select>
               </label>
 
-              <button
+              <FlipAction
                 type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-[var(--color-blue-500)] px-5 py-4 font-bold tracking-wide text-accent-fg transition-colors duration-300 hover:bg-[var(--color-blue-600)] font-[family-name:var(--font-display)]"
+                backLabel="Let’s talk →"
+                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-white px-5 py-4 font-bold tracking-wide text-[#0A0A0A] transition-colors duration-300 hover:bg-[var(--color-blue-500)] hover:text-white font-[family-name:var(--font-display)]"
               >
                 Proceed with call booking <span aria-hidden="true">→</span>
-              </button>
+              </FlipAction>
 
               <p className="text-sm leading-relaxed text-fg-muted">
                 By clicking, you agree to be contacted about your project.

@@ -79,14 +79,14 @@ export default function About() {
   return (
     <section
       id="about"
-      className="about-section relative bg-[var(--bg-about)] px-6 py-24 md:py-32"
+      className="about-section relative bg-[var(--bg-about)] py-24 md:py-32"
       style={{
         "--text-primary": "var(--color-grey-0)",
         "--text-secondary": "var(--color-grey-100)",
         "--border-default": "color-mix(in_srgb,var(--color-grey-0)_20%,transparent)",
       }}
     >
-      <div className="about-inner relative z-10 mx-auto max-w-7xl">
+      <div className="site-container about-inner relative z-10">
         <div className="mb-5 flex items-center gap-3">
           <span
             className="h-2.5 w-2.5 rounded-full bg-[var(--color-grey-100)]"
@@ -97,51 +97,68 @@ export default function About() {
           </h3>
         </div>
 
-        <div className="about-heading-wrap mb-3 max-w-5xl md:mb-16">
-          <ScrollReveal
-            baseOpacity={0.15}
-            enableBlur={true}
-            baseRotation={0}
-            blurStrength={4}
-            wordAnimationEnd="bottom 70%"
-            rotationEnd="bottom 70%"
-            containerClassName="text-3xl font-bold leading-[1.1] tracking-wide text-[var(--text-primary)] font-[family-name:var(--font-display)] md:text-5xl lg:text-6xl"
-            as="h2"
-          >
-            I’M A PRODUCT DESIGNER WHO ENJOYS HELPING FOUNDERS TURN EARLY IDEAS
-            INTO CLEAR PRODUCTS, MAKE BETTER DECISIONS BEFORE DEVELOPMENT
-            STARTS, AND BUILD SOMETHING PEOPLE CAN ACTUALLY USE.
-          </ScrollReveal>
-        </div>
+        <div className="about-layout grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
+          <div className="about-heading-wrap max-w-[46rem]">
+            <ScrollReveal
+              baseOpacity={0.15}
+              enableBlur={true}
+              baseRotation={0}
+              blurStrength={4}
+              wordAnimationEnd="bottom 70%"
+              rotationEnd="bottom 70%"
+              containerClassName="text-[clamp(2rem,calc(1rem+1.7vw),3rem)] font-bold leading-[1.1] tracking-wide text-[var(--text-primary)] font-[family-name:var(--font-display)]"
+              as="h2"
+            >
+              I&apos;M A PRODUCT DESIGNER WHO HELPS FOUNDERS MAKE THE HARD
+              DECISIONS BEFORE DEVELOPMENT STARTS, SO WHAT GETS BUILT IS
+              SOMETHING PEOPLE CAN ACTUALLY USE.
+            </ScrollReveal>
 
-        <div className="about-supporting grid grid-cols-1 items-end gap-12 md:gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="about-copy lg:col-span-6">
-            <p className="max-w-md text-base leading-relaxed text-[var(--text-secondary)] md:max-w-3xl md:text-lg lg:max-w-md">
-              I work on complex digital products by understanding the business,
-              the users, and what actually needs to be built before jumping into
-              screens. What I enjoy most is taking ideas that still feel messy
-              and shaping them into products that truly work, while exploring
-              how AI is changing the way Product Designers think, create, and
-              grow.
-            </p>
+            <div className="about-stats mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3 lg:mt-16">
+              <CounterStat
+                value={98}
+                suffix="%"
+                label="Clients satisfied and repeating"
+              />
+              <CounterStat
+                value={25}
+                suffix="+"
+                label="Projects completed across industries"
+              />
+              <CounterStat
+                value={12}
+                prefix="+"
+                label="Countries around the world"
+              />
+            </div>
           </div>
 
-          <div className="about-stats grid grid-cols-1 gap-8 md:grid-cols-3 md:pl-20 lg:col-span-6 lg:col-start-7 lg:pl-0">
-            <CounterStat
-              value={98}
-              suffix="%"
-              label="Clients satisfied and repeating"
-            />
-            <CounterStat
-              value={25}
-              suffix="+"
-              label="Projects completed across industries"
-            />
-            <CounterStat
-              value={12}
-              prefix="+"
-              label="Countries around the world"
-            />
+          <div className="about-supporting flex flex-col gap-12 lg:gap-14">
+            <div className="about-copy">
+              <p className="max-w-[44rem] text-base leading-[1.75] text-[var(--text-secondary)]">
+                Before I open Figma, I want to understand the business, the
+                people using it, and what actually needs to be built. Most of
+                the expensive mistakes live in that gap, a feature everyone
+                agreed on that nobody opens, a layout that looks right in the
+                list view and falls apart on mobile.
+              </p>
+              <p className="mt-6 max-w-[44rem] text-base leading-[1.75] text-[var(--text-secondary)]">
+                The part I like most is taking an idea that still feels messy
+                and giving it an order. And I&apos;d rather watch your numbers move
+                than just hand over a file, your results reflect on me too.
+              </p>
+              <p className="mt-6 max-w-[44rem] text-base leading-[1.75] text-[var(--text-secondary)]">
+                <span className="font-semibold text-[var(--text-primary)]">
+                  On AI:
+                </span>{" "}
+                I use it every day, but not to generate a product end to end.
+                Get one component right for your brand first, then build the big
+                parts on top of it. Otherwise you get the gradient thing that
+                looks like an AI made it, and it has nothing to do with the
+                identity someone already paid a designer to build.
+              </p>
+            </div>
+
           </div>
         </div>
       </div>

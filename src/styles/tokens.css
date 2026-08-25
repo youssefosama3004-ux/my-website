@@ -147,6 +147,8 @@
 /* ============================================ */
 
 :root {
+  color-scheme: dark;
+
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-display: "rift", "Geist", ui-sans-serif, system-ui, sans-serif;
 
@@ -174,34 +176,6 @@
   --feedback-success: var(--color-success);
   --feedback-error: var(--color-error);
   --feedback-warning: var(--color-warning);
-
-}
-
-[data-theme="light"] {
-  --bg-primary: var(--color-grey-0);
-  --bg-surface: var(--color-grey-50);
-  --bg-elevated: #F6F7F9;
-  --bg-deepest: #ECEEF1;
-  --bg-about: #3A6EC6;
-  --color-card: #FFFFFF;
-
-  --text-primary: var(--color-grey-950);
-  --text-secondary: var(--color-grey-600);
-  --text-muted: var(--color-grey-500);
-  --text-inverse: var(--color-grey-0);
-
-  --border-default: var(--color-grey-100);
-  --border-strong: var(--color-grey-200);
-
-  --accent: var(--color-blue-500);
-  --color-accent-2: var(--color-cyan-600);
-  --accent-hover: var(--color-blue-600);
-  --accent-fg: var(--color-grey-0);
-
-  --feedback-success: var(--color-success);
-  --feedback-error: var(--color-error);
-  --feedback-warning: var(--color-warning);
-
 }
 
 /* Expose semantic tokens as Tailwind utilities */

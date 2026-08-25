@@ -1,8 +1,7 @@
 /* ============================================
    BASE STYLES
    Resets, body defaults, global element styles.
-   Uses semantic tokens (not primitives) so theme
-   switching via [data-theme] works correctly.
+   Uses semantic tokens rather than primitives.
    ============================================ */
 
 @layer base {

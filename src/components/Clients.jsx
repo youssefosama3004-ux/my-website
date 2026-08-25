@@ -14,11 +14,11 @@ const clientLogos = [
 
 export default function Clients() {
   return (
-    <section className="relative py-24 md:py-32 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative overflow-hidden py-24 md:py-32">
+      <div className="site-container">
         {/* Heading */}
         <h2 className="text-sm md:text-base uppercase tracking-widest text-[var(--text-secondary)] mb-12 text-center">
-          I've worked with
+          Who I&apos;ve built for
         </h2>
 
         {/* Logo loop */}

@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import { GravityStarsBackground } from "../components/ui/GravityStarsBackground";
+import SiteCursor from "../components/ui/SiteCursor";
 
 const {
   title = "Youssef Kader - Digital Product Designer & Developer",
@@ -19,6 +21,18 @@ const {
     <slot name="head" />
   </head>
   <body class={bodyClass}>
+    <GravityStarsBackground
+      client:load
+      starsCount={30}
+      starsSize={1.35}
+      starsOpacity={0.32}
+      glowIntensity={8}
+      movementSpeed={0.12}
+      mouseInfluence={130}
+      gravityStrength={42}
+      className="site-gravity-stars"
+    />
+    <SiteCursor client:load />
     <slot />
   </body>
 </html>
