@@ -4,14 +4,14 @@ export const testimonials = [
       "Working with Youssef was one of the best decisions we made for our brand. He didn't just redesign our website — he reimagined how our digital presence should look and feel. From UX/UI to WordPress build to brand direction, every step was thoughtful, and the result aligned perfectly with our business goals.",
     name: "Ahmed Metwally",
     role: "CEO, Persona Gurus",
-    avatar: "/testimonials/ahmed-metwally.jpg",
+    avatar: null,
   },
   {
     quote:
       "Youssef is extremely disciplined and punctual with deadlines. He explains every step, shares progress as he goes, and makes sure it's exactly as expected. Friendly, easy to work with — I'd recommend him to anyone who needs to design and build a website.",
     name: "Fadi Shamaa",
     role: "CEO, MintStay",
-    avatar: "/testimonials/fadi-shamaa.jpg",
+    avatar: null,
   },
   {
     quote:
@@ -32,6 +32,6 @@ export const testimonials = [
       "Youssef was great to work with. Very clear on project milestones and what was completed along the way. A pleasure doing business.",
     name: "Sebastian",
     role: "CEO, Mouse Management Inc.",
-    avatar: "/testimonials/sebastian.jpg",
+    avatar: null,
   },
 ];

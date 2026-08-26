@@ -116,22 +116,22 @@
   --text-label--line-height: 16px;
   --text-label--font-weight: 600;
 
-  --text-5xl: clamp(1.75rem, 1.5rem + 1.25vw, 2rem);
+  --text-fluid-heading: clamp(1.75rem, 1.5rem + 1.25vw, 2rem);
 
   /* ============================================ */
   /* SPACING SCALE                                */
   /* ============================================ */
-  --spacing-0: 0px;
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-4: 16px;
-  --spacing-5: 24px;
-  --spacing-6: 32px;
-  --spacing-7: 48px;
-  --spacing-8: 64px;
-  --spacing-9: 96px;
-  --spacing-10: 128px;
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
 
   /* ============================================ */
   /* RADIUS SCALE                                 */
@@ -157,8 +157,8 @@
   --bg-surface: var(--color-grey-900);
   --bg-elevated: #0F1115;
   --bg-deepest: #070707;
-  --bg-about: #3A6EC6;
-  --color-card: #16181D;
+  --bg-about: var(--color-blue-600);
+  --bg-card: #16181D;
 
   --text-primary: var(--color-grey-0);
   --text-secondary: var(--color-grey-300);
@@ -169,7 +169,7 @@
   --border-strong: var(--color-grey-600);
 
   --accent: var(--color-blue-500);
-  --color-accent-2: var(--color-cyan-500);
+  --accent-2: var(--color-cyan-500);
   --accent-hover: var(--color-blue-400);
   --accent-fg: var(--color-grey-0);
 
@@ -183,7 +183,7 @@
   /* Backgrounds: bg-primary, bg-surface, bg-card, bg-elevated, bg-deepest, bg-about */
   --color-primary: var(--bg-primary);
   --color-surface: var(--bg-surface);
-  --color-card: var(--color-card);
+  --color-card: var(--bg-card);
   --color-elevated: var(--bg-elevated);
   --color-bg-elevated: var(--bg-elevated);
   --color-bg-deepest: var(--bg-deepest);
@@ -201,7 +201,7 @@
 
   /* Accent */
   --color-accent: var(--accent);
-  --color-accent-2: var(--color-accent-2);
+  --color-accent-2: var(--accent-2);
   --color-accent-hover: var(--accent-hover);
   --color-accent-fg: var(--accent-fg);
 

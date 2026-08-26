@@ -30,6 +30,36 @@ export default function Nav() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const scrollPosition = window.scrollY;
+    const body = document.body;
+    const root = document.documentElement;
+    const previousBodyStyles = {
+      overflow: body.style.overflow,
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+    };
+    const previousRootOverflow = root.style.overflow;
+
+    root.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollPosition}px`;
+    body.style.width = "100%";
+
+    return () => {
+      root.style.overflow = previousRootOverflow;
+      body.style.overflow = previousBodyStyles.overflow;
+      body.style.position = previousBodyStyles.position;
+      body.style.top = previousBodyStyles.top;
+      body.style.width = previousBodyStyles.width;
+      window.scrollTo(0, scrollPosition);
+    };
+  }, [menuOpen]);
+
   const collapsed = scrolled && !forceExpanded && !menuOpen;
 
   const clearSequenceTimer = () => {
@@ -64,19 +94,26 @@ export default function Nav() {
 
   const menuItems = [
     { label: "Work", link: "/work" },
-    { label: "About", link: "/about" },
-    { label: "Blog", link: "/blog" },
-    { label: "Contact", link: "#contact" },
+    { label: "About", link: "/#about" },
+    { label: "Services", link: "/#services" },
+    { label: "Contact", link: "/#contact" },
+  ];
+
+  const socialItems = [
+    { label: "LinkedIn", link: "#", iconUrl: "/icons/social-linkedin.svg" },
+    { label: "Instagram", link: "#", iconUrl: "/icons/social-instagram.svg" },
+    { label: "WhatsApp", link: "#", iconUrl: "/icons/social-whatsapp.svg" },
+    { label: "Email", link: "#", iconUrl: "/icons/social-mail.svg" },
   ];
 
   return (
     <>
       {/* Fixed header bar */}
       <header
-        className={`site-nav-header pointer-events-none fixed left-1/2 top-0 z-[1300] flex -translate-x-1/2 items-center justify-between border transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`site-nav-header pointer-events-none fixed left-1/2 top-0 z-[1300] flex w-full max-w-none -translate-x-1/2 items-center justify-between rounded-none border transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
           collapsed
-            ? "mt-4 w-[90%] max-w-md rounded-full border-[color-mix(in_srgb,var(--text-primary)_12%,transparent)] bg-[color-mix(in_srgb,var(--text-primary)_6%,transparent)] px-5 py-3 backdrop-blur-xl"
-            : "mt-0 w-full max-w-none rounded-none border-transparent bg-transparent px-6 py-6 backdrop-blur-0 md:px-12"
+            ? "mt-0 border-x-0 border-t-0 border-[color-mix(in_srgb,var(--text-primary)_12%,transparent)] bg-[color-mix(in_srgb,var(--text-primary)_6%,transparent)] px-5 py-3 backdrop-blur-xl sm:px-6 md:px-12 lg:py-4"
+            : "mt-0 border-transparent bg-transparent px-5 py-3 backdrop-blur-0 sm:px-6 sm:py-6 md:px-12"
         }`}
       >
         {/* Logo */}
@@ -88,15 +125,17 @@ export default function Nav() {
           <img
             src={logo.src}
             alt="Youssef logo"
-            className={`w-auto transition-all duration-500 ${collapsed ? "h-7" : "h-8"} ${aboutActive ? "nav-logo-about" : ""}`}
+            className={`w-auto transition-all duration-500 ${collapsed ? "h-7 sm:h-8 lg:h-12" : "h-8 sm:h-9 lg:h-12"} ${aboutActive ? "nav-logo-about" : ""}`}
           />
         </a>
 
         {/* Hamburger */}
         <button
+          type="button"
           onClick={handleToggle}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
+          aria-controls="staggered-menu-panel"
           className={`w-12 h-12 flex flex-col items-center justify-center gap-1.5 cursor-pointer pointer-events-auto ${
             collapsed ? "text-[var(--text-primary)]" : "text-white"
           }`}
@@ -110,17 +149,19 @@ export default function Nav() {
       {/* StaggeredMenu — header hidden, controlled externally */}
       <StaggeredMenu
         items={menuItems}
+        socialItems={socialItems}
         isFixed={true}
         position="right"
         colors={["#1a1a2e", "#16213e"]}
         accentColor="var(--accent)"
         menuButtonColor="#fff"
         openMenuButtonColor="#fff"
-        displaySocials={false}
+        displaySocials={true}
         displayItemNumbering={true}
         closeOnClickAway={false}
         hideHeader={true}
         externalOpen={menuOpen}
+        onItemClick={closeMenu}
       />
     </>
   );

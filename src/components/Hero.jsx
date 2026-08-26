@@ -1,4 +1,5 @@
 import FlipAction from "./ui/FlipAction.jsx";
+import { GravityStarsBackground } from "./ui/GravityStarsBackground";
 
 const HERO_PORTRAIT = "/images/youssef-osama-product-designer.png";
 
@@ -12,6 +13,16 @@ export default function Hero() {
         "--bg-surface": "rgba(255, 255, 255, 0.1)",
       }}
     >
+      <GravityStarsBackground
+        starsCount={30}
+        starsSize={1.35}
+        starsOpacity={0.32}
+        glowIntensity={8}
+        movementSpeed={0.12}
+        mouseInfluence={130}
+        gravityStrength={42}
+        className="hero-gravity-stars"
+      />
       <div aria-hidden className="hero-visual-overlay" />
 
       <div className="hero-marquee-window pointer-events-none absolute left-0 right-0 -translate-y-1/2 overflow-hidden">
@@ -47,17 +58,15 @@ export default function Hero() {
         <div className="hero-actions flex w-full max-w-[23rem] flex-col items-center justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row">
           <a
             href="#work"
-            className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[var(--text-secondary)] px-6 text-sm font-bold tracking-wide text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)] sm:w-auto lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[var(--text-secondary)] px-6 text-base font-bold tracking-wide text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)] sm:w-auto sm:text-sm lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
           >
             View my work
           </a>
           <FlipAction
             as="a"
-            href="https://calendly.com/YOUR-LINK"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             backLabel="Let’s talk →"
-            className="inline-flex h-12 w-full items-center justify-center rounded-full bg-white px-6 text-sm font-bold tracking-wide text-[#0A0A0A] transition-colors duration-300 hover:bg-[var(--color-blue-500)] hover:text-white sm:w-auto lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-blue-500)] px-6 text-base font-bold tracking-wide text-white transition-colors duration-300 sm:w-auto sm:bg-white sm:text-sm sm:text-[#0A0A0A] sm:hover:bg-[var(--color-blue-500)] sm:hover:text-white lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
           >
             Book a call <span aria-hidden="true">&rarr;</span>
           </FlipAction>

@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import { GravityStarsBackground } from "../components/ui/GravityStarsBackground";
 import SiteCursor from "../components/ui/SiteCursor";
 
 const {
@@ -21,18 +20,32 @@ const {
     <slot name="head" />
   </head>
   <body class={bodyClass}>
-    <GravityStarsBackground
-      client:load
-      starsCount={30}
-      starsSize={1.35}
-      starsOpacity={0.32}
-      glowIntensity={8}
-      movementSpeed={0.12}
-      mouseInfluence={130}
-      gravityStrength={42}
-      className="site-gravity-stars"
-    />
     <SiteCursor client:load />
+    <div class="cv-info-edge" aria-label="CV information">CV info</div>
     <slot />
   </body>
 </html>
+
+<style>
+  .cv-info-edge {
+    position: fixed;
+    top: 50%;
+    right: -26px;
+    z-index: 1200;
+    display: flex;
+    width: 84px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%) rotate(-90deg);
+    background: #fff;
+    color: #0a0a0a;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+</style>

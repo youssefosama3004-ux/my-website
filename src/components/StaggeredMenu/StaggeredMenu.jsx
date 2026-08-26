@@ -10,7 +10,7 @@ export const StaggeredMenu = ({
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/src/assets/logos/reactbits-gh-white.svg',
+  logoUrl = '/favicon.svg',
   menuButtonColor = '#fff',
   openMenuButtonColor = '#fff',
   accentColor = '#5227FF',
@@ -19,6 +19,7 @@ export const StaggeredMenu = ({
   closeOnClickAway = true,
   onMenuOpen,
   onMenuClose,
+  onItemClick,
   hideHeader = false,
   externalOpen = undefined
 }) => {
@@ -404,7 +405,7 @@ export const StaggeredMenu = ({
         <header className="staggered-menu-header" aria-label="Main navigation header">
           <div className="sm-logo" aria-label="Logo">
             <img
-              src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
+              src={logoUrl || '/favicon.svg'}
               alt="Logo"
               className="sm-logo-img"
               draggable={false}
@@ -438,13 +439,28 @@ export const StaggeredMenu = ({
         </header>
       )}
 
-      <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open}>
+      <aside
+        id="staggered-menu-panel"
+        ref={panelRef}
+        className="staggered-menu-panel"
+        aria-hidden={!open}
+        inert={!open}
+      >
         <div className="sm-panel-inner">
           <ul className="sm-panel-list" role="list" data-numbering={displayItemNumbering || undefined}>
             {items && items.length ? (
               items.map((it, idx) => (
                 <li className="sm-panel-itemWrap" key={it.label + idx}>
-                  <a className="sm-panel-item" href={it.link} aria-label={it.ariaLabel} data-index={idx + 1}>
+                  <a
+                    className="sm-panel-item"
+                    href={it.link}
+                    aria-label={it.ariaLabel}
+                    data-index={idx + 1}
+                    onClick={(event) => {
+                      onItemClick?.(it, event);
+                      if (externalOpen === undefined) closeMenu();
+                    }}
+                  >
                     <span className="sm-panel-itemLabel">{it.label}</span>
                   </a>
                 </li>
@@ -463,8 +479,19 @@ export const StaggeredMenu = ({
               <ul className="sm-socials-list" role="list">
                 {socialItems.map((s, i) => (
                   <li key={s.label + i} className="sm-socials-item">
-                    <a href={s.link} target="_blank" rel="noopener noreferrer" className="sm-socials-link">
-                      {s.label}
+                    <a
+                      href={s.link}
+                      target={s.link === '#' ? undefined : '_blank'}
+                      rel={s.link === '#' ? undefined : 'noopener noreferrer'}
+                      className="sm-socials-link"
+                      aria-label={s.label}
+                      onClick={s.link === '#' ? event => event.preventDefault() : undefined}
+                    >
+                      {s.iconUrl ? (
+                        <img className="sm-socials-icon" src={s.iconUrl} alt="" aria-hidden="true" />
+                      ) : (
+                        <span aria-hidden="true">{s.icon || s.label}</span>
+                      )}
                     </a>
                   </li>
                 ))}

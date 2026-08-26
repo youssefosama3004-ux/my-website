@@ -5,25 +5,21 @@ const services = [
     title: "Product Design",
     desc: "End-to-end product design — research, journeys, IA, wireframes, and high-fidelity UI for web and mobile products that convert.",
     points: ["Web & mobile app design", "Design systems", "Prototyping & testing"],
-    image: "/images/services/product-design.jpg",
   },
   {
     title: "Web Development",
     desc: "I build what I design. Same person, same week — no handoff, no waiting on dev. The site goes live looking exactly like the comp.",
     points: ["Marketing & company websites", "Landing pages", "Front-end development"],
-    image: "/images/services/web-development.jpg",
   },
   {
     title: "Ecommerce",
     desc: "Conversion-focused online stores — storefront UX, product pages, and checkout flows designed and built to turn visitors into customers.",
     points: ["Storefront design", "Product & checkout UX", "Conversion optimization"],
-    image: "/images/services/ecommerce.jpg",
   },
   {
     title: "UX Consulting",
     desc: "Expert UX strategy, audits, and design-thinking workshops — tailored guidance to sharpen journeys and align design with business goals.",
     points: ["UX audits", "Strategy & workshops", "Usability testing"],
-    image: "/images/services/ux-consulting.jpg",
   },
 ];
 
@@ -66,13 +62,13 @@ export default function Services() {
                   aria-expanded={isOpen}
                   aria-controls={`service-panel-${index}`}
                 >
-                  <h3 className="shrink-0 tabular-nums text-3xl font-bold tracking-wide text-[var(--text-primary)] md:text-5xl">
+                  <span className="shrink-0 tabular-nums text-3xl font-bold tracking-wide text-[var(--text-primary)] md:text-5xl">
                     0{index + 1}
-                  </h3>
+                  </span>
 
-                  <h3 className="flex-1 text-3xl font-bold tracking-wide text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--color-blue-500)] md:text-5xl">
+                  <span className="flex-1 text-3xl font-bold tracking-wide text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--color-blue-500)] md:text-5xl">
                     {service.title}
-                  </h3>
+                  </span>
 
                   <span
                     className="flex h-8 w-8 shrink-0 items-center justify-center md:h-9 md:w-9"
@@ -112,15 +108,17 @@ export default function Services() {
                 >
                   <div className="overflow-hidden">
                     <div className="grid grid-cols-1 gap-8 pb-10 pt-1 md:grid-cols-2 md:gap-12">
-                      <div className="aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[var(--border-default,rgba(255,255,255,0.1))] bg-[color-mix(in_srgb,var(--text-primary)_6%,transparent)]">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="h-full w-full object-cover"
-                          onError={(event) => {
-                            event.currentTarget.style.display = "none";
-                          }}
+                      <div className="relative flex aspect-[16/10] w-full flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default,rgba(255,255,255,0.1))] bg-[var(--bg-surface)] p-8">
+                        <span
+                          className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[color-mix(in_srgb,var(--color-blue-500)_28%,transparent)] blur-3xl"
+                          aria-hidden="true"
                         />
+                        <span className="relative text-sm font-semibold tracking-[0.2em] text-[var(--text-muted)]">
+                          SERVICE 0{index + 1}
+                        </span>
+                        <p className="relative max-w-sm text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+                          {service.title}
+                        </p>
                       </div>
 
                       <div className="flex flex-col justify-center">

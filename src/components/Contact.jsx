@@ -16,7 +16,7 @@ const sourceOptions = [
 
 function Avatar({ testimonial }) {
   const [failed, setFailed] = useState(false);
-  const isLogo = testimonial.avatar.endsWith(".svg");
+  const isLogo = testimonial.avatar?.endsWith(".svg") ?? false;
   const initials = testimonial.name
     .split(" ")
     .map((part) => part[0])
@@ -26,7 +26,7 @@ function Avatar({ testimonial }) {
 
   return (
     <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-surface text-sm font-semibold text-fg">
-      {!failed ? (
+      {testimonial.avatar && !failed ? (
         <img
           src={testimonial.avatar}
           alt={testimonial.name}
@@ -144,7 +144,7 @@ export default function Contact() {
 
         <div className="contact-card grid overflow-hidden rounded-3xl border border-border bg-card lg:grid-cols-2">
           <div
-            className="contact-testimonial relative flex min-h-[520px] flex-col border-b border-border p-8 md:p-[var(--spacing-7)] lg:border-b-0 lg:border-r lg:p-12"
+            className="contact-testimonial relative flex min-h-[520px] flex-col border-b border-border p-8 md:p-[var(--space-7)] lg:border-b-0 lg:border-r lg:p-12"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
@@ -206,7 +206,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="contact-form-panel p-8 md:p-[var(--spacing-7)] lg:p-12">
+          <div className="contact-form-panel p-8 md:p-[var(--space-7)] lg:p-12">
             <h2 className="whitespace-nowrap text-3xl font-bold tracking-wide text-fg md:text-5xl">
               Book a call
             </h2>
