@@ -38,7 +38,7 @@ export default function Services() {
       <div className="site-container">
         <div className="mb-12 flex items-center gap-3">
           <span
-            className="h-2.5 w-2.5 rounded-full bg-[var(--color-accent-2,var(--color-blue-500))]"
+            className="h-2.5 w-2.5 rounded-full bg-[var(--eyebrow-dot)]"
             aria-hidden="true"
           />
           <h3 className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
@@ -62,11 +62,11 @@ export default function Services() {
                   aria-expanded={isOpen}
                   aria-controls={`service-panel-${index}`}
                 >
-                  <span className="shrink-0 tabular-nums text-3xl font-bold tracking-wide text-[var(--text-primary)] md:text-5xl">
+                  <span className="shrink-0 tabular-nums text-3xl font-bold tracking-wide text-[var(--text-primary)] md:text-5xl font-[family-name:var(--font-display)]">
                     0{index + 1}
                   </span>
 
-                  <span className="flex-1 text-3xl font-bold tracking-wide text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--color-blue-500)] md:text-5xl">
+                  <span className="flex-1 text-3xl font-bold tracking-wide text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--color-blue-500)] md:text-5xl font-[family-name:var(--font-display)]">
                     {service.title}
                   </span>
 
@@ -116,7 +116,7 @@ export default function Services() {
                         <span className="relative text-sm font-semibold tracking-[0.2em] text-[var(--text-muted)]">
                           SERVICE 0{index + 1}
                         </span>
-                        <p className="relative max-w-sm text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl">
+                        <p className="relative max-w-sm text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl font-[family-name:var(--font-display)]">
                           {service.title}
                         </p>
                       </div>
@@ -150,7 +150,7 @@ export default function Services() {
 
         <div className="services-feature-grid mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="services-feature-card services-platform-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
-            <div className="services-platform-icons mb-8 flex flex-wrap items-center gap-5 md:gap-6">
+            <div className="services-platform-icons mb-8 flex flex-wrap items-center justify-center gap-5 md:gap-6">
               {["wordpress", "shopify", "salla", "webflow", "react"].map(
                 (platform) => (
                   <div
@@ -179,10 +179,10 @@ export default function Services() {
               )}
             </div>
 
-            <h3 className="mb-3 text-2xl font-bold text-fg md:text-3xl">
+            <h3 className="mb-3 text-center text-2xl font-bold text-fg md:text-3xl">
               Built on the right platform
             </h3>
-            <p className="max-w-md text-base leading-relaxed text-fg-secondary">
+            <p className="mx-auto max-w-md text-center text-base leading-relaxed text-fg-secondary">
               WordPress, Shopify, Salla, Webflow, or custom React — I pick the
               platform that fits your goals, budget, and how you'll run it
               after launch. No forcing every project into one stack.

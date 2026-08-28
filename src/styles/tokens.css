@@ -160,6 +160,20 @@
   --bg-about: var(--color-blue-600);
   --bg-card: #16181D;
 
+  --hero-bg: var(--color-grey-950);
+  --hero-text-primary: var(--color-grey-0);
+  --hero-text-secondary: rgba(255, 255, 255, 0.72);
+  --hero-surface: rgba(255, 255, 255, 0.1);
+  --hero-cta-bg: var(--color-grey-0);
+  --hero-cta-text: var(--color-grey-950);
+  --hero-highlight: var(--color-blue-300);
+  --hero-star-blend: screen;
+
+  --about-text-primary: var(--color-grey-0);
+  --about-text-secondary: var(--color-grey-100);
+  --about-border: color-mix(in srgb, var(--color-grey-0) 20%, transparent);
+  --eyebrow-dot: var(--color-grey-0);
+
   --text-primary: var(--color-grey-0);
   --text-secondary: var(--color-grey-300);
   --text-muted: var(--color-grey-400);
@@ -176,6 +190,44 @@
   --feedback-success: var(--color-success);
   --feedback-error: var(--color-error);
   --feedback-warning: var(--color-warning);
+}
+
+:root.light {
+  color-scheme: light;
+
+  --bg-primary: #F7F7F5;
+  --bg-surface: #EEEEEB;
+  --bg-elevated: #FFFFFF;
+  --bg-deepest: #E7E7E2;
+  --bg-about: var(--color-blue-50);
+  --bg-card: #F2F2EF;
+
+  --hero-bg: #F7F7F5;
+  --hero-text-primary: var(--color-grey-950);
+  --hero-text-secondary: rgba(10, 10, 10, 0.68);
+  --hero-surface: rgba(10, 10, 10, 0.07);
+  --hero-cta-bg: var(--color-grey-950);
+  --hero-cta-text: var(--color-grey-0);
+  --hero-highlight: var(--accent);
+  --hero-star-blend: multiply;
+
+  --about-text-primary: var(--color-grey-950);
+  --about-text-secondary: var(--color-grey-700);
+  --about-border: color-mix(in srgb, var(--color-grey-950) 16%, transparent);
+  --eyebrow-dot: var(--color-blue-600);
+
+  --text-primary: var(--color-grey-950);
+  --text-secondary: var(--color-grey-600);
+  --text-muted: var(--color-grey-500);
+  --text-inverse: var(--color-grey-0);
+
+  --border-default: var(--color-grey-200);
+  --border-strong: var(--color-grey-300);
+
+  --accent: var(--color-blue-600);
+  --accent-2: var(--color-cyan-600);
+  --accent-hover: var(--color-blue-700);
+  --accent-fg: var(--color-grey-0);
 }
 
 /* Expose semantic tokens as Tailwind utilities */

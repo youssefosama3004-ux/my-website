@@ -134,7 +134,7 @@
   width: clamp(260px, 38vw, 420px);
   height: 100%;
   max-height: 100dvh;
-  background: #0a0a0a;
+  background: var(--bg-primary);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
@@ -240,14 +240,14 @@
 .sm-socials-link {
   font-size: 1.2rem;
   font-weight: 500;
-  color: #fff;
-  background: #111;
+  color: var(--text-primary);
+  background: var(--bg-surface);
   text-decoration: none;
   position: relative;
   width: 2.75rem;
   height: 2.75rem;
   padding: 0;
-  border: 1px solid #111;
+  border: 1px solid var(--border-default);
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -268,7 +268,7 @@
 }
 
 .sm-socials-link:hover {
-  color: #fff;
+  color: var(--accent-fg);
   background: var(--sm-accent, #ff0000);
   border-color: var(--sm-accent, #ff0000);
   transform: translateY(-2px);
@@ -278,7 +278,7 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   text-transform: uppercase;
 }
 

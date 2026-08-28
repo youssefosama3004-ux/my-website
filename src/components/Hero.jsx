@@ -1,18 +1,11 @@
 import FlipAction from "./ui/FlipAction.jsx";
 import { GravityStarsBackground } from "./ui/GravityStarsBackground";
 
-const HERO_PORTRAIT = "/images/youssef-osama-product-designer.png";
+const HERO_PORTRAIT = "/images/youssef-kader-hero.png";
 
 export default function Hero() {
   return (
-    <section
-      className="hero-shell relative w-full max-w-[100vw] overflow-hidden bg-[#0A0A0A]"
-      style={{
-        "--text-primary": "#ffffff",
-        "--text-secondary": "rgba(255, 255, 255, 0.72)",
-        "--bg-surface": "rgba(255, 255, 255, 0.1)",
-      }}
-    >
+    <section className="hero-shell relative w-full max-w-[100vw] overflow-hidden bg-[var(--hero-bg)] text-[var(--hero-text-primary)]">
       <GravityStarsBackground
         starsCount={30}
         starsSize={1.35}
@@ -35,7 +28,7 @@ export default function Hero() {
       <picture className="hero-portrait-zone">
         <img
           src={HERO_PORTRAIT}
-          alt="Youssef Osama - Product Designer"
+          alt="Youssef Kader - Product Designer"
           className="hero-portrait"
           draggable={false}
         />
@@ -43,13 +36,14 @@ export default function Hero() {
 
       <div className="site-container hero-content relative z-[1101] min-w-0">
         <div className="hero-copy">
-          <p className="mb-3 text-[11px] font-medium tracking-[0.08em] text-white/60 sm:text-xs">
+          <p className="mb-3 text-[11px] font-medium tracking-[0.08em] text-[color-mix(in_srgb,var(--hero-text-primary)_60%,transparent)] sm:text-xs">
             Product designer who ships what he designs
           </p>
-          <h1 className="w-4/5 text-[clamp(2.25rem,calc(1rem+1.4vw),3.25rem)] font-bold leading-tight text-[#F2F2F2]">
-            I turn messy ideas into products people can actually use.
+          <h1 className="w-4/5 text-[clamp(2.25rem,calc(1rem+1.4vw),3.25rem)] font-bold leading-tight text-[var(--hero-text-primary)]">
+            I turn messy <span className="text-[var(--hero-highlight)]">ideas into products</span>{" "}
+            people can actually use.
           </h1>
-          <p className="mt-3 max-w-[23rem] text-[length:var(--text-body-sm)] leading-[1.65] tracking-normal text-white/80 sm:max-w-[29rem] md:text-[16px]">
+          <p className="mt-3 max-w-[23rem] text-[length:var(--text-body-sm)] leading-[1.65] tracking-normal text-[color-mix(in_srgb,var(--hero-text-primary)_80%,transparent)] sm:max-w-[29rem] md:text-[16px]">
             Fewer steps, less confusion, and a flow where people always know
             what&apos;s next. I design it, I build it, and I don&apos;t disappear
             after launch.
@@ -58,7 +52,7 @@ export default function Hero() {
         <div className="hero-actions flex w-full max-w-[23rem] flex-col items-center justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row">
           <a
             href="#work"
-            className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[var(--text-secondary)] px-6 text-base font-bold tracking-wide text-[var(--text-primary)] transition-all duration-300 hover:border-[var(--text-primary)] hover:bg-[var(--bg-surface)] sm:w-auto sm:text-sm lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[var(--hero-text-secondary)] px-6 text-base font-bold tracking-wide text-[var(--hero-text-primary)] transition-all duration-300 hover:border-[var(--hero-text-primary)] hover:bg-[var(--hero-surface)] sm:w-auto sm:text-sm lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
           >
             View my work
           </a>
@@ -66,7 +60,7 @@ export default function Hero() {
             as="a"
             href="#contact"
             backLabel="Let’s talk →"
-            className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-blue-500)] px-6 text-base font-bold tracking-wide text-white transition-colors duration-300 sm:w-auto sm:bg-white sm:text-sm sm:text-[#0A0A0A] sm:hover:bg-[var(--color-blue-500)] sm:hover:text-white lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
+            className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[var(--color-blue-500)] px-6 text-base font-bold tracking-wide text-white transition-colors duration-300 sm:w-auto sm:bg-[var(--hero-cta-bg)] sm:text-sm sm:text-[var(--hero-cta-text)] sm:hover:bg-[var(--color-blue-500)] sm:hover:text-white lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
           >
             Book a call <span aria-hidden="true">&rarr;</span>
           </FlipAction>

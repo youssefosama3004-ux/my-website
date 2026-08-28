@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { StaggeredMenu } from "./StaggeredMenu/StaggeredMenu";
+import ThemeTogglerButton from "./ui/ThemeTogglerButton";
 import logo from "../assets/youssef-logo.svg";
 
 export default function Nav() {
@@ -129,21 +130,27 @@ export default function Nav() {
           />
         </a>
 
-        {/* Hamburger */}
-        <button
-          type="button"
-          onClick={handleToggle}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-          aria-controls="staggered-menu-panel"
-          className={`w-12 h-12 flex flex-col items-center justify-center gap-1.5 cursor-pointer pointer-events-auto ${
-            collapsed ? "text-[var(--text-primary)]" : "text-white"
+        <div
+          className={`pointer-events-auto flex items-center gap-1 ${
+            collapsed ? "text-[var(--text-primary)]" : "text-[var(--hero-text-primary)]"
           }`}
         >
-          <span className={`block w-6 h-px bg-current transition-transform duration-300 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-          <span className={`block w-6 h-px bg-current transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-px bg-current transition-transform duration-300 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
-        </button>
+          <ThemeTogglerButton />
+
+          {/* Hamburger */}
+          <button
+            type="button"
+            onClick={handleToggle}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            aria-controls="staggered-menu-panel"
+            className="flex h-12 w-12 cursor-pointer flex-col items-center justify-center gap-1.5"
+          >
+            <span className={`block h-px w-6 bg-current transition-transform duration-300 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+            <span className={`block h-px w-6 bg-current transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-px w-6 bg-current transition-transform duration-300 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+          </button>
+        </div>
       </header>
 
       {/* StaggeredMenu — header hidden, controlled externally */}
@@ -152,7 +159,7 @@ export default function Nav() {
         socialItems={socialItems}
         isFixed={true}
         position="right"
-        colors={["#1a1a2e", "#16213e"]}
+        colors={["var(--bg-surface)", "var(--bg-elevated)"]}
         accentColor="var(--accent)"
         menuButtonColor="#fff"
         openMenuButtonColor="#fff"

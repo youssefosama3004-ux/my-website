@@ -134,7 +134,7 @@ export default function Contact() {
       <div className="site-container">
         <div className="contact-label mb-12 flex items-center gap-3">
           <span
-            className="h-2.5 w-2.5 rounded-full bg-[var(--color-blue-500)]"
+            className="h-2.5 w-2.5 rounded-full bg-[var(--eyebrow-dot)]"
             aria-hidden="true"
           />
           <h3 className="text-sm uppercase tracking-widest text-fg md:text-base">
@@ -283,7 +283,7 @@ export default function Contact() {
               <FlipAction
                 type="submit"
                 backLabel="Let’s talk →"
-                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-white px-5 py-4 font-bold tracking-wide text-[#0A0A0A] transition-colors duration-300 hover:bg-[var(--color-blue-500)] hover:text-white font-[family-name:var(--font-display)]"
+                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-[var(--text-primary)] px-5 py-4 font-bold tracking-wide text-[var(--bg-primary)] transition-colors duration-300 hover:bg-[var(--color-blue-500)] hover:text-white font-[family-name:var(--font-display)]"
               >
                 Proceed with call booking <span aria-hidden="true">→</span>
               </FlipAction>

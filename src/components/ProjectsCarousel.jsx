@@ -73,7 +73,7 @@ export default function ProjectsCarousel({ projects = [] }) {
     >
       <div className="absolute left-[5%] top-24 z-20 flex items-center gap-3 md:top-32">
         <span
-          className="h-2.5 w-2.5 rounded-full bg-[var(--color-blue-500)]"
+          className="h-2.5 w-2.5 rounded-full bg-[var(--eyebrow-dot)]"
           aria-hidden="true"
         />
         <h3 className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">
