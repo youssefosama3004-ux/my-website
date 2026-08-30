@@ -1,35 +1,100 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
+    kicker: "Connection",
     title: "Product Design",
     desc: "End-to-end product design — research, journeys, IA, wireframes, and high-fidelity UI for web and mobile products that convert.",
-    points: ["Web & mobile app design", "Design systems", "Prototyping & testing"],
+    image: "/images/services/product-design.png",
   },
   {
+    kicker: "Development",
     title: "Web Development",
     desc: "I build what I design. Same person, same week — no handoff, no waiting on dev. The site goes live looking exactly like the comp.",
-    points: ["Marketing & company websites", "Landing pages", "Front-end development"],
+    image: "/images/services/web-development.png",
   },
   {
+    kicker: "Conversion",
     title: "Ecommerce",
     desc: "Conversion-focused online stores — storefront UX, product pages, and checkout flows designed and built to turn visitors into customers.",
-    points: ["Storefront design", "Product & checkout UX", "Conversion optimization"],
+    image: "/images/services/ecommerce.png",
   },
   {
+    kicker: "Direction",
     title: "UX Consulting",
     desc: "Expert UX strategy, audits, and design-thinking workshops — tailored guidance to sharpen journeys and align design with business goals.",
-    points: ["UX audits", "Strategy & workshops", "Usability testing"],
+    image: "/images/services/ux-consulting.png",
   },
 ];
 
+function CounterStat({ value, prefix = "", suffix = "", label }) {
+  const valueRef = useRef(null);
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    const element = valueRef.current;
+    if (!element) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplayValue(value);
+      return;
+    }
+
+    let animationFrame = null;
+    let hasStarted = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasStarted) return;
+
+        hasStarted = true;
+        observer.disconnect();
+
+        const startedAt = performance.now();
+        const duration = 1200;
+        const update = (now) => {
+          const progress = Math.min((now - startedAt) / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+          setDisplayValue(Math.round(value * easedProgress));
+
+          if (progress < 1) {
+            animationFrame = requestAnimationFrame(update);
+          } else {
+            setDisplayValue(value);
+          }
+        };
+
+        animationFrame = requestAnimationFrame(update);
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+      if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+    };
+  }, [value]);
+
+  return (
+    <div className="flex min-h-44 flex-col items-center justify-between gap-8 p-7 text-center md:min-h-52 md:p-10">
+      <p className="text-sm leading-snug text-fg-secondary md:text-base">
+        {label}
+      </p>
+      <p
+        ref={valueRef}
+        className="text-5xl font-semibold leading-none tabular-nums text-fg md:text-7xl"
+        aria-label={`${prefix}${value}${suffix}`}
+      >
+        {prefix}
+        {displayValue}
+        {suffix}
+      </p>
+    </div>
+  );
+}
+
 export default function Services() {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <section
       id="services"
@@ -46,106 +111,43 @@ export default function Services() {
           </h3>
         </div>
 
-        <div className="border-t border-[var(--border-default,rgba(255,255,255,0.12))]">
-          {services.map((service, index) => {
-            const isOpen = openIndex === index;
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {services.map((service, index) => (
+            <article
+              key={service.title}
+              className="group relative isolate flex min-h-[28rem] flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--color-blue-500)_55%,var(--border-default))] md:min-h-[30rem] md:p-7 xl:min-h-[32rem]"
+            >
+              <img
+                src={service.image}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="absolute inset-0 -z-20 h-full w-full scale-105 object-cover opacity-100 transition-all duration-700 ease-out group-hover:scale-100 lg:opacity-0 lg:group-hover:opacity-100"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 bg-gradient-to-b from-black/75 via-black/25 to-black/90 opacity-100 transition-opacity duration-500 lg:opacity-0 lg:group-hover:opacity-100"
+              />
 
-            return (
-              <div
-                key={service.title}
-                className="border-b border-[var(--border-default,rgba(255,255,255,0.12))]"
-              >
-                <button
-                  type="button"
-                  onClick={() => toggle(index)}
-                  className="group flex w-full items-center gap-6 py-6 text-left md:gap-10"
-                  aria-expanded={isOpen}
-                  aria-controls={`service-panel-${index}`}
-                >
-                  <span className="shrink-0 tabular-nums text-3xl font-bold tracking-wide text-[var(--text-primary)] md:text-5xl font-[family-name:var(--font-display)]">
-                    0{index + 1}
-                  </span>
-
-                  <span className="flex-1 text-3xl font-bold tracking-wide text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--color-blue-500)] md:text-5xl font-[family-name:var(--font-display)]">
+              <div className="relative flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/65 transition-colors duration-500 lg:text-[var(--text-muted)] lg:group-hover:text-white/65">
+                    {service.kicker}
+                  </p>
+                  <h4 className="mt-2 max-w-[12rem] text-3xl font-semibold leading-[0.95] tracking-tight text-white transition-colors duration-500 lg:text-[var(--text-primary)] lg:group-hover:text-white">
                     {service.title}
-                  </span>
-
-                  <span
-                    className="flex h-8 w-8 shrink-0 items-center justify-center md:h-9 md:w-9"
-                    aria-hidden="true"
-                  >
-                    <span
-                      className="h-6 w-6 bg-[var(--color-blue-500)] md:h-7 md:w-7"
-                      style={{
-                        WebkitMaskImage: `url(${
-                          isOpen
-                            ? "/icons/accordion-minus.svg"
-                            : "/icons/accordion-plus.svg"
-                        })`,
-                        maskImage: `url(${
-                          isOpen
-                            ? "/icons/accordion-minus.svg"
-                            : "/icons/accordion-plus.svg"
-                        })`,
-                        WebkitMaskRepeat: "no-repeat",
-                        maskRepeat: "no-repeat",
-                        WebkitMaskPosition: "center",
-                        maskPosition: "center",
-                        WebkitMaskSize: "contain",
-                        maskSize: "contain",
-                      }}
-                    />
-                  </span>
-                </button>
-
-                <div
-                  id={`service-panel-${index}`}
-                  className={`grid transition-all duration-500 ease-out ${
-                    isOpen
-                      ? "grid-rows-[1fr] opacity-100"
-                      : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <div className="grid grid-cols-1 gap-8 pb-10 pt-1 md:grid-cols-2 md:gap-12">
-                      <div className="relative flex aspect-[16/10] w-full flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default,rgba(255,255,255,0.1))] bg-[var(--bg-surface)] p-8">
-                        <span
-                          className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[color-mix(in_srgb,var(--color-blue-500)_28%,transparent)] blur-3xl"
-                          aria-hidden="true"
-                        />
-                        <span className="relative text-sm font-semibold tracking-[0.2em] text-[var(--text-muted)]">
-                          SERVICE 0{index + 1}
-                        </span>
-                        <p className="relative max-w-sm text-3xl font-bold tracking-tight text-[var(--text-primary)] md:text-4xl font-[family-name:var(--font-display)]">
-                          {service.title}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-col justify-center">
-                        <p className="max-w-md text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-                          {service.desc}
-                        </p>
-                        <ul className="mt-6 space-y-2.5">
-                          {service.points.map((point) => (
-                            <li
-                              key={point}
-                              className="flex gap-3 text-sm text-[var(--text-secondary)] md:text-base"
-                            >
-                              <span
-                                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-blue-500)]"
-                                aria-hidden="true"
-                              />
-                              <span>{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                  </h4>
                 </div>
+                <span className="text-xs font-medium tabular-nums text-white/55 transition-colors duration-500 lg:text-[var(--text-muted)] lg:group-hover:text-white/55">
+                  0{index + 1}
+                </span>
               </div>
-            );
-          })}
+
+              <p className="relative max-w-sm text-sm leading-relaxed text-white/85 transition-colors duration-500 lg:text-[var(--text-secondary)] lg:group-hover:text-white/85 md:text-base">
+                {service.desc}
+              </p>
+            </article>
+          ))}
         </div>
 
         <div className="services-feature-grid mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -236,6 +238,24 @@ export default function Services() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-5 grid w-full grid-cols-1 divide-y divide-border overflow-hidden rounded-3xl border border-border bg-card text-fg md:grid-cols-3 md:divide-x md:divide-y-0">
+          <CounterStat
+            value={98}
+            suffix="%"
+            label="Clients satisfied and repeating"
+          />
+          <CounterStat
+            value={25}
+            suffix="+"
+            label="Projects completed across industries"
+          />
+          <CounterStat
+            value={12}
+            prefix="+"
+            label="Countries around the world"
+          />
         </div>
       </div>
     </section>
