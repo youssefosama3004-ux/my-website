@@ -29,6 +29,12 @@
   margin-inline: auto;
 }
 
+@media (min-width: 1440px) {
+  .site-container {
+    width: 70vw;
+  }
+}
+
 .site-cursor {
   position: fixed;
   top: 0;
