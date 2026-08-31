@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.jsx";
+---
+
+<Layout title="Blog - Youssef Kader" description="The blog is coming soon.">
+  <meta slot="head" name="robots" content="noindex, follow" />
+  <Nav client:load />
+  <main class="site-container min-h-screen py-32 md:py-40">
+    <a href="/" class="mb-12 inline-block text-sm text-fg-secondary hover:text-accent">
+      &larr; Home
+    </a>
+    <h1 class="text-4xl font-bold text-fg md:text-6xl">Blog — coming soon.</h1>
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-fg-secondary">
+      This space is reserved for future posts. The full blog will be built here later.
+    </p>
+    <a href="/blog/coming-soon" class="mt-8 inline-block text-accent underline underline-offset-4">
+      Preview the post placeholder &rarr;
+    </a>
+  </main>
+</Layout>

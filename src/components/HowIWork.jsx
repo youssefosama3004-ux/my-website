@@ -45,31 +45,19 @@ export default function HowIWork() {
         </div>
 
         <div className="relative mt-16 md:mt-20">
-          <div
-            className="absolute left-[12.5%] right-[12.5%] top-[1.5rem] z-0 hidden h-px bg-[var(--border-default,rgba(255,255,255,0.15))] md:block"
-            aria-hidden="true"
-          />
-
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-8">
-            {steps.map((step, index) => (
+          <div className="process-steps-grid grid grid-cols-1 lg:grid-cols-4">
+            {steps.map((step) => (
               <article
                 key={step.number}
-                className="relative grid min-w-0 grid-cols-[3rem_minmax(0,1fr)] gap-5 md:flex md:flex-col md:items-center md:text-center"
+                className="process-step-card relative grid min-w-0 grid-cols-[3rem_minmax(0,1fr)] items-start gap-5 rounded-2xl border border-[color-mix(in_srgb,var(--text-primary)_8%,transparent)] bg-[var(--bg-card)] p-[var(--process-card-padding)] lg:flex lg:flex-col lg:items-center lg:text-center"
               >
-                {index < steps.length - 1 && (
-                  <div
-                    className="absolute -bottom-[4.5rem] left-[1.5rem] top-[1.5rem] z-0 w-px bg-[var(--border-default,rgba(255,255,255,0.15))] md:hidden"
-                    aria-hidden="true"
-                  />
-                )}
-
                 <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-blue-500)]">
-                  <span className="text-sm font-bold tabular-nums text-[var(--bg-primary)] font-[family-name:var(--font-display)]">
+                  <span className="text-xl font-bold tabular-nums text-[var(--bg-primary)] dark:text-white font-[family-name:var(--font-display)]">
                     {step.number}
                   </span>
                 </div>
 
-                <div className="min-w-0 md:mt-4">
+                <div className="min-w-0">
                   <ScrollReveal
                     baseOpacity={0.2}
                     enableBlur={false}

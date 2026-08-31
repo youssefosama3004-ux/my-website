@@ -1,0 +1,23 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.jsx";
+
+export function getStaticPaths() {
+  // Replace this preview path with blog content entries when posts are added.
+  return [{ params: { slug: "coming-soon" } }];
+}
+---
+
+<Layout title="Blog post coming soon - Youssef Kader" description="The individual blog post page is coming soon.">
+  <meta slot="head" name="robots" content="noindex, follow" />
+  <Nav client:load />
+  <main class="site-container min-h-screen py-32 md:py-40">
+    <a href="/blog" class="mb-12 inline-block text-sm text-fg-secondary hover:text-accent">
+      &larr; Back to blog
+    </a>
+    <h1 class="text-4xl font-bold text-fg md:text-6xl">Blog post — coming soon.</h1>
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-fg-secondary">
+      This is a placeholder for an individual blog post. The article layout and content will be added later.
+    </p>
+  </main>
+</Layout>

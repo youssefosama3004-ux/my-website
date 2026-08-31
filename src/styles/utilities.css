@@ -12,6 +12,56 @@
   text-wrap: pretty;
 }
 
+.process-steps-grid {
+  --process-step-gap: 1.25rem;
+  --process-card-padding: 1.5rem;
+  gap: var(--process-step-gap);
+}
+
+.process-step-card {
+  box-shadow:
+    0 4px 10px -4px rgb(0 0 0 / 0.2),
+    0 16px 36px -16px rgb(0 0 0 / 0.32);
+}
+
+:root.light .process-step-card {
+  box-shadow:
+    0 4px 10px -4px rgb(0 0 0 / 0.06),
+    0 16px 36px -16px rgb(0 0 0 / 0.12);
+}
+
+/* Connect only the gaps between cards, centered on each card edge. */
+.process-step-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: calc(50% - 1px);
+  z-index: 1;
+  width: 2px;
+  height: calc(var(--process-step-gap) + 2px);
+  background: color-mix(in srgb, var(--text-primary) 22%, transparent);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .process-steps-grid {
+    --process-card-padding: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .process-steps-grid {
+    --process-step-gap: 1.5rem;
+  }
+
+  .process-step-card:not(:last-child)::after {
+    top: calc(50% - 1px);
+    left: 100%;
+    width: calc(var(--process-step-gap) + 2px);
+    height: 2px;
+  }
+}
+
 .hero-gravity-stars {
   position: absolute;
   inset: 0;
@@ -449,6 +499,12 @@
   }
 }
 
+/* Leave room for the section label and spacing while the carousel is pinned. */
+.work-card {
+  height: min(62svh, calc(100svh - 16.5rem));
+  min-height: 13rem;
+}
+
 /* Page-level fixed UI stays decorative and clear of readable content. */
 .site-bottom-fade {
   pointer-events: none !important;
@@ -622,9 +678,6 @@
     margin-top: 1.75rem;
   }
 
-  .work-card {
-    height: 68svh;
-  }
 }
 
 @media (pointer: coarse) {

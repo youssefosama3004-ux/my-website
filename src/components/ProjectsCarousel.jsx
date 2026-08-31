@@ -68,10 +68,10 @@ export default function ProjectsCarousel({ projects = [] }) {
     <section
       id="work"
       ref={sectionRef}
-      className="work-section relative min-h-screen overflow-hidden"
+      className="work-section relative flex min-h-screen flex-col justify-center gap-8 overflow-hidden pb-12 pt-24 md:gap-12 md:pb-16 md:pt-32"
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute left-[5%] top-24 z-20 flex items-center gap-3 md:top-32">
+      <div className="relative z-20 mx-[5%] flex shrink-0 items-center gap-3">
         <span
           className="h-2.5 w-2.5 rounded-full bg-[var(--eyebrow-dot)]"
           aria-hidden="true"
@@ -81,7 +81,7 @@ export default function ProjectsCarousel({ projects = [] }) {
         </h3>
       </div>
 
-      <div className="work-viewport relative z-10 flex h-screen items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
+      <div className="work-viewport relative z-10 flex shrink-0 items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
         <div
           ref={trackRef}
           className="flex w-max gap-6 px-[5vw] will-change-transform"
@@ -90,7 +90,7 @@ export default function ProjectsCarousel({ projects = [] }) {
             <a
               key={project.slug}
               href={`/work/${project.slug}`}
-              className="work-card group relative h-[62vh] w-[80vw] shrink-0 overflow-hidden rounded-2xl max-md:snap-center md:w-[60vw] lg:w-[42vw]"
+              className="work-card group relative w-[80vw] shrink-0 overflow-hidden rounded-2xl max-md:snap-center md:w-[60vw] lg:w-[42vw]"
               onMouseEnter={() => setCursorVisible(true)}
               onMouseLeave={() => setCursorVisible(false)}
             >
