@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from "react";
-
 const services = [
   {
     kicker: "Connection",
@@ -27,72 +25,17 @@ const services = [
   },
 ];
 
-function CounterStat({ value, prefix = "", suffix = "", label }) {
-  const valueRef = useRef(null);
-  const [displayValue, setDisplayValue] = useState(0);
-
-  useEffect(() => {
-    const element = valueRef.current;
-    if (!element) return;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDisplayValue(value);
-      return;
-    }
-
-    let animationFrame = null;
-    let hasStarted = false;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting || hasStarted) return;
-
-        hasStarted = true;
-        observer.disconnect();
-
-        const startedAt = performance.now();
-        const duration = 1200;
-        const update = (now) => {
-          const progress = Math.min((now - startedAt) / duration, 1);
-          const easedProgress = 1 - Math.pow(1 - progress, 3);
-          setDisplayValue(Math.round(value * easedProgress));
-
-          if (progress < 1) {
-            animationFrame = requestAnimationFrame(update);
-          } else {
-            setDisplayValue(value);
-          }
-        };
-
-        animationFrame = requestAnimationFrame(update);
-      },
-      { threshold: 0.35 },
-    );
-
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-      if (animationFrame !== null) cancelAnimationFrame(animationFrame);
-    };
-  }, [value]);
-
-  return (
-    <div className="flex min-h-44 flex-col items-center justify-between gap-8 p-7 text-center md:min-h-52 md:p-10">
-      <p className="text-sm leading-snug text-fg-secondary md:text-base">
-        {label}
-      </p>
-      <p
-        ref={valueRef}
-        className="text-5xl font-semibold leading-none tabular-nums text-fg md:text-7xl"
-        aria-label={`${prefix}${value}${suffix}`}
-      >
-        {prefix}
-        {displayValue}
-        {suffix}
-      </p>
-    </div>
-  );
-}
+const tools = [
+  { slug: "figma", label: "Figma" },
+  { slug: "chatgpt", label: "ChatGPT" },
+  { slug: "gemini", label: "Gemini" },
+  { slug: "claude", label: "Claude" },
+  { slug: "vscode", label: "Visual Studio Code" },
+  { slug: "clickup", label: "ClickUp" },
+  { slug: "uxpilot", label: "UX Pilot" },
+  { slug: "photoshop", label: "Adobe Photoshop" },
+  { slug: "illustrator", label: "Adobe Illustrator" },
+];
 
 export default function Services() {
   return (
@@ -152,7 +95,16 @@ export default function Services() {
 
         <div className="services-feature-grid mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="services-feature-card services-platform-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
-            <div className="services-platform-icons mb-8 flex flex-wrap items-center justify-center gap-5 md:gap-6">
+            <h3 className="mb-3 text-center text-2xl font-bold text-fg md:text-3xl">
+              Built on the right platform
+            </h3>
+            <p className="mx-auto max-w-md text-center text-base leading-relaxed text-fg-secondary">
+              WordPress, Shopify, Salla, Webflow, or custom React — I pick the
+              platform that fits your goals, budget, and how you'll run it
+              after launch. No forcing every project into one stack.
+            </p>
+
+            <div className="services-platform-icons mt-8 flex flex-wrap items-center justify-center gap-5 md:gap-6">
               {["wordpress", "shopify", "salla", "webflow", "react"].map(
                 (platform) => (
                   <div
@@ -180,15 +132,6 @@ export default function Services() {
                 ),
               )}
             </div>
-
-            <h3 className="mb-3 text-center text-2xl font-bold text-fg md:text-3xl">
-              Built on the right platform
-            </h3>
-            <p className="mx-auto max-w-md text-center text-base leading-relaxed text-fg-secondary">
-              WordPress, Shopify, Salla, Webflow, or custom React — I pick the
-              platform that fits your goals, budget, and how you'll run it
-              after launch. No forcing every project into one stack.
-            </p>
           </div>
 
           <div className="services-feature-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
@@ -207,26 +150,15 @@ export default function Services() {
               <div className="flex w-max gap-4 animate-tools-marquee">
                 {[...Array(2)].map((_, duplicateIndex) => (
                   <div key={duplicateIndex} className="flex shrink-0 gap-4">
-                    {[
-                      "figma",
-                      "framer",
-                      "webflow",
-                      "react",
-                      "nextjs",
-                      "tailwind",
-                      "blender",
-                      "gsap",
-                      "astro",
-                      "wordpress",
-                    ].map((tool) => (
+                    {tools.map((tool) => (
                       <div
-                        key={tool}
-                        className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-[var(--color-grey-100)] bg-[var(--color-grey-50)]"
+                        key={tool.slug}
+                        className="group/tool flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-[var(--color-grey-100)] bg-[var(--color-grey-50)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-grey-200)] hover:shadow-sm"
                       >
                         <img
-                          src={`/logos/tools/${tool}.svg`}
-                          alt={tool}
-                          className="h-7 w-7 object-contain"
+                          src={`/logos/tools/${tool.slug}.svg`}
+                          alt={tool.label}
+                          className="h-7 w-7 object-contain brightness-0 transition-all duration-300 group-hover/tool:brightness-100"
                           onError={(event) => {
                             event.currentTarget.style.opacity = "0.2";
                           }}
@@ -240,23 +172,6 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="mt-5 grid w-full grid-cols-1 divide-y divide-border overflow-hidden rounded-3xl border border-border bg-card text-fg md:grid-cols-3 md:divide-x md:divide-y-0">
-          <CounterStat
-            value={98}
-            suffix="%"
-            label="Clients satisfied and repeating"
-          />
-          <CounterStat
-            value={25}
-            suffix="+"
-            label="Projects completed across industries"
-          />
-          <CounterStat
-            value={12}
-            prefix="+"
-            label="Countries around the world"
-          />
-        </div>
       </div>
     </section>
   );

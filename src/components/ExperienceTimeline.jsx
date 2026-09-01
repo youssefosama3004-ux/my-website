@@ -130,7 +130,7 @@ export default function ExperienceTimeline() {
 
       <div className="journey-label absolute left-6 top-12 z-20 flex items-center gap-3 md:left-12">
         <span
-          className="h-2.5 w-2.5 rounded-full bg-[var(--color-accent-2)]"
+          className="h-2.5 w-2.5 rounded-full bg-[var(--eyebrow-dot)]"
           aria-hidden="true"
         />
         <h3 className="text-sm uppercase tracking-widest text-[var(--text-primary)] md:text-base">

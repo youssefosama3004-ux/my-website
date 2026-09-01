@@ -172,7 +172,7 @@
   --about-text-primary: var(--color-grey-0);
   --about-text-secondary: var(--color-grey-100);
   --about-border: color-mix(in srgb, var(--color-grey-0) 20%, transparent);
-  --eyebrow-dot: var(--color-grey-0);
+  --eyebrow-dot: var(--accent);
   --clients-label-bg: var(--color-blue-600);
   --clients-label-text: var(--color-grey-0);
 
@@ -216,7 +216,7 @@
   --about-text-primary: var(--color-grey-0);
   --about-text-secondary: var(--color-grey-0);
   --about-border: color-mix(in srgb, var(--color-grey-0) 20%, transparent);
-  --eyebrow-dot: #000000;
+  --eyebrow-dot: var(--accent);
   --clients-label-bg: var(--color-blue-50);
   --clients-label-text: var(--color-grey-950);
 

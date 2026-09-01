@@ -9,6 +9,7 @@ export default function About() {
         "--text-primary": "var(--about-text-primary)",
         "--text-secondary": "var(--about-text-secondary)",
         "--border-default": "var(--about-border)",
+        "--eyebrow-dot": "var(--color-grey-0)",
       }}
     >
       <div className="site-container about-inner relative z-10">
