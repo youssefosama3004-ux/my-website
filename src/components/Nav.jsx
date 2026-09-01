@@ -135,7 +135,7 @@ export default function Nav() {
             collapsed ? "text-[var(--text-primary)]" : "text-[var(--hero-text-primary)]"
           }`}
         >
-          <ThemeTogglerButton />
+          <ThemeTogglerButton className="site-nav-control" />
 
           {/* Hamburger */}
           <button

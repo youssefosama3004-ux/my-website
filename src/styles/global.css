@@ -73,6 +73,16 @@
     animation: tools-marquee 30s linear infinite;
 }
 
+.animate-platform-marquee {
+    animation-duration: 18s;
+}
+
 .animate-tools-marquee:hover {
     animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-tools-marquee {
+        animation: none;
+    }
 }

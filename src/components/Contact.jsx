@@ -130,7 +130,7 @@ export default function Contact() {
     "w-full rounded-2xl border border-border bg-surface px-4 py-3.5 text-base text-fg outline-none transition-colors duration-200 placeholder:text-fg-muted focus:border-[var(--color-blue-500)]";
 
   return (
-    <section id="contact" className="contact-section relative z-10 bg-primary py-24 md:py-32">
+    <section id="contact" className="contact-section relative z-10 bg-primary py-12 md:py-32">
       <div className="site-container">
         <div className="contact-label mb-12 flex items-center gap-3">
           <span

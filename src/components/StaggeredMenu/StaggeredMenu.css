@@ -148,6 +148,10 @@
   opacity: 0;
 }
 
+:root.light .staggered-menu-panel {
+  background: color-mix(in srgb, var(--color-grey-0) 65%, var(--bg-primary));
+}
+
 [data-position='left'] .staggered-menu-panel {
   right: auto;
   left: 0;

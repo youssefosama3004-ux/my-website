@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="about-section relative bg-[var(--bg-about)] py-24 md:py-32"
+      className="about-section relative bg-[var(--bg-about)] py-12 md:py-32"
       style={{
         "--text-primary": "var(--about-text-primary)",
         "--text-secondary": "var(--about-text-secondary)",
