@@ -6,6 +6,7 @@ const {
   title = "Youssef Kader - Digital Product Designer & Developer",
   description = "Helping agencies and founders launch websites, apps, and brands - from strategy to design to development.",
   bodyClass = "",
+  showCvInfo = true,
 } = Astro.props;
 ---
 
@@ -48,7 +49,15 @@ const {
   </head>
   <body class={bodyClass}>
     <SiteCursor client:load />
-    <div class="cv-info-edge" aria-label="CV information">CV info</div>
+    {showCvInfo && (
+      <a
+        class="cv-info-edge"
+        href="/quick-info"
+        aria-label="Open quick resume information"
+      >
+        Quick info
+      </a>
+    )}
     <slot />
   </body>
 </html>
@@ -72,7 +81,24 @@ const {
     font-weight: 700;
     letter-spacing: 0.08em;
     line-height: 1;
-    pointer-events: none;
+    cursor: pointer;
+    pointer-events: auto !important;
+    text-decoration: none;
     user-select: none;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .cv-info-edge:hover {
+    background: var(--color-blue-500);
+    color: #fff;
+    transform: translateY(-50%) rotate(-90deg) translateY(-2px);
+  }
+
+  .cv-info-edge:focus-visible {
+    outline: 2px solid var(--color-blue-500);
+    outline-offset: 3px;
   }
 </style>

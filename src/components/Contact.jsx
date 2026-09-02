@@ -148,8 +148,12 @@ export default function Contact() {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
+            <h4 className="text-3xl font-bold tracking-wide text-fg">
+              Words of My Clients
+            </h4>
+
             <span
-              className="contact-quote mb-8 block text-7xl font-semibold leading-none text-fg opacity-15"
+              className="contact-quote mb-4 mt-8 block text-7xl font-semibold leading-none text-fg opacity-15"
               aria-hidden="true"
             >
               “

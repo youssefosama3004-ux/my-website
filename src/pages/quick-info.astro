@@ -1,0 +1,239 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const strengths = [
+  "Product strategy",
+  "UX research and discovery",
+  "Information architecture",
+  "Journey mapping",
+  "Interaction design",
+  "Prototyping",
+  "Design systems",
+  "Enterprise platforms",
+  "Bilingual EN and AR experiences",
+  "Developer handoff and design QA",
+];
+
+const experience = [
+  {
+    role: "Sr. Product Designer",
+    company: "egabi Solutions",
+    dates: "Jan 2026 to present",
+    location: "Remote, Egypt",
+    bullets: [
+      "Own the product design function end to end, defining the standards, workflows, and quality benchmarks used across every project.",
+      "Set design strategy and hold final design decisions, turning business and stakeholder needs into solutions that scale.",
+      "Act as the main design contact between stakeholders, engineering, and the design team, keeping scope and feasibility aligned.",
+      "Oversee delivery from discovery through implementation, covering usability, accessibility, and execution quality on complex systems.",
+      "Lead design on the Ministry of Manpower Labor Services Digitalization Platform, including the company portal, service application flows, and the platform design foundations.",
+      "Build and maintain component libraries, tokens, and documented patterns so government and enterprise products stay consistent across teams.",
+      "Run design QA against the build to keep fidelity and accessibility intact between Figma and production.",
+    ],
+  },
+  {
+    role: "Product Designer",
+    company: "Rocky Mountain Design Agency",
+    dates: "Mar 2025 to present",
+    location: "Remote, United States",
+    bullets: [
+      "Provide product and UX direction to client businesses, from framing the problem through to UI execution.",
+      "Contributed to the digital experience of the American Association of Blacks in Energy, working to the accessibility and content standards of a member facing organization.",
+      "Direct a three person UX team across concurrent engagements, allocating work, reviewing output, and owning final quality.",
+      "Run usability testing, journey optimization, and design thinking workshops as part of delivery.",
+      "Tailor solutions to the scale and constraints of each client, favoring systems that stay maintainable after handoff.",
+    ],
+  },
+  {
+    role: "Product Designer",
+    company: "Freelance",
+    dates: "2020 to present",
+    location: "Remote",
+    bullets: [
+      "Delivered product, web, and brand design for clients in Egypt, the UAE, Saudi Arabia, the UK, the US, Belgium, Canada, Kuwait, and Ukraine.",
+      "Work covers SaaS product UI, dashboards, mobile apps, multilingual marketing sites, brand identity, and CMS builds.",
+      "Built a referral driven client base through repeat engagements and long term relationships.",
+    ],
+  },
+  {
+    role: "Product Designer",
+    company: "egabi Solutions",
+    dates: "Aug 2024 to Jan 2026",
+    location: "Remote, Egypt",
+    bullets: [
+      "Designed an operational dashboard for the Egyptian Meteorological Authority, restructuring how data is visualized so monitoring is faster to act on.",
+      "Built dedicated applications for multiple Egyptian ministries, large scale government products delivered under strict compliance requirements.",
+      "Delivered work for maritime and trade clients including DP World, Dubai Trade, and PCFC, matching the regulatory and brand standards of each entity.",
+      "Turned unclear client requirements into functional interfaces that improved service delivery for government bodies.",
+    ],
+  },
+  {
+    role: "Product Designer and UI Developer",
+    company: "IT Cores",
+    dates: "Aug 2023 to Aug 2024",
+    location: "Remote, Saudi Arabia",
+    bullets: [
+      "Redesigned and rebuilt three dashboard interfaces, improving usability and visual consistency, and shipped the front end code.",
+      "Designed and developed two multilingual EN and AR websites and redesigned two mobile applications as the sole designer and developer.",
+    ],
+  },
+  {
+    role: "Product Designer and UI Developer",
+    company: "Hyphen Group",
+    dates: "Jun 2021 to Jun 2022",
+    location: "Belgium",
+  },
+  {
+    role: "UI Developer",
+    company: "The A-Team",
+    dates: "Jun 2020 to Jun 2021",
+    location: "",
+  },
+];
+---
+
+<Layout
+  title="Quick Info - Youssef Osama"
+  description="Resume summary for Youssef Osama, Senior Product Designer."
+  bodyClass="quick-info-body"
+  showCvInfo={false}
+>
+  <main class="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
+    <a
+      href="/"
+      aria-label="Close quick info"
+      class="quick-info-close fixed z-20 flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border-default)] bg-[color-mix(in_srgb,var(--bg-primary)_88%,transparent)] text-[var(--text-primary)] backdrop-blur-md transition-colors hover:border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-blue-500)]"
+    >
+      <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+    </a>
+
+    <div class="mx-auto max-w-5xl px-6 py-20 sm:px-8 md:px-12 md:py-28 lg:py-32">
+      <header class="max-w-4xl border-b border-[var(--border-default)] pb-14 md:pb-20">
+        <p class="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)]">
+          Quick info
+        </p>
+        <h1 class="text-[clamp(3.25rem,10vw,8rem)] font-bold leading-[0.86] tracking-[-0.055em]">
+          Youssef<br />Osama
+        </h1>
+        <p class="mt-8 text-xl text-[var(--text-secondary)] md:text-3xl">
+          Senior Product Designer
+        </p>
+        <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[var(--text-muted)] md:text-base">
+          <span>6 years of experience</span>
+          <span>El Sheikh Zayed City, Giza, Egypt</span>
+          <a class="underline decoration-[var(--border-default)] underline-offset-4 transition-colors hover:text-[var(--text-primary)]" href="mailto:youssefosama3004@gmail.com">
+            youssefosama3004@gmail.com
+          </a>
+        </div>
+      </header>
+
+      <section class="grid gap-8 border-b border-[var(--border-default)] py-14 md:grid-cols-[12rem_1fr] md:gap-16 md:py-20" aria-labelledby="profile-heading">
+        <h2 id="profile-heading" class="quick-info-section-heading text-xl font-bold tracking-tight text-[var(--text-primary)] md:text-2xl">
+          Profile
+        </h2>
+        <div class="max-w-3xl space-y-6 text-lg leading-relaxed text-[var(--text-secondary)] md:text-2xl md:leading-relaxed">
+          <p>
+            Senior Product Designer with six years of experience across government, fintech, ecommerce, trade and logistics, associations, startups, and agency work.
+          </p>
+          <p>
+            I work from discovery and product strategy through design systems, high-fidelity UI, developer handoff, and design QA. My background in UI development helps me design with implementation in mind and keep collaboration with engineering clear.
+          </p>
+        </div>
+      </section>
+
+      <section class="grid gap-8 border-b border-[var(--border-default)] py-14 md:grid-cols-[12rem_1fr] md:gap-16 md:py-20" aria-labelledby="strengths-heading">
+        <h2 id="strengths-heading" class="quick-info-section-heading text-xl font-bold tracking-tight text-[var(--text-primary)] md:text-2xl">
+          Core strengths
+        </h2>
+        <ul class="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+          {strengths.map((strength) => (
+            <li class="border-b border-[var(--border-default)] pb-3 text-base text-[var(--text-secondary)] md:text-lg">
+              {strength}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="grid gap-8 border-b border-[var(--border-default)] py-14 md:grid-cols-[12rem_1fr] md:gap-16 md:py-20" aria-labelledby="experience-heading">
+        <h2 id="experience-heading" class="quick-info-section-heading text-xl font-bold tracking-tight text-[var(--text-primary)] md:text-2xl">
+          Experience
+        </h2>
+        <div class="divide-y divide-[var(--border-default)] border-t border-[var(--border-default)]">
+          {experience.map((item) => (
+            <article class="grid gap-2 py-6 sm:grid-cols-[1fr_auto] sm:gap-8">
+              <div>
+                <h3 class="text-lg font-semibold md:text-xl">{item.role}</h3>
+                <p class="mt-1 text-[var(--text-secondary)]">{item.company}</p>
+              </div>
+              <div class="text-sm text-[var(--text-muted)] sm:text-right md:text-base">
+                <p>{item.dates}</p>
+                {item.location && <p class="mt-1">{item.location}</p>}
+              </div>
+              {item.bullets && (
+                <ul class="quick-info-experience-bullets">
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="grid gap-8 py-14 md:grid-cols-[12rem_1fr] md:gap-16 md:py-20" aria-labelledby="more-heading">
+        <h2 id="more-heading" class="quick-info-section-heading text-xl font-bold tracking-tight text-[var(--text-primary)] md:text-2xl">
+          More
+        </h2>
+        <div class="grid gap-10 sm:grid-cols-2">
+          <div>
+            <h3 class="text-lg font-semibold">Education</h3>
+            <p class="mt-3 leading-relaxed text-[var(--text-secondary)]">
+              Bachelor of Computer Science<br />
+              Misr University of Science and Technology<br />
+              2017 to 2021
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold">Languages and tools</h3>
+            <p class="mt-3 leading-relaxed text-[var(--text-secondary)]">
+              Arabic, native<br />
+              English, C1 professional proficiency<br />
+              Figma, Framer, Adobe Creative Suite, HTML, CSS, Tailwind, Jira, ClickUp, Claude, ChatGPT, Gemini, and UX Pilot
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .quick-info-close {
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .quick-info-experience-bullets {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1rem;
+    padding-left: 1.2rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    list-style: disc;
+  }
+
+  @media (min-width: 48rem) {
+    .quick-info-close {
+      top: 2.5rem;
+      right: 2.5rem;
+    }
+
+    .quick-info-experience-bullets {
+      max-width: 46rem;
+      font-size: 1rem;
+    }
+  }
+</style>

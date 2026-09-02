@@ -2,22 +2,26 @@ const services = [
   {
     kicker: "Connection",
     title: "Product Design",
-    desc: "End-to-end product design — research, journeys, IA, wireframes, and high-fidelity UI for web and mobile products that convert.",
+    desc: "End to end product design, research, journeys, IA, wireframes, and high-fidelity UI for web and mobile products that convert.",
+    image: "/images/services/product-design.png",
   },
   {
     kicker: "Development",
     title: "Web Development",
-    desc: "I build what I design. Same person, same week — no handoff, no waiting on dev. The site goes live looking exactly like the comp.",
+    desc: "I build what I design. Same person, same week, no handoff, no waiting on dev. The site goes live looking exactly like the comp.",
+    image: "/images/services/web-development.png",
   },
   {
     kicker: "Conversion",
     title: "Ecommerce",
-    desc: "Conversion-focused online stores — storefront UX, product pages, and checkout flows designed and built to turn visitors into customers.",
+    desc: "Conversion-focused online stores, storefront UX, product pages, and checkout flows designed and built to turn visitors into customers.",
+    image: "/images/services/ecommerce.png",
   },
   {
     kicker: "Direction",
     title: "UX Consulting",
-    desc: "Expert UX strategy, audits, and design-thinking workshops — tailored guidance to sharpen journeys and align design with business goals.",
+    desc: "Expert UX strategy, audits, and design-thinking workshops, tailored guidance to sharpen journeys and align design with business goals.",
+    image: "/images/services/ux-consulting.png",
   },
 ];
 
@@ -66,23 +70,35 @@ export default function Services() {
           {services.map((service, index) => (
             <article
               key={service.title}
-              className="relative flex min-h-[28rem] flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 transition-colors duration-300 hover:border-[color-mix(in_srgb,var(--color-blue-500)_55%,var(--border-default))] md:min-h-[30rem] md:p-7 xl:min-h-[32rem]"
+              className="group relative isolate flex min-h-[28rem] flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--color-blue-500)_55%,var(--border-default))] md:min-h-[30rem] md:p-7 xl:min-h-[32rem]"
             >
+              <img
+                src={service.image}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="absolute inset-0 -z-20 h-full w-full scale-105 object-cover opacity-100 transition-all duration-700 ease-out group-hover:scale-100 lg:opacity-0 lg:group-hover:opacity-100"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 bg-gradient-to-b from-black/85 via-black/65 to-black/95 opacity-100 transition-opacity duration-500 lg:from-black/75 lg:via-black/25 lg:to-black/90 lg:opacity-0 lg:group-hover:opacity-100"
+              />
+
               <div className="relative flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/65 transition-colors duration-500 lg:text-[var(--text-muted)] lg:group-hover:text-white/65">
                     {service.kicker}
                   </p>
-                  <h4 className="mt-2 max-w-[12rem] text-2xl font-semibold leading-[0.95] tracking-tight text-[var(--text-primary)] md:text-3xl">
+                  <h4 className="mt-2 max-w-[12rem] text-2xl font-semibold leading-[0.95] tracking-tight text-white transition-colors duration-500 md:text-3xl lg:text-[var(--text-primary)] lg:group-hover:text-white">
                     {service.title}
                   </h4>
                 </div>
-                <span className="text-xs font-medium tabular-nums text-[var(--text-muted)]">
+                <span className="text-xs font-medium tabular-nums text-white/55 transition-colors duration-500 lg:text-[var(--text-muted)] lg:group-hover:text-white/55">
                   0{index + 1}
                 </span>
               </div>
 
-              <p className="relative max-w-sm text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">
+              <p className="relative max-w-sm text-sm leading-relaxed text-white/85 transition-colors duration-500 lg:text-[var(--text-secondary)] lg:group-hover:text-white/85 md:text-base">
                 {service.desc}
               </p>
             </article>
@@ -95,7 +111,7 @@ export default function Services() {
               Built on the right platform
             </h3>
             <p className="mx-auto max-w-md text-center text-base leading-relaxed text-fg-secondary">
-              WordPress, Shopify, Salla, Webflow, or custom React — I pick the
+              WordPress, Shopify, Salla, Webflow, or custom React, I pick the
               platform that fits your goals, budget, and how you'll run it
               after launch. No forcing every project into one stack.
             </p>
@@ -146,7 +162,7 @@ export default function Services() {
               Tools and workflows
             </h3>
             <p className="mx-auto mb-10 max-w-sm text-center text-base leading-relaxed text-fg-secondary">
-              The right mix of strategy, design, AI, and engineering — based on
+              The right mix of strategy, design, AI, and engineering, based on
               what needs to ship.
             </p>
 

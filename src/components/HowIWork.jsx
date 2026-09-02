@@ -11,7 +11,7 @@ const steps = [
     number: "02",
     title: "Scope",
     description:
-      "I turn that conversation into a clear plan — what gets designed, in what order, and by when.",
+      "I turn that conversation into a clear plan, what gets designed, in what order, and by when.",
   },
   {
     number: "03",
