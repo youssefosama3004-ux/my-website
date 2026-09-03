@@ -147,7 +147,11 @@
   transition: opacity 200ms ease, filter 200ms ease;
 }
 
-.logo-loop-wrapper img:hover {
+.logo-loop-wrapper a:hover {
+  opacity: 1;
+}
+
+.logo-loop-wrapper a:hover img {
   opacity: 1;
 }
 
@@ -156,7 +160,7 @@
   opacity: 0.62;
 }
 
-:root.light .logo-loop-wrapper img:hover {
+:root.light .logo-loop-wrapper a:hover img {
   opacity: 0.9;
 }
 

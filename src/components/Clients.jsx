@@ -10,6 +10,11 @@ const clientLogos = [
     href: "#",
   },
   { src: "/logos/winveston.svg", alt: "WinVeston", href: "#" },
+  { src: "/logos/shaha.svg", alt: "Shaha", href: "#" },
+  { src: "/logos/koolen.svg", alt: "Koolen", href: "#" },
+  { src: "/logos/tamheed.svg", alt: "Tamheed", href: "#" },
+  { src: "/logos/ldc.svg", alt: "LDC", href: "#" },
+  { src: "/logos/unique.svg", alt: "Unique", href: "#" },
 ];
 
 export default function Clients() {
@@ -36,7 +41,6 @@ export default function Clients() {
             logoHeight={40}
             gap={80}
             pauseOnHover
-            scaleOnHover
             fadeOut
             fadeOutColor="var(--bg-primary)"
             ariaLabel="Clients I have worked with"
