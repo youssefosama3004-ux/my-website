@@ -70,35 +70,35 @@ export default function Services() {
           {services.map((service, index) => (
             <article
               key={service.title}
-              className="group relative isolate flex min-h-[28rem] flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--color-blue-500)_55%,var(--border-default))] md:min-h-[30rem] md:p-7 xl:min-h-[32rem]"
+              className="service-card group relative isolate flex min-h-[28rem] flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--color-blue-500)_55%,var(--border-default))] md:min-h-[30rem] md:p-7 xl:min-h-[32rem]"
             >
               <img
                 src={service.image}
                 alt=""
                 aria-hidden="true"
                 loading="lazy"
-                className="absolute inset-0 -z-20 h-full w-full scale-105 object-cover opacity-100 transition-all duration-700 ease-out group-hover:scale-100 lg:opacity-0 lg:group-hover:opacity-100"
+                className="service-card-image absolute inset-0 -z-20 h-full w-full scale-105 object-cover opacity-100 transition-all duration-700 ease-out group-hover:scale-100 lg:opacity-0 lg:group-hover:opacity-100"
               />
               <span
                 aria-hidden="true"
-                className="absolute inset-0 -z-10 bg-gradient-to-b from-black/85 via-black/65 to-black/95 opacity-100 transition-opacity duration-500 lg:from-black/75 lg:via-black/25 lg:to-black/90 lg:opacity-0 lg:group-hover:opacity-100"
+                className="service-card-overlay absolute inset-0 -z-10 bg-gradient-to-b from-black/85 via-black/65 to-black/95 opacity-100 transition-opacity duration-500 lg:from-black/75 lg:via-black/25 lg:to-black/90 lg:opacity-0 lg:group-hover:opacity-100"
               />
 
               <div className="relative flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/65 transition-colors duration-500 lg:text-[var(--text-muted)] lg:group-hover:text-white/65">
+                  <p className="service-card-kicker text-xs font-semibold uppercase tracking-[0.16em] text-white/65 transition-colors duration-500 lg:text-[var(--text-muted)] lg:group-hover:text-white/65">
                     {service.kicker}
                   </p>
-                  <h4 className="mt-2 max-w-[12rem] text-2xl font-semibold leading-[0.95] tracking-tight text-white transition-colors duration-500 md:text-3xl lg:text-[var(--text-primary)] lg:group-hover:text-white">
+                  <h4 className="service-card-heading mt-2 max-w-[12rem] text-2xl font-semibold leading-[0.95] tracking-tight text-white transition-colors duration-500 md:text-3xl lg:text-[var(--text-primary)] lg:group-hover:text-white">
                     {service.title}
                   </h4>
                 </div>
-                <span className="text-xs font-medium tabular-nums text-white/55 transition-colors duration-500 lg:text-[var(--text-muted)] lg:group-hover:text-white/55">
+                <span className="service-card-number text-xs font-medium tabular-nums text-white/55 transition-colors duration-500 lg:text-[var(--text-muted)] lg:group-hover:text-white/55">
                   0{index + 1}
                 </span>
               </div>
 
-              <p className="relative max-w-sm text-sm leading-relaxed text-white/85 transition-colors duration-500 lg:text-[var(--text-secondary)] lg:group-hover:text-white/85 md:text-base">
+              <p className="service-card-description relative max-w-sm text-sm leading-relaxed text-white/85 transition-colors duration-500 lg:text-[var(--text-secondary)] lg:group-hover:text-white/85 md:text-base">
                 {service.desc}
               </p>
             </article>

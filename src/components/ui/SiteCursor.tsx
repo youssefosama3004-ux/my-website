@@ -10,6 +10,7 @@ const SPRING = {
 
 const INTERACTIVE_SELECTOR =
   "a, button, input, textarea, select, [role='button'], [data-cursor='interactive']";
+const HIDDEN_SELECTOR = "[data-cursor='hidden']";
 
 export default function SiteCursor() {
   const x = useMotionValue(-CURSOR_SIZE);
@@ -42,6 +43,19 @@ export default function SiteCursor() {
       opacity.set(1);
 
       const target = event.target;
+      const shouldHide =
+        target instanceof Element && Boolean(target.closest(HIDDEN_SELECTOR));
+
+      if (shouldHide) {
+        opacity.set(0);
+        if (interactiveRef.current) {
+          interactiveRef.current = false;
+          setIsInteractive(false);
+        }
+        scale.set(1);
+        return;
+      }
+
       const nextInteractive =
         target instanceof Element && Boolean(target.closest(INTERACTIVE_SELECTOR));
 

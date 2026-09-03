@@ -12,6 +12,51 @@
   text-wrap: pretty;
 }
 
+.secondary-action {
+  border-color: var(--hero-text-secondary);
+  color: var(--hero-text-primary);
+}
+
+.secondary-action:hover {
+  border-color: var(--hero-text-primary);
+  background-color: var(--hero-surface);
+}
+
+@media (min-width: 64rem) and (hover: hover) and (pointer: fine) {
+  :root.light .service-card:hover .service-card-image {
+    opacity: 0.4;
+  }
+
+  :root.light .service-card .service-card-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgb(255 255 255 / 0.75),
+      rgb(255 255 255 / 0.25),
+      rgb(255 255 255 / 0.9)
+    );
+  }
+
+  :root.light .service-card:hover .service-card-overlay {
+    opacity: 1;
+  }
+
+  :root.light .service-card:hover .service-card-kicker {
+    color: rgb(0 0 0 / 0.65);
+  }
+
+  :root.light .service-card:hover .service-card-number {
+    color: rgb(0 0 0 / 0.55);
+  }
+
+  :root.light .service-card:hover .service-card-heading {
+    color: var(--color-grey-950);
+  }
+
+  :root.light .service-card:hover .service-card-description {
+    color: rgb(0 0 0 / 0.85);
+  }
+}
+
 .process-steps-grid {
   --process-step-gap: 1.25rem;
   --process-card-padding: 1.5rem;

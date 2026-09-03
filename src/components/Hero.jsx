@@ -52,7 +52,7 @@ export default function Hero() {
         <div className="hero-actions flex w-full max-w-[23rem] flex-col items-center justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row">
           <a
             href="#work"
-            className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[var(--hero-text-secondary)] px-6 text-base font-bold tracking-wide text-[var(--hero-text-primary)] transition-all duration-300 hover:border-[var(--hero-text-primary)] hover:bg-[var(--hero-surface)] sm:w-auto sm:text-sm lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
+            className="secondary-action inline-flex h-12 w-full items-center justify-center rounded-full border px-6 text-base font-bold tracking-wide transition-all duration-300 sm:w-auto sm:text-sm lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
           >
             View my work
           </a>

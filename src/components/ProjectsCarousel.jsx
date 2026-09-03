@@ -90,6 +90,7 @@ export default function ProjectsCarousel({ projects = [] }) {
             <a
               key={project.slug}
               href={`/work/${project.slug}`}
+              data-cursor="hidden"
               className="work-card group relative w-[80vw] shrink-0 overflow-hidden rounded-2xl max-md:snap-center md:w-[60vw] lg:w-[42vw]"
               onMouseEnter={() => setCursorVisible(true)}
               onMouseLeave={() => setCursorVisible(false)}

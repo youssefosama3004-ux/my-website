@@ -57,6 +57,7 @@
   --color-grey-800: #1A1A1A;
   --color-grey-900: #111111;
   --color-grey-950: #0A0A0A;
+  --color-grey-1000: #000000;
 
   /* Semantic */
   --color-success: #00875A;
@@ -158,7 +159,7 @@
   --bg-elevated: #0F1115;
   --bg-deepest: #070707;
   --bg-about: var(--color-blue-600);
-  --bg-about-test: var(--color-blue-900);
+  --bg-about-test: var(--color-grey-1000);
   --bg-card: #16181D;
 
   --hero-bg: var(--color-grey-950);
@@ -206,7 +207,7 @@
   --bg-elevated: #FFFFFF;
   --bg-deepest: #E7E7E2;
   --bg-about: var(--color-blue-600);
-  --bg-about-test: var(--color-blue-100);
+  --bg-about-test: var(--color-grey-50);
   --bg-card: #F2F2EF;
 
   --hero-bg: #F7F7F5;
