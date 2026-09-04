@@ -1,5 +1,79 @@
+import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import FlipAction from "./ui/FlipAction.jsx";
+
+const aboutStats = [
+  { value: 98, suffix: "%", label: "Clients satisfied and repeating" },
+  { value: 25, suffix: "+", label: "Projects completed across industries" },
+  { value: 12, prefix: "+", label: "Countries around the world" },
+];
+
+function CounterStat({ value, prefix = "", suffix = "", label }) {
+  const valueRef = useRef(null);
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    const element = valueRef.current;
+    if (!element) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplayValue(value);
+      return;
+    }
+
+    let animationFrame = null;
+    let hasStarted = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasStarted) return;
+
+        hasStarted = true;
+        observer.disconnect();
+        const startedAt = performance.now();
+        const duration = 1200;
+
+        const update = (now) => {
+          const progress = Math.min((now - startedAt) / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+          setDisplayValue(Math.round(value * easedProgress));
+
+          if (progress < 1) {
+            animationFrame = requestAnimationFrame(update);
+          } else {
+            setDisplayValue(value);
+          }
+        };
+
+        animationFrame = requestAnimationFrame(update);
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+      if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+    };
+  }, [value]);
+
+  return (
+    <div className="flex min-w-0 flex-col items-center px-2 py-5 text-center sm:px-3">
+      <p
+        ref={valueRef}
+        className="text-3xl font-semibold leading-none tabular-nums text-[var(--text-primary)] sm:text-4xl"
+        aria-label={`${prefix}${value}${suffix}`}
+      >
+        {prefix}
+        {displayValue}
+        {suffix}
+      </p>
+      <p className="mt-3 text-[10px] leading-snug text-[var(--text-secondary)] sm:text-xs">
+        {label}
+      </p>
+    </div>
+  );
+}
 
 export default function About() {
   return (
@@ -47,7 +121,7 @@ export default function About() {
                 as="a"
                 href="#contact"
                 backLabel="Let’s talk →"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--color-blue-500)] px-6 text-base font-bold tracking-wide text-white transition-colors duration-300 sm:bg-[var(--hero-cta-bg)] sm:text-sm sm:text-[var(--hero-cta-text)] sm:hover:bg-[var(--color-blue-500)] sm:hover:text-white lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--accent)] px-6 text-base font-bold tracking-wide text-[var(--accent-fg)] transition-colors duration-300 hover:bg-[var(--color-blue-600)] hover:text-white sm:text-sm lg:text-[length:var(--text-body-md)] lg:leading-[var(--text-body-md--line-height)] font-[family-name:var(--font-display)]"
               >
                 Book a call <span aria-hidden="true">&rarr;</span>
               </FlipAction>
@@ -58,6 +132,12 @@ export default function About() {
               >
                 Download Resume <span className="ml-2" aria-hidden="true">&darr;</span>
               </a>
+            </div>
+
+            <div className="mt-10 grid grid-cols-3 divide-x divide-[var(--border-default)] border-y border-[var(--border-default)]">
+              {aboutStats.map((stat) => (
+                <CounterStat key={stat.label} {...stat} />
+              ))}
             </div>
           </div>
 
@@ -75,6 +155,14 @@ export default function About() {
                 and giving it an order. And I&apos;d rather watch your numbers move
                 than just hand over a file, your results reflect on me too.
               </p>
+              <div className="mt-8 aspect-[16/9] w-full overflow-hidden border border-[var(--border-default)]">
+                <img
+                  src="/images/youssef-about-portrait.png"
+                  alt="Portrait of Youssef Osama"
+                  className="h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -167,7 +167,7 @@ export default function Contact() {
                 {activeTestimonial.quote}
               </blockquote>
 
-              <div className="contact-identity mt-auto pt-12">
+              <div className="contact-identity mt-6">
                 <div className="flex items-center gap-4">
                   <Avatar testimonial={activeTestimonial} />
                   <div>
@@ -287,7 +287,7 @@ export default function Contact() {
               <FlipAction
                 type="submit"
                 backLabel="Let’s talk →"
-                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-[var(--text-primary)] px-5 py-4 font-bold tracking-wide text-[var(--bg-primary)] transition-colors duration-300 hover:bg-[var(--color-blue-500)] hover:text-white font-[family-name:var(--font-display)]"
+                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-[var(--accent)] px-5 py-4 font-bold tracking-wide text-[var(--accent-fg)] transition-colors duration-300 hover:bg-[var(--color-blue-600)] hover:text-white font-[family-name:var(--font-display)]"
               >
                 Proceed with call booking <span aria-hidden="true">→</span>
               </FlipAction>

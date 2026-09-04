@@ -31,7 +31,7 @@ export default function HowIWork() {
   return (
     <section
       id="how-i-work"
-      className="relative overflow-hidden border-t border-[var(--border-default)] bg-[var(--bg-elevated)] py-12 md:py-32"
+      className="relative overflow-hidden bg-[var(--bg-elevated)] py-12 md:py-32"
     >
       <div className="site-container relative z-10">
         <div className="flex items-center gap-3">

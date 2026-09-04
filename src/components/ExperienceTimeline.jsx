@@ -108,7 +108,7 @@ export default function ExperienceTimeline() {
     <section
       id="journey"
       ref={sectionRef}
-      className="journey-section relative min-h-screen overflow-hidden border-t border-[color-mix(in_srgb,var(--color-accent-2)_12%,transparent)] bg-[var(--bg-elevated)]"
+      className="journey-section relative min-h-screen overflow-hidden bg-[var(--bg-elevated)]"
     >
       {/* Atmospheric background glow */}
       <div

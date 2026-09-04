@@ -19,7 +19,10 @@ const clientLogos = [
 
 export default function Clients() {
   return (
-    <section className="relative overflow-hidden py-12 md:py-32">
+    <section
+      className="relative overflow-hidden py-12 md:py-32"
+      style={{ backgroundColor: "var(--clients-section-bg)" }}
+    >
       {/* Centered label crossing a full-width divider */}
       <div className="relative mb-12 flex items-center justify-center md:mb-16">
         <span
@@ -42,7 +45,7 @@ export default function Clients() {
             gap={80}
             pauseOnHover
             fadeOut
-            fadeOutColor="var(--bg-primary)"
+            fadeOutColor="var(--clients-section-bg)"
             ariaLabel="Clients I have worked with"
           />
         </div>

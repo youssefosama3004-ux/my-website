@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const HERO_PORTRAIT = "/images/youssef-kader-hero.png";
+
 const strengths = [
   "Product strategy",
   "UX research and discovery",
@@ -113,9 +115,19 @@ const experience = [
         <p class="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)]">
           Quick info
         </p>
-        <h1 class="text-[clamp(3.25rem,10vw,8rem)] font-bold leading-[0.86] tracking-[-0.055em]">
-          Youssef<br />Osama
-        </h1>
+        <div class="flex items-center justify-between gap-5 sm:gap-8">
+          <h1 class="min-w-0 text-[clamp(3.25rem,10vw,8rem)] font-bold leading-[0.86] tracking-[-0.055em]">
+            Youssef<br />Osama
+          </h1>
+          <div class="h-24 w-24 shrink-0 overflow-hidden rounded-full border border-[var(--border-default)] bg-[var(--bg-elevated)] sm:h-32 sm:w-32 md:h-[250px] md:w-[250px]">
+            <img
+              src={HERO_PORTRAIT}
+              alt="Youssef Osama"
+              class="h-full w-full origin-[43%_25%] translate-y-[5%] scale-[1.8] object-cover"
+              loading="eager"
+            />
+          </div>
+        </div>
         <p class="mt-8 text-xl text-[var(--text-secondary)] md:text-3xl">
           Senior Product Designer
         </p>

@@ -156,13 +156,13 @@
   /* Dark mode values (default) */
   --bg-primary: var(--color-grey-950);
   --bg-surface: var(--color-grey-900);
-  --bg-elevated: #0F1115;
-  --bg-deepest: #070707;
+  --bg-elevated: var(--color-grey-1000);
+  --bg-deepest: var(--color-grey-1000);
   --bg-about: var(--color-blue-600);
   --bg-about-test: var(--color-grey-1000);
-  --bg-card: #16181D;
+  --bg-card: var(--color-grey-900);
 
-  --hero-bg: var(--color-grey-950);
+  --hero-bg: var(--color-grey-1000);
   --hero-text-primary: var(--color-grey-0);
   --hero-text-secondary: rgba(255, 255, 255, 0.72);
   --hero-surface: rgba(255, 255, 255, 0.1);
@@ -170,6 +170,7 @@
   --hero-cta-text: var(--color-grey-950);
   --hero-highlight: var(--color-blue-400);
   --hero-star-blend: screen;
+  --clients-section-bg: var(--color-grey-1000);
 
   --about-text-primary: var(--color-grey-0);
   --about-text-secondary: var(--color-grey-100);
@@ -218,6 +219,7 @@
   --hero-cta-text: var(--color-grey-0);
   --hero-highlight: var(--accent);
   --hero-star-blend: multiply;
+  --clients-section-bg: #F7F7F5;
 
   --about-text-primary: var(--color-grey-0);
   --about-text-secondary: var(--color-grey-0);

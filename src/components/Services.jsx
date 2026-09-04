@@ -53,7 +53,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative border-t border-[color-mix(in_srgb,var(--color-accent-2)_12%,transparent)] bg-[var(--bg-elevated)] py-12 md:py-32"
+      className="relative bg-[var(--bg-elevated)] py-12 md:py-32"
     >
       <div className="site-container">
         <div className="mb-12 flex items-center gap-3">
