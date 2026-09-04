@@ -1,0 +1,50 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="92" y1="64" x2="1090" y2="1430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0757D8"/>
+      <stop offset="1" stop-color="#001433"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="220" y1="370" x2="979" y2="1250" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity=".18"/>
+      <stop offset="1" stop-color="white" stop-opacity=".06"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1500" rx="28" fill="url(#bg)"/>
+  <circle cx="1040" cy="210" r="260" fill="#3385FF" fill-opacity=".18"/>
+  <circle cx="114" cy="1260" r="330" fill="#67E8F9" fill-opacity=".09"/>
+  <text x="92" y="136" fill="white" fill-opacity=".72" font-family="Arial, sans-serif" font-size="25" letter-spacing="5">ECOMMERCE UX REDESIGN</text>
+  <text x="92" y="266" fill="white" font-family="Arial, sans-serif" font-size="112" font-weight="700">KOOLEN</text>
+  <text x="98" y="330" fill="white" fill-opacity=".72" font-family="Arial, sans-serif" font-size="29">From product catalogue to guided discovery</text>
+  <rect x="92" y="414" width="1016" height="850" rx="34" fill="url(#glass)" stroke="white" stroke-opacity=".22" stroke-width="2"/>
+  <rect x="136" y="458" width="928" height="66" rx="16" fill="white" fill-opacity=".92"/>
+  <circle cx="177" cy="491" r="12" fill="#0066FF"/>
+  <rect x="214" y="479" width="184" height="23" rx="11.5" fill="#001433" fill-opacity=".85"/>
+  <rect x="792" y="476" width="226" height="30" rx="15" fill="#E5E5E5"/>
+  <rect x="136" y="560" width="928" height="230" rx="22" fill="#0066FF"/>
+  <rect x="178" y="614" width="390" height="24" rx="12" fill="white" fill-opacity=".68"/>
+  <rect x="178" y="657" width="522" height="48" rx="14" fill="white"/>
+  <rect x="178" y="727" width="168" height="34" rx="17" fill="#001433"/>
+  <rect x="728" y="594" width="288" height="154" rx="18" fill="white" fill-opacity=".18"/>
+  <g fill="white" fill-opacity=".9">
+    <rect x="136" y="826" width="210" height="180" rx="20"/>
+    <rect x="375" y="826" width="210" height="180" rx="20"/>
+    <rect x="614" y="826" width="210" height="180" rx="20"/>
+    <rect x="854" y="826" width="210" height="180" rx="20"/>
+  </g>
+  <g fill="#001433" fill-opacity=".18">
+    <circle cx="241" cy="897" r="42"/>
+    <circle cx="480" cy="897" r="42"/>
+    <circle cx="719" cy="897" r="42"/>
+    <circle cx="959" cy="897" r="42"/>
+  </g>
+  <g fill="#001433" fill-opacity=".28">
+    <rect x="166" y="963" width="150" height="13" rx="6.5"/>
+    <rect x="405" y="963" width="150" height="13" rx="6.5"/>
+    <rect x="644" y="963" width="150" height="13" rx="6.5"/>
+    <rect x="884" y="963" width="150" height="13" rx="6.5"/>
+  </g>
+  <rect x="136" y="1042" width="450" height="176" rx="20" fill="white" fill-opacity=".12"/>
+  <rect x="614" y="1042" width="450" height="176" rx="20" fill="white" fill-opacity=".12"/>
+  <text x="92" y="1379" fill="white" font-family="Arial, sans-serif" font-size="32" font-weight="700">UX AUDIT · INFORMATION ARCHITECTURE · PRODUCT DISCOVERY</text>
+  <text x="92" y="1434" fill="white" fill-opacity=".65" font-family="Arial, sans-serif" font-size="25">CASE STUDY · 2025</text>
+</svg>

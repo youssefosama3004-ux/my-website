@@ -1,10 +1,21 @@
 import FlipAction from "./ui/FlipAction.jsx";
+import { GravityStarsBackground } from "./ui/GravityStarsBackground";
 
 const HERO_PORTRAIT = "/images/youssef-kader-hero.png";
 
 export default function Hero() {
   return (
     <section className="hero-shell relative w-full max-w-[100vw] overflow-hidden bg-[var(--hero-bg)] text-[var(--hero-text-primary)]">
+      <GravityStarsBackground
+        starsCount={30}
+        starsSize={1.35}
+        starsOpacity={0.32}
+        glowIntensity={8}
+        movementSpeed={0.12}
+        mouseInfluence={130}
+        gravityStrength={42}
+        className="section-gravity-stars"
+      />
       <div aria-hidden className="hero-visual-overlay" />
 
       <div className="hero-marquee-window pointer-events-none absolute left-0 right-0 -translate-y-1/2 overflow-hidden">

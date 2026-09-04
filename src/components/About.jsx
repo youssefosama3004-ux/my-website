@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import FlipAction from "./ui/FlipAction.jsx";
+import { GravityStarsBackground } from "./ui/GravityStarsBackground";
 
 const aboutStats = [
   { value: 98, suffix: "%", label: "Clients satisfied and repeating" },
@@ -87,6 +88,16 @@ export default function About() {
         "--eyebrow-dot": "var(--about-test-text-primary)",
       }}
     >
+      <GravityStarsBackground
+        starsCount={30}
+        starsSize={1.35}
+        starsOpacity={0.28}
+        glowIntensity={8}
+        movementSpeed={0.12}
+        mouseInfluence={130}
+        gravityStrength={42}
+        className="section-gravity-stars"
+      />
       <div className="site-container about-inner relative z-10">
         <div className="mb-5 flex items-center gap-3">
           <span
@@ -155,9 +166,9 @@ export default function About() {
                 and giving it an order. And I&apos;d rather watch your numbers move
                 than just hand over a file, your results reflect on me too.
               </p>
-              <div className="mt-8 aspect-[16/9] w-full overflow-hidden border border-[var(--border-default)]">
+              <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-[8px] border border-[var(--border-default)]">
                 <img
-                  src="/images/youssef-about-portrait.png"
+                  src="/images/youssef-about-wide.jpg"
                   alt="Portrait of Youssef Osama"
                   className="h-full w-full object-cover object-center"
                   loading="lazy"
