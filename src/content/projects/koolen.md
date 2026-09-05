@@ -2,9 +2,9 @@
 title: "Koolen"
 tagline: "from promotional catalogue to guided product discovery"
 description: "A UX-led redesign of a Saudi home-appliance store, creating a clearer shopping architecture across navigation, campaigns, product discovery, and decision support."
-cover: "../../assets/projects/koolen-cover.svg"
+cover: "../../assets/projects/koolen-cover.jpg"
 type: "E-commerce"
-services: ["UX Audit", "Heuristic Evaluation", "Information Architecture", "Homepage UX", "Product Discovery"]
+services: ["UX Audit", "Conversion Rate Optimization"]
 tools: ["Figma", "Nielsen Heuristics"]
 year: "2025"
 dateRange: "July 2025"

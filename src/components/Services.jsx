@@ -107,16 +107,20 @@ export default function Services() {
 
         <div className="services-feature-grid mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="services-feature-card services-platform-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
-            <h3 className="mb-3 text-center text-3xl font-bold text-fg">
+            <span
+              aria-hidden="true"
+              className="services-platform-accent-glow pointer-events-none absolute inset-x-0 top-0 z-0 h-56"
+            />
+            <h3 className="relative z-10 mb-3 text-center text-3xl font-bold text-fg">
               Built on the right platform
             </h3>
-            <p className="mx-auto max-w-md text-center text-base leading-relaxed text-fg-secondary">
+            <p className="relative z-10 mx-auto max-w-md text-center text-base leading-relaxed text-fg-secondary">
               WordPress, Shopify, Salla, Webflow, or custom React, I pick the
               platform that fits your goals, budget, and how you'll run it
               after launch. No forcing every project into one stack.
             </p>
 
-            <div className="services-platform-icons relative mt-auto overflow-hidden pt-8 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+            <div className="services-platform-icons relative z-10 mt-auto overflow-hidden pt-8 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
               <div className="flex w-max gap-4 animate-tools-marquee animate-platform-marquee">
                 {[...Array(2)].map((_, duplicateIndex) => (
                   <div key={duplicateIndex} className="flex shrink-0 gap-4">

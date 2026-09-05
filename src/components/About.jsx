@@ -80,7 +80,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="about-section relative bg-[var(--bg-about-test)] py-12 md:py-32"
+      className="about-section relative overflow-hidden bg-[var(--bg-about-test)] py-12 md:py-32"
       style={{
         "--text-primary": "var(--about-test-text-primary)",
         "--text-secondary": "var(--about-test-text-secondary)",
@@ -88,6 +88,10 @@ export default function About() {
         "--eyebrow-dot": "var(--about-test-text-primary)",
       }}
     >
+      <span
+        aria-hidden="true"
+        className="about-side-accent-glow pointer-events-none absolute inset-0 z-0"
+      />
       <GravityStarsBackground
         starsCount={30}
         starsSize={1.35}

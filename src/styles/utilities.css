@@ -920,6 +920,39 @@
   opacity: 1;
 }
 
+.services-platform-accent-glow {
+  background:
+    radial-gradient(
+      ellipse 48% 92% at 0% 0%,
+      color-mix(in srgb, var(--accent) 28%, transparent) 0%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 48% 92% at 100% 0%,
+      color-mix(in srgb, var(--accent) 28%, transparent) 0%,
+      transparent 72%
+    );
+}
+
+.about-side-accent-glow {
+  --about-side-glow-color: var(--accent);
+  background:
+    radial-gradient(
+      ellipse 42% 32% at 0% 50%,
+      color-mix(in srgb, var(--about-side-glow-color) 30%, transparent) 0%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 42% 32% at 100% 50%,
+      color-mix(in srgb, var(--about-side-glow-color) 30%, transparent) 0%,
+      transparent 72%
+    );
+}
+
+:root.light .about-side-accent-glow {
+  --about-side-glow-color: var(--color-blue-200);
+}
+
 :root.dark .tool-logo-lockup:hover .tool-logo-mark-monochrome {
   filter: brightness(0) invert(1);
 }
