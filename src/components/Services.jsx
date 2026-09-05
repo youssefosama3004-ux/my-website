@@ -159,9 +159,6 @@ export default function Services() {
           </div>
 
           <div className="services-feature-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
-            <h3 className="mb-3 text-center text-xs uppercase tracking-widest text-fg-secondary">
-              AI-first, not AI generated
-            </h3>
             <h3 className="mb-3 text-center text-3xl font-bold text-fg">
               Tools and workflows
             </h3>
