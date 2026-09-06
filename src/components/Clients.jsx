@@ -20,7 +20,7 @@ const clientLogos = [
 export default function Clients() {
   return (
     <section
-      className="relative overflow-hidden py-12 md:py-32"
+      className="clients-section relative overflow-hidden py-12 md:py-32"
       style={{ backgroundColor: "var(--clients-section-bg)" }}
     >
       {/* Centered label crossing a full-width divider */}

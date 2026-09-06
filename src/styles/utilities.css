@@ -27,7 +27,7 @@
   --bg-elevated: var(--color-grey-1000);
   --bg-card: var(--color-grey-900);
   --text-primary: var(--color-grey-0);
-  --text-secondary: var(--color-grey-300);
+  --text-secondary: var(--color-grey-200);
   --text-muted: var(--color-grey-400);
   --border-default: var(--color-grey-700);
   --accent: var(--color-blue-500);
@@ -36,8 +36,7 @@
 }
 
 :root.light #services {
-  --bg-elevated: var(--color-grey-900);
-  --bg-card: var(--color-grey-800);
+  --bg-elevated: var(--color-blue-1000);
 }
 
 .process-steps-grid {
@@ -47,15 +46,25 @@
 }
 
 .process-step-card {
+  background-color: var(--color-grey-900);
   box-shadow:
     0 4px 10px -4px rgb(0 0 0 / 0.2),
     0 16px 36px -16px rgb(0 0 0 / 0.32);
 }
 
 :root.light .process-step-card {
+  background-color: var(--bg-card);
   box-shadow:
     0 4px 10px -4px rgb(0 0 0 / 0.06),
     0 16px 36px -16px rgb(0 0 0 / 0.12);
+}
+
+.contact-card {
+  background-color: var(--color-grey-900);
+}
+
+:root.light .contact-card {
+  background-color: var(--bg-card);
 }
 
 /* On stacked layouts, align the connector with the center of the step number. */
@@ -183,7 +192,7 @@
   opacity: 1;
 }
 
-:root.light .logo-loop-wrapper img {
+:root.light .clients-section .logo-loop-wrapper img {
   filter: brightness(0);
   opacity: 0.62;
 }

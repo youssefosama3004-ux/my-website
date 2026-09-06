@@ -106,7 +106,7 @@ export default function Services() {
         </div>
 
         <div className="services-feature-grid mt-20 grid grid-cols-1 gap-5 md:grid-cols-2">
-          <div className="services-feature-card services-platform-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 text-fg md:p-10">
+          <div className="services-feature-card services-platform-card relative flex flex-col overflow-hidden rounded-3xl border border-border bg-[var(--color-blue-900)] p-8 text-fg md:p-10">
             <span
               aria-hidden="true"
               className="services-platform-accent-glow pointer-events-none absolute inset-x-0 top-0 z-0 h-56"
