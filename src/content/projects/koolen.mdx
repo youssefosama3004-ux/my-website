@@ -1,0 +1,288 @@
+---
+title: "Koolen"
+tagline: "from promotional catalogue to guided product discovery"
+description: "A UX-led redesign of a Saudi home-appliance store, creating a clearer shopping architecture across navigation, campaigns, product discovery, and decision support."
+cover: "../../assets/projects/koolen-cover.jpg"
+type: "E-commerce"
+services: ["UX Audit", "Conversion Rate Optimization"]
+tools: ["Figma", "Nielsen Heuristics"]
+year: "2025"
+dateRange: "July 2025"
+role: "UX Specialist"
+featured: true
+order: 0
+---
+
+import ImageComparisonSlider from "../../components/ImageComparisonSlider.jsx";
+
+## Background
+
+Koolen is a Saudi appliance e-commerce brand with a catalogue spanning small household appliances, kitchen products, refrigerators, washing machines, air conditioners, and heaters.
+
+The challenge was not simply presenting more products. The experience needed to help customers answer three questions quickly:
+
+1. What does Koolen sell?
+2. Where can I find the product I need?
+3. Why should I buy it here?
+
+The previous homepage relied heavily on promotional banners, repeated product modules, and similar-looking cards. It offered plenty of commercial content, but weakened the shopping hierarchy.
+
+![Original Koolen ecommerce homepage before the UX redesign](/images/projects/koolen/01-original-homepage.png)
+*The original Koolen homepage before the UX audit and redesign.*
+
+## The original experience
+
+The previous homepage followed a long promotional sequence:
+
+> Hero campaign → Categories → Latest products → Promotional banner → Featured products → Service benefits → Special products → Another campaign → More products → Reviews → Footer
+
+The page contained useful material, but almost everything competed for the same level of attention. It behaved more like a long promotional catalogue than a guided shopping experience.
+
+The first banner looked interactive, but selecting it only refreshed the homepage. This mismatch between appearance and behavior created confusion and gave customers no meaningful next step. The hero also occupied most of the first viewport without establishing a clear hierarchy. The campaign artwork dominated while important payment options such as Tabby and Tamara were easy to miss.
+
+Several other issues appeared as customers moved down the page:
+
+- The category shortcuts represented narrow product types such as heaters, ice makers, and air conditioners instead of the store's main departments.
+- The Add to Cart control on the latest-product cards was visually understated and gave little feedback after an item was selected.
+- A carousel contained three promotional images that looked actionable but did not link anywhere.
+- The value propositions were pushed to the right rather than being presented as an important, balanced part of the experience.
+- “Exclusive products” and “Selected products” created overlapping sections without a clear difference in purpose.
+- Best-selling products, one of the strongest discovery signals for shoppers, appeared near the bottom of the page.
+- Homepage testimonials used generic comments such as “great product” without identifying the item being reviewed.
+
+Users saw many products and campaigns, but the interface did not provide a strong path for where to start, how to narrow the catalogue, or what to evaluate before purchasing.
+
+## UX audit
+
+I evaluated the homepage using Nielsen's ten usability heuristics, focusing on system feedback, real-world language, user control, consistency, error prevention, recognition, efficiency, minimalism, error recovery, and help.
+
+| Area | Original UX problem | Priority |
+| --- | --- | --- |
+| Visibility of system status | Add to Cart provided weak confirmation and did not clearly show the customer's updated cart state | High |
+| Match with the real world | Banner-like elements appeared clickable but refreshed the homepage or did nothing | High |
+| User control and freedom | Customers had few useful shortcuts between campaigns, categories, and high-demand products | Medium |
+| Consistency and standards | Product cards, promotional banners, and repeated merchandising sections behaved inconsistently | High |
+| Error prevention | Ambiguous calls to action and unclear category paths increased the chance of dead ends | Critical |
+| Recognition over recall | Narrow category labels did not reveal Koolen's main product families | High |
+
+![Placeholder for the heuristic evaluation](/images/projects/koolen/02-ux-audit.svg)
+*Visual placeholder — evaluation matrix and highest-priority findings.*
+
+## Key finding: weak visual hierarchy
+
+The user was not lacking content. They were lacking prioritization.
+
+Multiple promotional banners, product carousels, differently sized cards, repeated discovery blocks, and competing headings fragmented attention. As users moved down the homepage, each section effectively said, “Look at me next.”
+
+Instead of progressive disclosure, the interface repeatedly reset the user's attention.
+
+## Product discovery problem
+
+The original navigation gave customers limited visibility into the true size of Koolen's catalogue. A scalable information architecture needed to expose the major product families and their subcategories without asking users to discover everything through homepage scrolling.
+
+Instead of leading with isolated product types, the redesigned homepage introduces four understandable entry points:
+
+- **Large home appliances:** washing machines and refrigerators
+- **Small home appliances:** vacuums, irons, steam cleaners, fans, and similar everyday products
+- **Kitchen appliances:** food preparation, cooking, coffee, ice makers, and water dispensers
+- **Seasonal appliances:** cooling products in summer and heating products in winter
+
+The full navigation can still expose deeper product types, but the homepage begins with categories customers can recognize without first understanding Koolen's internal catalogue structure.
+
+![Placeholder for the information architecture](/images/projects/koolen/03-information-architecture.svg)
+*Visual placeholder — shallow navigation compared with the new hierarchical taxonomy.*
+
+## Design objective
+
+The objective was not simply to make Koolen look more modern.
+
+> Create a scalable shopping architecture that prioritizes product discovery, campaigns, and purchase decisions without overwhelming the customer.
+
+The redesign was guided by five principles:
+
+1. **Navigation before promotion** — help users understand the product universe before asking them to process campaigns.
+2. **Campaign hierarchy** — give seasonal offers a clear location and state.
+3. **Consistent commerce components** — standardize cards, prices, discounts, availability, and calls to action.
+4. **Contextual information** — connect reviews, promotions, and recommendations to the product or category being evaluated.
+5. **Progressive disclosure** — show enough information to support the next decision without showing everything at once.
+
+## The new experience
+
+The redesigned structure introduced a clearer commerce-oriented information architecture. Promotions became discoverable destinations rather than decorative content users only encountered while scrolling.
+
+The hero was divided into two columns. The primary column is reserved for the most important current event—such as Saudi National Day, Ramadan, or another seasonal campaign. The secondary column gives Tabby and Tamara enough visual prominence to explain the available installment option and its interest- and fee-free proposition.
+
+Below the hero, the homepage now follows a deliberate merchandising order:
+
+1. Four primary category entry points
+2. Latest products
+3. The current campaign or national event
+4. Best-selling products
+5. Dedicated product-family sections
+6. A seasonal section that adapts to current demand, such as air conditioners in summer or heaters in winter
+
+The main campaign section combines urgency with product choice. One side highlights the priority product together with a countdown and remaining quantity, while the other side presents related campaign products. This gives the promotion a clear commercial goal instead of using another passive banner.
+
+![Placeholder for the homepage redesign](/images/projects/koolen/04-homepage-transformation.svg)
+*Visual placeholder — before and after homepage with numbered UX callouts.*
+
+## Improved product decision support
+
+The old product page allowed the image gallery to occupy almost the entire first viewport. Essential purchase information—including the available colors—appeared much farther down the page, below a long description. Customers could not understand their choices or act without scrolling.
+
+There was also a mismatch between the thumbnail gallery and the product options. Selecting an image that represented another color did not update the selected color variation, leaving the interface in two conflicting states. Long information sections were expanded by default without a way to collapse them, making an already lengthy page harder to scan.
+
+<ImageComparisonSlider
+  client:visible
+  beforeSrc="/images/projects/koolen/02-product-page-before.png"
+  afterSrc="/images/projects/koolen/03-product-page-after.png"
+  beforeAlt="Old Koolen product page with a full-width image gallery and product details below the fold"
+  afterAlt="Redesigned Koolen product page with product images and purchase information arranged in two columns"
+  beforePoints={[
+    "The image gallery consumed the first viewport while purchase details appeared below it.",
+    "Color variations were difficult to discover and positioned after the description.",
+    "Selecting a color image did not synchronize the selected product variation.",
+    "Long information panels stayed expanded and could not be collapsed.",
+    "Ratings and actions lacked a clear decision-making hierarchy."
+  ]}
+  afterPoints={[
+    "A familiar two-column layout places the gallery on the right and purchase details on the left.",
+    "The required color selector is expanded, visible early, and starts with a clear default choice.",
+    "Selecting a color updates both the chosen variation and its product imagery.",
+    "Title, rating, summary, price, Buy Now, and Add to Cart are grouped in a scannable order.",
+    "Installments, collapsible details, product reviews, and related products follow the main actions."
+  ]}
+/>
+
+The redesigned page follows a familiar single-product pattern: product imagery on the right and the information needed to decide on the left. The title and rating establish context first, followed by a short description with a **View More** action instead of forcing the entire description open.
+
+The color section is expanded by default and clearly marked as required. A default variation shows customers that the product has choices, and selecting another color updates the gallery to match. **Buy Now** and **Add to Cart** sit directly beneath the core configuration and price, followed by clear Tabby and Tamara installment information.
+
+Detailed product information is available below in collapsible sections rather than being permanently expanded. Product-specific ratings appear in context, and related products provide the next discovery step. Unavailable items communicate their stock state explicitly instead of allowing customers to discover it later in the purchase journey.
+
+Add to Cart also provides immediate feedback. After selection, the control changes to **View Cart** and a confirmation makes it clear that the item was added. Together, these changes improve system-status visibility, recognition over recall, and alignment with established e-commerce conventions.
+
+## Improved trust architecture
+
+The experience reinforces three core expectations of online shoppers:
+
+- **Secure shopping:** a safe and private experience
+- **Customer service:** a clear way to get help
+- **Fast shipping:** a concrete delivery proposition
+
+Return and exchange information also became more task-oriented, including eligibility, time limits, refund information, customer responsibilities, contact details, and submission steps.
+
+Generic product testimonials were removed from the homepage. Reviews now belong to the relevant product page, where shoppers can understand exactly which item the feedback describes. The homepage can instead be reserved for evidence about Koolen as a company, while product-specific reviews support decisions at the point of purchase.
+
+## Before and after
+
+| Original experience | Redesigned experience |
+| --- | --- |
+| Full-width hero with unclear action | Two-column hero separating the main campaign from payment options |
+| Banner interactions refreshed the page or did nothing | Campaign areas lead to meaningful products or destinations |
+| Narrow category shortcuts | Four recognizable primary category groups |
+| Weak Add to Cart feedback | Add to Cart changes to View Cart and confirms the update |
+| Best sellers placed near the page end | Best sellers promoted earlier in the shopping journey |
+| Repetitive “exclusive” and “selected” sections | Clear separation between latest, best-selling, category, and seasonal products |
+| Passive seasonal banners | Focused campaign area with a featured product, countdown, stock, and related products |
+| Inconsistent merchandising structures | More recognizable e-commerce patterns |
+| Limited product context | Detailed product information and specifications |
+| Availability was not consistently prominent | Explicit Add to Cart and Out of Stock states |
+| Generic product reviews on the homepage | Reviews placed on the product pages they describe |
+| Information depended heavily on scrolling | Key information accessible through navigation |
+
+## What the redesign solved
+
+### Product taxonomy
+
+Customers gained a scalable model for navigating the appliance catalogue instead of relying on whichever products appeared on the homepage.
+
+### Promotional discoverability
+
+Dedicated discounts and seasonal campaign destinations made commercial activity easier to locate.
+
+### Product-state communication
+
+Available and unavailable products expose their states directly.
+
+### Product evaluation
+
+Product pages provide stronger specification, feature, and purchase context.
+
+### Support
+
+Returns and exchanges offer task-oriented instructions instead of relying only on direct support contact.
+
+## Post-launch review: remaining UX debt
+
+The live experience still presents opportunities for improvement. A case study should acknowledge these rather than imply that every usability issue disappeared after launch.
+
+### Contextual relevance of reviews
+
+Some category pages surface general store reviews—or reviews discussing another product type—rather than feedback relevant to the products being browsed.
+
+**Recommendation:** separate store reviews from category and product reviews, and place each where it supports the relevant purchasing decision.
+
+**Severity:** Medium
+
+### Product-data consistency
+
+Technical attributes such as wattage can appear differently between a product title, description, and specification list. For an appliance purchase, that inconsistency can materially reduce confidence.
+
+**Recommendation:** establish a structured source of truth connecting each SKU to product cards, detail pages, filters, and comparisons.
+
+**Severity:** High
+
+### Localization quality
+
+Unresolved template strings can make an otherwise Arabic storefront feel unfinished.
+
+**Recommendation:** add a localization QA checklist covering untranslated keys, Arabic grammar, terminology, numeral conventions, RTL alignment, and mixed-language states.
+
+**Severity:** Medium
+
+![Placeholder for the post-launch review](/images/projects/koolen/06-live-review.svg)
+*Visual placeholder — remaining UX debt and supporting evidence.*
+
+## Outcome
+
+The redesign transformed Koolen from a promotion-driven product catalogue into a more structured e-commerce ecosystem. Stronger taxonomy, campaign discoverability, product information, and transactional states reduce the amount of information customers must interpret before reaching a product decision.
+
+A comparative review of the current experience suggests that several original heuristic problems were addressed, particularly navigation, product recognition, and system-status communication. It also uncovered remaining opportunities around contextual reviews, localization, and product-data consistency.
+
+Because confirmed conversion or task-success analytics were not available, the case study avoids invented quantitative results.
+
+## Metrics to track next
+
+### Product discovery
+
+- Category-to-product click-through rate
+- Search usage and search exit rate
+- Products viewed per session
+
+### Commerce
+
+- Product page to Add-to-Cart rate
+- Add-to-Cart to checkout rate
+- Checkout completion
+- Revenue per session
+
+### Navigation
+
+- Mega-menu usage
+- Category navigation success
+- Homepage scroll depth
+- Time to first product page
+
+### Quality
+
+- Zero-result searches
+- Out-of-stock product-page exits
+- Product-specification support tickets
+- Return-reason distribution
+
+## Learning
+
+> Good e-commerce UX is not about showing more products. It is about reducing the number of decisions customers must make before finding the right one.
+
+[Visit the current Koolen store](https://koolen.com.sa/)

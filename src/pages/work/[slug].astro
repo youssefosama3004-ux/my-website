@@ -103,13 +103,20 @@ const { Content } = await render(project);
     line-height: 1.55;
   }
 
-  .case-study-content img {
-    width: min(72rem, 100%);
+  .case-study-content > p > img {
+    width: min(56rem, 100%);
     max-width: none;
     margin: 4rem 50%;
     transform: translateX(-50%);
     border: 1px solid var(--border-default);
     border-radius: 8px;
+  }
+
+  .case-study-content > .image-comparison-block {
+    width: min(56rem, calc(100vw - 3rem));
+    max-width: none;
+    margin-inline: 50%;
+    transform: translateX(-50%);
   }
 
   .case-study-content p:has(> img) {
@@ -159,7 +166,7 @@ const { Content } = await render(project);
 
   @media (max-width: 640px) {
     .case-study-content h2 { margin-top: 3.75rem; }
-    .case-study-content img { margin-block: 2.75rem; }
+    .case-study-content > p > img { margin-block: 2.75rem; }
     .case-study-content table { font-size: 0.82rem; }
   }
 </style>
