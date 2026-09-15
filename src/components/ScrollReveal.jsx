@@ -69,7 +69,7 @@ const ScrollReveal = ({
           scrollTrigger: {
             trigger: el,
             scroller,
-            start: 'top bottom',
+            start: 'top bottom-=20%',
             end: rotationEnd,
             scrub: true
           }

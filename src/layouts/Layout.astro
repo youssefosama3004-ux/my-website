@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 import SiteCursor from "../components/ui/SiteCursor";
+import SiteLoader from "../components/SiteLoader.astro";
+import ThemeTogglerButton from "../components/ui/ThemeTogglerButton";
 
 const {
   title = "Youssef Kader - Digital Product Designer & Developer",
@@ -8,6 +10,42 @@ const {
   bodyClass = "",
   showCvInfo = true,
 } = Astro.props;
+
+const siteUrl = "https://youssefkader.me";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const personSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#youssef-kader`,
+      name: "Youssef Kader",
+      alternateName: "Youssef Osama",
+      url: siteUrl,
+      image: `${siteUrl}/images/youssef-kader-hero.png`,
+      jobTitle: "Product Designer and UI Developer",
+      description,
+      email: "mailto:youssefosama3004@gmail.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Giza",
+        addressCountry: "EG",
+      },
+      knowsLanguage: ["Arabic", "English"],
+      knowsAbout: ["Product design", "UX research", "Design systems", "Web development", "Ecommerce"],
+    },
+    {
+      "@type": "ProfessionalService",
+      name: "Youssef Kader Product Design",
+      url: siteUrl,
+      description,
+      provider: { "@id": `${siteUrl}/#youssef-kader` },
+      areaServed: "Worldwide",
+      availableLanguage: ["English", "Arabic"],
+      serviceType: ["Product design", "UX consulting", "Web development", "Ecommerce design"],
+    },
+  ],
+};
 ---
 
 <html lang="en">
@@ -19,19 +57,18 @@ const {
     <meta name="theme-color" content="#0A0A0A" />
     <script is:inline>
       (() => {
-        const key = "youssef-kader-theme";
-        let savedTheme = null;
+        const themeKey = "youssef-kader-theme";
+        let theme = "dark";
 
         try {
-          savedTheme = window.localStorage.getItem(key);
-        } catch {}
+          const savedTheme = window.localStorage.getItem(themeKey);
+          if (savedTheme === "light" || savedTheme === "dark") {
+            theme = savedTheme;
+          }
+        } catch {
+          // Use dark mode when storage is unavailable.
+        }
 
-        const theme =
-          savedTheme === "light" || savedTheme === "dark"
-            ? savedTheme
-            : window.matchMedia("(prefers-color-scheme: light)").matches
-              ? "light"
-              : "dark";
         const root = document.documentElement;
 
         root.dataset.theme = theme;
@@ -45,10 +82,23 @@ const {
     </script>
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Youssef Kader" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${siteUrl}/images/youssef-kader-hero.png`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <slot name="head" />
   </head>
   <body class={bodyClass}>
+    <SiteLoader />
     <SiteCursor client:load />
+    <ThemeTogglerButton client:load className="site-theme-toggle" />
     {showCvInfo && (
       <a
         class="cv-info-edge"
@@ -59,10 +109,53 @@ const {
       </a>
     )}
     <slot />
+    <script is:inline>
+      (() => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const sections = Array.from(document.querySelectorAll("main > section"));
+        if (!sections.length) return;
+
+        sections.forEach((section) => section.classList.add("site-section-reveal"));
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-section-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      })();
+    </script>
   </body>
 </html>
 
 <style>
+  :global(.site-theme-toggle) {
+    position: fixed !important;
+    z-index: 1400;
+    top: auto !important;
+    right: auto !important;
+    bottom: max(1.25rem, env(safe-area-inset-bottom)) !important;
+    left: max(1.25rem, env(safe-area-inset-left)) !important;
+    width: 3rem;
+    height: 3rem;
+    border-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
+    background: color-mix(in srgb, var(--bg-surface) 84%, transparent);
+    color: var(--text-primary);
+    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(14px);
+  }
+
+  :global(.site-theme-toggle:hover) {
+    background: color-mix(in srgb, var(--bg-surface) 96%, transparent);
+  }
+
   .cv-info-edge {
     position: fixed;
     top: 50%;

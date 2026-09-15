@@ -3,7 +3,9 @@ import { testimonials } from "../data/testimonials";
 import FlipAction from "./ui/FlipAction.jsx";
 
 const SLIDE_DURATION = 6000;
-const CALENDLY_EVENT_URL = "https://calendly.com/YOUR-SLUG/intro";
+// Add the real event URL when the booking calendar is ready.
+const CALENDLY_EVENT_URL = "";
+const CONTACT_EMAIL = "youssefosama3004@gmail.com";
 
 const sourceOptions = [
   "Referral",
@@ -110,7 +112,7 @@ export default function Contact() {
   const submitForm = (event) => {
     event.preventDefault();
 
-    const url =
+    const bookingUrl =
       `${CALENDLY_EVENT_URL}` +
       `?name=${encodeURIComponent(form.name)}` +
       `&email=${encodeURIComponent(form.email)}` +
@@ -118,12 +120,16 @@ export default function Contact() {
       `&a2=${encodeURIComponent(form.help)}` +
       `&a3=${encodeURIComponent(form.source)}`;
 
-    if (window.Calendly?.initPopupWidget) {
-      window.Calendly.initPopupWidget({ url });
+    if (CALENDLY_EVENT_URL && window.Calendly?.initPopupWidget) {
+      window.Calendly.initPopupWidget({ url: bookingUrl });
       return;
     }
 
-    window.open(url, "_blank", "noopener,noreferrer");
+    const subject = encodeURIComponent(`New project inquiry from ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nCompany: ${form.company || "Not provided"}\nEmail: ${form.email}\nHow they heard about you: ${form.source || "Not provided"}\n\nProject details:\n${form.help}`,
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   const fieldClassName =
@@ -293,7 +299,10 @@ export default function Contact() {
               </FlipAction>
 
               <p className="text-sm leading-relaxed text-fg-muted">
-                By clicking, you agree to be contacted about your project.
+                Your details will open in an email to Youssef. Prefer email?{" "}
+                <a className="underline underline-offset-4 hover:text-fg" href={`mailto:${CONTACT_EMAIL}`}>
+                  {CONTACT_EMAIL}
+                </a>
               </p>
             </form>
           </div>

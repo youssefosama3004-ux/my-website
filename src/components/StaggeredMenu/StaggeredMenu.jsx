@@ -20,6 +20,7 @@ export const StaggeredMenu = ({
   onMenuOpen,
   onMenuClose,
   onItemClick,
+  onRequestClose,
   hideHeader = false,
   externalOpen = undefined
 }) => {
@@ -447,6 +448,19 @@ export const StaggeredMenu = ({
         inert={!open}
       >
         <div className="sm-panel-inner">
+          <button
+            className="sm-panel-close"
+            type="button"
+            onClick={() => {
+              onRequestClose?.();
+              if (externalOpen === undefined) closeMenu();
+            }}
+            aria-label="Close menu"
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
+          <p className="sm-panel-title">Navigate</p>
           <ul className="sm-panel-list" role="list" data-numbering={displayItemNumbering || undefined}>
             {items && items.length ? (
               items.map((it, idx) => (
@@ -461,7 +475,9 @@ export const StaggeredMenu = ({
                       if (externalOpen === undefined) closeMenu();
                     }}
                   >
+                    {it.icon && <it.icon className="sm-panel-itemIcon" size={20} strokeWidth={1.75} aria-hidden="true" />}
                     <span className="sm-panel-itemLabel">{it.label}</span>
+                    <span className="sm-panel-itemArrow" aria-hidden="true">↗</span>
                   </a>
                 </li>
               ))

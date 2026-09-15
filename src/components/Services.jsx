@@ -3,25 +3,25 @@ const services = [
     kicker: "Connection",
     title: "Product Design",
     desc: "End to end product design, research, journeys, IA, wireframes, and high-fidelity UI for web and mobile products that convert.",
-    image: "/images/services/product-design.png",
+    image: "/images/services/product-design-character.jpeg",
   },
   {
     kicker: "Development",
     title: "Web Development",
     desc: "I build what I design. Same person, same week, no handoff, no waiting on dev. The site goes live looking exactly like the comp.",
-    image: "/images/services/web-development.png",
+    image: "/images/services/web-development-character.jpeg",
   },
   {
     kicker: "Conversion",
     title: "Ecommerce",
     desc: "Conversion-focused online stores, storefront UX, product pages, and checkout flows designed and built to turn visitors into customers.",
-    image: "/images/services/ecommerce.png",
+    image: "/images/services/ecommerce-character.jpeg",
   },
   {
     kicker: "Direction",
     title: "UX Consulting",
     desc: "Expert UX strategy, audits, and design-thinking workshops, tailored guidance to sharpen journeys and align design with business goals.",
-    image: "/images/services/ux-consulting.png",
+    image: "/images/services/ux-consulting-character.jpeg",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative bg-[var(--bg-elevated)] py-12 md:py-32"
+      className="services-section relative bg-[var(--bg-elevated)] py-12 md:py-32"
     >
       <div className="site-container">
         <div className="mb-12 flex items-center gap-3">
@@ -70,7 +70,7 @@ export default function Services() {
           {services.map((service, index) => (
             <article
               key={service.title}
-              className="service-card group relative isolate flex min-h-[28rem] flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--color-blue-500)_55%,var(--border-default))] md:min-h-[30rem] md:p-7 xl:min-h-[32rem]"
+              className="service-card group relative isolate flex min-h-[28rem] flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border-default)] bg-[var(--bg-card)] p-6 transition-all duration-500 hover:border-[color-mix(in_srgb,var(--color-blue-500)_55%,var(--border-default))] md:min-h-[30rem] md:p-7 xl:min-h-[32rem]"
             >
               <img
                 src={service.image}

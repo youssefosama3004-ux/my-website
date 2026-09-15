@@ -1,6 +1,6 @@
 ---
 title: "Koolen"
-tagline: "from promotional catalogue to guided product discovery"
+tagline: "Redesign the Ecommerce website"
 description: "A UX-led redesign of a Saudi home-appliance store, creating a clearer shopping architecture across navigation, campaigns, product discovery, and decision support."
 cover: "../../assets/projects/koolen-cover.jpg"
 type: "E-commerce"
@@ -12,8 +12,6 @@ role: "UX Specialist"
 featured: true
 order: 0
 ---
-
-import ImageComparisonSlider from "../../components/ImageComparisonSlider.jsx";
 
 ## Background
 
@@ -27,8 +25,22 @@ The challenge was not simply presenting more products. The experience needed to 
 
 The previous homepage relied heavily on promotional banners, repeated product modules, and similar-looking cards. It offered plenty of commercial content, but weakened the shopping hierarchy.
 
-![Original Koolen ecommerce homepage before the UX redesign](/images/projects/koolen/01-original-homepage.png)
-*The original Koolen homepage before the UX audit and redesign.*
+<div className="homepage-comparison-grid">
+  <figure>
+    <figcaption>Before</figcaption>
+    <img
+      src="/images/projects/koolen/01-original-homepage.png"
+      alt="Original Koolen ecommerce homepage before the UX redesign"
+    />
+  </figure>
+  <figure>
+    <figcaption>After</figcaption>
+    <img
+      src="/images/projects/koolen/01-redesigned-homepage.png"
+      alt="Redesigned Koolen ecommerce homepage after the UX improvements"
+    />
+  </figure>
+</div>
 
 ## The original experience
 
@@ -132,27 +144,22 @@ The old product page allowed the image gallery to occupy almost the entire first
 
 There was also a mismatch between the thumbnail gallery and the product options. Selecting an image that represented another color did not update the selected color variation, leaving the interface in two conflicting states. Long information sections were expanded by default without a way to collapse them, making an already lengthy page harder to scan.
 
-<ImageComparisonSlider
-  client:visible
-  beforeSrc="/images/projects/koolen/02-product-page-before.png"
-  afterSrc="/images/projects/koolen/03-product-page-after.png"
-  beforeAlt="Old Koolen product page with a full-width image gallery and product details below the fold"
-  afterAlt="Redesigned Koolen product page with product images and purchase information arranged in two columns"
-  beforePoints={[
-    "The image gallery consumed the first viewport while purchase details appeared below it.",
-    "Color variations were difficult to discover and positioned after the description.",
-    "Selecting a color image did not synchronize the selected product variation.",
-    "Long information panels stayed expanded and could not be collapsed.",
-    "Ratings and actions lacked a clear decision-making hierarchy."
-  ]}
-  afterPoints={[
-    "A familiar two-column layout places the gallery on the right and purchase details on the left.",
-    "The required color selector is expanded, visible early, and starts with a clear default choice.",
-    "Selecting a color updates both the chosen variation and its product imagery.",
-    "Title, rating, summary, price, Buy Now, and Add to Cart are grouped in a scannable order.",
-    "Installments, collapsible details, product reviews, and related products follow the main actions."
-  ]}
-/>
+<div className="product-page-comparison-grid">
+  <figure>
+    <figcaption>Before</figcaption>
+    <img
+      src="/images/projects/koolen/02-product-page-before.png"
+      alt="Old Koolen product page with a full-width image gallery and product details below the fold"
+    />
+  </figure>
+  <figure>
+    <figcaption>After</figcaption>
+    <img
+      src="/images/projects/koolen/03-product-page-after.png"
+      alt="Redesigned Koolen product page with product images and purchase information arranged in two columns"
+    />
+  </figure>
+</div>
 
 The redesigned page follows a familiar single-product pattern: product imagery on the right and the information needed to decide on the left. The title and rating establish context first, followed by a short description with a **View More** action instead of forcing the entire description open.
 

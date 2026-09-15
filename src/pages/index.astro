@@ -8,13 +8,30 @@ import About from "../components/About.jsx";
 import Services from "../components/Services.jsx";
 import Projects from "../components/Projects.astro";
 import HowIWork from "../components/HowIWork.jsx";
+import FAQ, { questions } from "../components/FAQ.jsx";
 import Contact from "../components/Contact.jsx";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: questions.map(({ question, answer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: answer,
+    },
+  })),
+};
 ---
 
 <Layout
   title="Youssef Kader - Digital Product Designer & Developer"
   description="Helping agencies and founders launch websites, apps, and brands - from strategy to design to development."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
   <!-- Navigation -->
   <Nav client:load />
 
@@ -26,6 +43,7 @@ import Contact from "../components/Contact.jsx";
     <HowIWork client:load />
     <Projects />
     <Contact client:load />
+    <FAQ client:load />
   </main>
 
   <GradualBlur

@@ -1,0 +1,33 @@
+.scroll-expand { position: relative; width: 100%; height: 100%; background: var(--page-bg, #070a0f); }
+.scroll-expand--scroller { overflow-y: auto; overflow-x: hidden; scrollbar-width: none; -ms-overflow-style: none; overscroll-behavior: contain; }
+.scroll-expand--scroller::-webkit-scrollbar { display: none; }
+.scroll-expand__track { position: relative; width: 100%; }
+.scroll-expand__stage { position: sticky; top: 0; width: 100%; overflow: hidden; --se-title-size: 4rem; }
+.scroll-expand__frame { position: absolute; inset: 0; clip-path: inset(21% 29% 21% 29% round 24px); will-change: clip-path; }
+.scroll-expand__media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; transform-origin: center; user-select: none; -webkit-user-drag: none; }
+.scroll-expand__scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(0, 0, 0, .82), rgba(0, 0, 0, .14) 48%, rgba(0, 0, 0, .4)); opacity: 0; }
+.scroll-expand__overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: clamp(1.5rem, 5vw, 5rem); opacity: 0; will-change: opacity, transform; }
+.scroll-expand__title { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0 8%; text-align: center; font-size: var(--se-title-size); font-weight: 700; letter-spacing: -.04em; line-height: .96; color: #fff; text-shadow: 0 2px 24px rgba(0, 0, 0, .45); pointer-events: none; will-change: opacity, transform; }
+.scroll-expand__hint { position: absolute; right: 0; bottom: 1.5rem; left: 0; text-align: center; font-size: .7rem; font-weight: 600; letter-spacing: .14em; color: rgba(255,255,255,.7); pointer-events: none; text-transform: uppercase; will-change: opacity, transform; }
+
+.portfolio-scroll-expand .scroll-expand__overlay { align-items: flex-start; text-align: left; }
+.portfolio-scroll-expand__content { max-width: 38rem; color: #fff; }
+.portfolio-scroll-expand__eyebrow { margin: 0 0 .8rem; color: #a9c7ff; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.portfolio-scroll-expand__content h2 { margin: 0; font-size: clamp(2rem, 5vw, 4.6rem); letter-spacing: -.045em; line-height: .95; }
+.portfolio-scroll-expand__content p { max-width: 34rem; margin: 1rem 0 0; color: rgba(255,255,255,.8); font-size: clamp(.95rem, 1.4vw, 1.1rem); line-height: 1.6; }
+.portfolio-scroll-expand__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.portfolio-scroll-expand__actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 2.85rem; padding: 0 1.15rem; border-radius: 999px; font-size: .88rem; font-weight: 700; text-decoration: none; transition: transform .2s ease, background-color .2s ease; }
+.portfolio-scroll-expand__actions a:hover { transform: translateY(-2px); }
+.portfolio-scroll-expand__primary { background: var(--accent, #5d8dff); color: #07101f; }
+.portfolio-scroll-expand__secondary { border: 1px solid rgba(255,255,255,.74); color: #fff; }
+
+@media (max-width: 640px) {
+  .portfolio-scroll-expand__content h2 { max-width: 18rem; }
+  .portfolio-scroll-expand__actions { width: 100%; }
+  .portfolio-scroll-expand__actions a { flex: 1 1 10rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-expand__frame { clip-path: inset(0) !important; }
+  .scroll-expand__media { transform: scale(1) !important; }
+}

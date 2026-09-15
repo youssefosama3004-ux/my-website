@@ -205,7 +205,7 @@
 :root.light {
   color-scheme: light;
 
-  --bg-section: var(--color-blue-50);
+  --bg-section: #fff;
   --bg-primary: var(--bg-section);
   --bg-surface: #EEEEEB;
   --bg-elevated: var(--bg-section);
@@ -242,7 +242,7 @@
   --border-default: var(--color-grey-200);
   --border-strong: var(--color-grey-300);
 
-  --accent: var(--color-blue-600);
+  --accent: var(--color-blue-500);
   --accent-2: var(--color-cyan-600);
   --accent-hover: var(--color-blue-700);
   --accent-fg: var(--color-grey-0);

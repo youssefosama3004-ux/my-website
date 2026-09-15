@@ -1,24 +1,38 @@
 import { useEffect, useRef, useState } from "react";
+import { Blocks, BriefcaseBusiness, Send, UserRound } from "lucide-react";
 import { StaggeredMenu } from "./StaggeredMenu/StaggeredMenu";
 import ThemeTogglerButton from "./ui/ThemeTogglerButton";
 import logo from "../assets/youssef-logo.svg";
+
+const SHOW_THEME_TOGGLER = false;
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [forceExpanded, setForceExpanded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutActive, setAboutActive] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const sequenceTimerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
 
-      const about = document.getElementById("about");
-      if (!about) return;
-      const bounds = about.getBoundingClientRect();
       const navFocusLine = Math.min(104, window.innerHeight * 0.16);
-      setAboutActive(bounds.top <= navFocusLine && bounds.bottom > navFocusLine);
+      const about = document.getElementById("about");
+      const aboutBounds = about?.getBoundingClientRect();
+      setAboutActive(
+        Boolean(aboutBounds && aboutBounds.top <= navFocusLine && aboutBounds.bottom > navFocusLine),
+      );
+
+      const railFocusLine = window.innerHeight * 0.45;
+      const currentSection = ["work", "about", "services", "contact"].find((id) => {
+        const section = document.getElementById(id);
+        if (!section) return false;
+        const bounds = section.getBoundingClientRect();
+        return bounds.top <= railFocusLine && bounds.bottom > railFocusLine;
+      });
+      setActiveSection(currentSection ?? "");
     };
 
     handleScroll();
@@ -94,24 +108,21 @@ export default function Nav() {
   };
 
   const menuItems = [
-    { label: "Work", link: "/work" },
-    { label: "About", link: "/#about" },
-    { label: "Services", link: "/#services" },
-    { label: "Contact", link: "/#contact" },
+    { label: "About", link: "/#about", icon: UserRound },
+    { label: "Services", link: "/#services", icon: Blocks },
+    { label: "Work", link: "/#work", icon: BriefcaseBusiness },
+    { label: "Contact", link: "/#contact", icon: Send },
   ];
 
   const socialItems = [
-    { label: "LinkedIn", link: "#", iconUrl: "/icons/social-linkedin.svg" },
-    { label: "Instagram", link: "#", iconUrl: "/icons/social-instagram.svg" },
-    { label: "WhatsApp", link: "#", iconUrl: "/icons/social-whatsapp.svg" },
-    { label: "Email", link: "#", iconUrl: "/icons/social-mail.svg" },
+    { label: "Email", link: "mailto:youssefosama3004@gmail.com", iconUrl: "/icons/social-mail.svg" },
   ];
 
   return (
     <>
       {/* Fixed header bar */}
       <header
-        className={`site-nav-header pointer-events-none fixed left-1/2 top-0 z-[1300] flex w-full max-w-none -translate-x-1/2 items-center justify-between rounded-none border transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`site-nav-header pointer-events-none fixed left-1/2 top-0 z-[1300] flex w-full max-w-none -translate-x-1/2 items-center justify-between rounded-none border transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden ${
           collapsed
             ? "mt-0 border-x-0 border-t-0 border-[color-mix(in_srgb,var(--text-primary)_12%,transparent)] bg-[color-mix(in_srgb,var(--text-primary)_6%,transparent)] px-5 py-3 backdrop-blur-xl sm:px-6 md:px-12 lg:py-4"
             : "mt-0 border-transparent bg-transparent px-5 py-3 backdrop-blur-0 sm:px-6 sm:py-6 md:px-12"
@@ -133,9 +144,9 @@ export default function Nav() {
         <div
           className={`pointer-events-auto flex items-center gap-1 ${
             collapsed ? "text-[var(--text-primary)]" : "text-[var(--hero-text-primary)]"
-          }`}
+          } ${menuOpen ? "invisible" : ""}`}
         >
-          <ThemeTogglerButton className="site-nav-control" />
+          {SHOW_THEME_TOGGLER && <ThemeTogglerButton className="site-nav-control" />}
 
           {/* Hamburger */}
           <button
@@ -153,21 +164,46 @@ export default function Nav() {
         </div>
       </header>
 
+      <nav className={`desktop-liquid-rail hidden lg:flex ${scrolled ? "is-connected" : ""}`} aria-label="Primary navigation">
+        <div className="desktop-liquid-capsule">
+          <a href="/" aria-label="Home" className="desktop-liquid-logo" title="Home">
+            <img src={logo.src} alt="" />
+          </a>
+
+          {menuItems.map(({ label, link, icon: Icon }) => (
+            <a
+              key={label}
+              href={link}
+              aria-label={label}
+              title={label}
+              className={`desktop-liquid-link ${activeSection === label.toLowerCase() ? "is-active" : ""}`}
+            >
+              <Icon size={20} strokeWidth={1.8} aria-hidden="true" />
+              <span>{label}</span>
+            </a>
+          ))}
+        </div>
+
+        {SHOW_THEME_TOGGLER && <ThemeTogglerButton className="desktop-liquid-theme" />}
+      </nav>
+
       {/* StaggeredMenu — header hidden, controlled externally */}
       <StaggeredMenu
+        className="lg:hidden"
         items={menuItems}
         socialItems={socialItems}
         isFixed={true}
-        position="right"
-        colors={["var(--bg-surface)", "var(--bg-elevated)"]}
+        position="left"
+        colors={["rgba(30, 99, 255, 0.16)", "rgba(12, 12, 16, 0.54)"]}
         accentColor="var(--accent)"
         menuButtonColor="#fff"
         openMenuButtonColor="#fff"
         displaySocials={true}
-        displayItemNumbering={true}
+        displayItemNumbering={false}
         closeOnClickAway={false}
         hideHeader={true}
         externalOpen={menuOpen}
+        onRequestClose={closeMenu}
         onItemClick={closeMenu}
       />
     </>

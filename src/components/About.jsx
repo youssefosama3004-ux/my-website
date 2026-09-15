@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import FlipAction from "./ui/FlipAction.jsx";
-import { GravityStarsBackground } from "./ui/GravityStarsBackground";
 
 const aboutStats = [
   { value: 98, suffix: "%", label: "Clients satisfied and repeating" },
@@ -92,16 +91,6 @@ export default function About() {
         aria-hidden="true"
         className="about-side-accent-glow pointer-events-none absolute inset-0 z-0"
       />
-      <GravityStarsBackground
-        starsCount={30}
-        starsSize={1.35}
-        starsOpacity={0.28}
-        glowIntensity={8}
-        movementSpeed={0.12}
-        mouseInfluence={130}
-        gravityStrength={42}
-        className="section-gravity-stars"
-      />
       <div className="site-container about-inner relative z-10">
         <div className="mb-5 flex items-center gap-3">
           <span
@@ -126,10 +115,23 @@ export default function About() {
               textClassName="font-[family-name:var(--font-display)] text-[clamp(2rem,calc(1rem+1.7vw),3rem)] font-semibold leading-[1.1] tracking-[0.01em] normal-case"
               as="h4"
             >
-              I&apos;m a product designer who helps founders make the hard
-              decisions before development starts, so what gets built is
-              something people can actually use.
+              I help founders build products people actually use.
             </ScrollReveal>
+
+            <div className="about-copy mt-6">
+              <p className="max-w-[44rem] text-base leading-[1.75] text-[var(--text-secondary)] lg:text-lg">
+                Before I open Figma, I want to understand the business, the
+                people using it, and what actually needs to be built. Most of
+                the expensive mistakes live in that gap, a feature everyone
+                agreed on that nobody opens, a layout that looks right in the
+                list view and falls apart on mobile.
+              </p>
+              <p className="mt-6 max-w-[44rem] text-base leading-[1.75] text-[var(--text-secondary)] lg:text-lg">
+                The part I like most is taking an idea that still feels messy
+                and giving it an order. And I&apos;d rather watch your numbers move
+                than just hand over a file, your results reflect on me too.
+              </p>
+            </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <FlipAction
@@ -156,28 +158,14 @@ export default function About() {
             </div>
           </div>
 
-          <div className="about-supporting flex flex-col gap-12 lg:gap-14">
-            <div className="about-copy">
-              <p className="max-w-[44rem] text-base leading-[1.75] text-[var(--text-secondary)] lg:text-lg">
-                Before I open Figma, I want to understand the business, the
-                people using it, and what actually needs to be built. Most of
-                the expensive mistakes live in that gap, a feature everyone
-                agreed on that nobody opens, a layout that looks right in the
-                list view and falls apart on mobile.
-              </p>
-              <p className="mt-6 max-w-[44rem] text-base leading-[1.75] text-[var(--text-secondary)] lg:text-lg">
-                The part I like most is taking an idea that still feels messy
-                and giving it an order. And I&apos;d rather watch your numbers move
-                than just hand over a file, your results reflect on me too.
-              </p>
-              <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-[8px] border border-[var(--border-default)]">
-                <img
-                  src="/images/youssef-about-wide.jpg"
-                  alt="Portrait of Youssef Osama"
-                  className="h-full w-full object-cover object-center"
-                  loading="lazy"
-                />
-              </div>
+          <div className="about-supporting">
+            <div className="aspect-[16/9] w-full overflow-hidden rounded-[8px] border border-[var(--border-default)]">
+              <img
+                src="/images/youssef-about-wide.jpg"
+                alt="Portrait of Youssef Kader"
+                className="h-full w-full object-cover object-center"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>

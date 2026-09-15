@@ -1,20 +1,19 @@
 import LogoLoop from "./LogoLoop/LogoLoop";
 
 const clientLogos = [
-  { src: "/logos/dp-world.svg", alt: "DP World", href: "#" },
-  { src: "/logos/dubai-trade.svg", alt: "Dubai Trade", href: "#" },
-  { src: "/logos/aabe.svg", alt: "AABE", href: "#" },
+  { src: "/logos/dp-world.svg", alt: "DP World" },
+  { src: "/logos/dubai-trade.svg", alt: "Dubai Trade" },
+  { src: "/logos/aabe.svg", alt: "AABE" },
   {
     src: "/logos/invoice-brokers.svg",
     alt: "Invoice Brokers",
-    href: "#",
   },
-  { src: "/logos/winveston.svg", alt: "WinVeston", href: "#" },
-  { src: "/logos/shaha.svg", alt: "Shaha", href: "#" },
-  { src: "/logos/koolen.svg", alt: "Koolen", href: "#" },
-  { src: "/logos/tamheed.svg", alt: "Tamheed", href: "#" },
-  { src: "/logos/ldc.svg", alt: "LDC", href: "#" },
-  { src: "/logos/unique.svg", alt: "Unique", href: "#" },
+  { src: "/logos/winveston.svg", alt: "WinVeston" },
+  { src: "/logos/shaha.svg", alt: "Shaha" },
+  { src: "/logos/koolen.svg", alt: "Koolen" },
+  { src: "/logos/tamheed.svg", alt: "Tamheed" },
+  { src: "/logos/ldc.svg", alt: "LDC" },
+  { src: "/logos/unique.svg", alt: "Unique" },
 ];
 
 export default function Clients() {

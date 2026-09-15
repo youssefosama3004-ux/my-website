@@ -1,21 +1,41 @@
+import { useEffect, useRef } from "react";
 import FlipAction from "./ui/FlipAction.jsx";
-import { GravityStarsBackground } from "./ui/GravityStarsBackground";
 
-const HERO_PORTRAIT = "/images/youssef-kader-hero.png";
+const HERO_PORTRAIT = "/images/youssef-kader-product-designer.webp";
 
 export default function Hero() {
+  const heroRef = useRef(null);
+  const gradientRef = useRef(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    const gradient = gradientRef.current;
+    if (!hero || !gradient || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+
+    let frame = 0;
+    const updateParallax = () => {
+      frame = 0;
+      const { top, height } = hero.getBoundingClientRect();
+      const progress = Math.max(-1, Math.min(1, -top / Math.max(height, 1)));
+      gradient.style.setProperty("--hero-gradient-scroll-offset", `${progress * 72}px`);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <section className="hero-shell relative w-full max-w-[100vw] overflow-hidden bg-[var(--hero-bg)] text-[var(--hero-text-primary)]">
-      <GravityStarsBackground
-        starsCount={30}
-        starsSize={1.35}
-        starsOpacity={0.32}
-        glowIntensity={8}
-        movementSpeed={0.12}
-        mouseInfluence={130}
-        gravityStrength={42}
-        className="section-gravity-stars"
-      />
+    <section ref={heroRef} className="hero-shell relative w-full max-w-[100vw] overflow-hidden bg-[var(--hero-bg)] text-[var(--hero-text-primary)]">
+      <div ref={gradientRef} aria-hidden="true" className="hero-gradient-atmosphere" />
       <div aria-hidden className="hero-visual-overlay" />
 
       <div className="hero-marquee-window pointer-events-none absolute left-0 right-0 -translate-y-1/2 overflow-hidden">

@@ -13,12 +13,28 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+const projectSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.data.title,
+  description: project.data.description,
+  dateCreated: project.data.year,
+  creator: {
+    "@type": "Person",
+    name: "Youssef Kader",
+    url: "https://youssefkader.me",
+  },
+  keywords: [...project.data.services, ...project.data.tools],
+};
 ---
 
 <Layout title={`${project.data.title} - Youssef Kader`} description={project.data.description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(projectSchema)} />
+  </Fragment>
   <main class="px-6 py-16 md:py-24">
-    <article class="mx-auto max-w-5xl">
-      <a href="/work" class="mb-16 inline-block text-sm text-fg-secondary transition-colors hover:text-accent">&larr; All work</a>
+    <article class="mx-auto max-w-7xl">
+      <a href="/#work" class="mb-16 inline-block text-sm text-fg-secondary transition-colors hover:text-accent">&larr; All work</a>
       <div class="mb-10 flex flex-wrap items-center justify-between gap-4 text-xs uppercase tracking-widest text-fg-secondary">
         <span>{project.data.type}</span><span>{project.data.dateRange}</span>
       </div>
@@ -32,12 +48,130 @@ const { Content } = await render(project);
         <div><p class="mb-2 text-xs uppercase tracking-widest text-fg-secondary">Services</p><p class="text-fg">{project.data.services.join(", ")}</p></div>
         <div><p class="mb-2 text-xs uppercase tracking-widest text-fg-secondary">Tools</p><p class="text-fg">{project.data.tools.join(", ")}</p></div>
       </div>
-      <div class="case-study-content"><Content /></div>
+      <div class="case-study-layout">
+        <aside class="case-study-nav" aria-label="Case study navigation">
+          <p class="case-study-nav-label">On this page</p>
+          <nav data-case-study-nav></nav>
+        </aside>
+        <div class="case-study-content"><Content /></div>
+      </div>
     </article>
   </main>
+<script>
+    const caseStudyNav = document.querySelector("[data-case-study-nav]");
+    const headings = Array.from(document.querySelectorAll(".case-study-content h2"));
+
+    if (caseStudyNav && headings.length) {
+      const labelForHeading = (heading) => {
+        const title = heading.textContent.trim().toLowerCase();
+
+        if (/(background|context)/.test(title)) return "Context";
+        if (/(original|problem|challenge|finding)/.test(title)) return "Problem";
+        if (/(audit|research|discovery)/.test(title)) return "Research";
+        if (/(objective|process|approach)/.test(title)) return "Process";
+        if (/(new experience|solution|redesign|improved)/.test(title)) return "Solution";
+        if (/(outcome|impact|result|metrics)/.test(title)) return "Impact";
+        if (/(learning|reflection)/.test(title)) return "Final thoughts";
+
+        return heading.textContent.trim();
+      };
+
+      const usedLabels = new Set();
+
+      headings.forEach((heading, index) => {
+        const label = labelForHeading(heading);
+        if (usedLabels.has(label)) return;
+
+        usedLabels.add(label);
+        heading.id = heading.id || "case-section-" + index;
+
+        const sectionLabel = document.createElement("p");
+        sectionLabel.className = "case-study-section-label";
+        sectionLabel.textContent = label;
+        sectionLabel.setAttribute("aria-hidden", "true");
+        heading.before(sectionLabel);
+
+        const link = document.createElement("a");
+        link.href = "#" + heading.id;
+        link.textContent = label;
+        link.dataset.caseStudyLink = heading.id;
+        caseStudyNav.appendChild(link);
+      });
+
+      const links = Array.from(caseStudyNav.querySelectorAll("a"));
+      const setActiveLink = (id) => {
+        links.forEach((link) => {
+          link.toggleAttribute("aria-current", link.dataset.caseStudyLink === id);
+        });
+      };
+
+      if (links.length) {
+        setActiveLink(links[0].dataset.caseStudyLink);
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+            if (visible[0]) setActiveLink(visible[0].target.id);
+          },
+          { rootMargin: "-20% 0px -65% 0px", threshold: 0 },
+        );
+
+        headings.forEach((heading) => observer.observe(heading));
+      }
+    }
+  </script>
 </Layout>
 
 <style is:global>
+  .case-study-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .case-study-nav {
+    display: block;
+    overflow-x: auto;
+    border: 1px solid var(--border-default);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background: var(--bg-surface);
+  }
+
+  .case-study-nav-label {
+    margin: 0 0 0.7rem;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .case-study-nav nav {
+    display: flex;
+    min-width: max-content;
+    gap: 0.25rem;
+  }
+
+  .case-study-nav a {
+    display: block;
+    padding: 0.45rem 0.7rem;
+    border-radius: 0.375rem;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    line-height: 1.25;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .case-study-nav a[aria-current] {
+    background: color-mix(in srgb, var(--accent) 13%, transparent);
+    color: var(--text-primary);
+  }
+
   .case-study-content {
     color: var(--text-secondary);
     font-size: 1rem;
@@ -47,6 +181,20 @@ const { Content } = await render(project);
   .case-study-content > * {
     max-width: 48rem;
     margin-inline: auto;
+  }
+
+  .case-study-section-label {
+    margin: 5rem 0 0.625rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .case-study-section-label + h2 {
+    margin-top: 0;
   }
 
   .case-study-content h2 {
@@ -112,11 +260,75 @@ const { Content } = await render(project);
     border-radius: 8px;
   }
 
-  .case-study-content > .image-comparison-block {
+  .case-study-content > .product-page-comparison-grid {
     width: min(56rem, calc(100vw - 3rem));
     max-width: none;
-    margin-inline: 50%;
+    margin: 3rem 50%;
     transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .product-page-comparison-grid figure {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .product-page-comparison-grid figcaption {
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .product-page-comparison-grid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+  }
+
+  .case-study-content > .homepage-comparison-grid {
+    width: min(76.668rem, calc(100vw - 3rem));
+    max-width: none;
+    margin: 3rem 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .homepage-comparison-grid figure {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .homepage-comparison-grid figcaption {
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .homepage-comparison-grid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
   }
 
   .case-study-content p:has(> img) {
@@ -164,8 +376,113 @@ const { Content } = await render(project);
     text-underline-offset: 0.25em;
   }
 
+  @media (min-width: 768px) {
+    .case-study-layout {
+      grid-template-columns: 10.5rem minmax(0, 1fr);
+      gap: clamp(2.5rem, 6vw, 7rem);
+      align-items: start;
+    }
+
+    .case-study-nav {
+      position: sticky;
+      top: 7rem;
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+      padding: 1rem 0 0;
+      background: transparent;
+    }
+
+    .case-study-nav-label {
+      margin: 0 0 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .case-study-nav nav {
+      display: grid;
+      min-width: 0;
+      gap: 0.2rem;
+      border-inline-start: 1px solid var(--border-default);
+    }
+
+    .case-study-nav a {
+      position: relative;
+      display: block;
+      padding: 0.45rem 0 0.45rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.25;
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+
+    .case-study-nav a::before {
+      position: absolute;
+      inset-inline-start: -1px;
+      top: 0.35rem;
+      bottom: 0.35rem;
+      width: 2px;
+      background: var(--accent);
+      content: "";
+      opacity: 0;
+      transform: scaleY(0.6);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .case-study-nav a:hover,
+    .case-study-nav a[aria-current] {
+      color: var(--text-primary);
+    }
+
+    .case-study-nav a[aria-current]::before {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+  @media (min-width: 768px) {
+    .case-study-layout {
+      grid-template-columns: minmax(14rem, 17rem) minmax(0, 1fr);
+      gap: clamp(3rem, 6vw, 7rem);
+    }
+
+    .case-study-content {
+      min-width: 0;
+    }
+
+    .case-study-content > * {
+      width: 100%;
+      max-width: none;
+      margin-inline: 0;
+      transform: none;
+    }
+
+    .case-study-content > p > img,
+    .case-study-content > .product-page-comparison-grid,
+    .case-study-content > .homepage-comparison-grid,
+    .case-study-content table {
+      width: 100%;
+      max-width: 100%;
+      margin-inline: 0;
+      transform: none;
+    }
+
+    .case-study-nav-label {
+      font-size: 0.78rem;
+    }
+
+    .case-study-nav a {
+      font-size: 1rem;
+      font-weight: 550;
+      line-height: 1.35;
+    }
+  }
   @media (max-width: 640px) {
-    .case-study-content h2 { margin-top: 3.75rem; }
+    .case-study-section-label { margin-top: 3.75rem; }
+    .case-study-content h2 { margin-top: 0; }
     .case-study-content > p > img { margin-block: 2.75rem; }
     .case-study-content table { font-size: 0.82rem; }
   }

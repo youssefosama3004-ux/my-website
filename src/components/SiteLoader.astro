@@ -1,0 +1,212 @@
+---
+import logo from "../assets/youssef-logo.svg";
+import LoaderRotatingText from "./LoaderRotatingText.jsx";
+---
+
+<div id="site-loader" role="status" aria-label="Loading Youssef Kader's portfolio">
+  <div class="site-loader-orbit" aria-hidden="true"></div>
+  <div class="site-loader-content">
+    <img class="site-loader-logo" src={logo.src} alt="" />
+    <LoaderRotatingText client:load rotationInterval={1400} />
+  </div>
+  <div class="site-loader-footer">
+    <div class="site-loader-status"><span>Loading</span><span id="site-loader-count">00%</span></div>
+    <div class="site-loader-progress" aria-hidden="true"><span id="site-loader-fill"></span></div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const startedAt = Date.now();
+    const minimumDisplayMs = 3000;
+    let dismissScheduled = false;
+    let completed = false;
+    const loader = document.getElementById("site-loader");
+    const count = document.getElementById("site-loader-count");
+    const fill = document.getElementById("site-loader-fill");
+    const root = document.documentElement;
+    const body = document.body;
+    const previousRootOverflow = root.style.overflow;
+    const previousBodyOverflow = body.style.overflow;
+
+    root.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+
+    const restoreScrolling = () => {
+      root.style.overflow = previousRootOverflow;
+      body.style.overflow = previousBodyOverflow;
+    };
+    const progressDuration = minimumDisplayMs;
+
+    const setProgress = (progress) => {
+      const clampedProgress = Math.max(0, Math.min(100, Math.round(progress)));
+      if (count) count.textContent = `${String(clampedProgress).padStart(2, "0")}%`;
+      if (fill) fill.style.width = `${clampedProgress}%`;
+      if (loader) loader.style.setProperty("--loader-progress", `${clampedProgress}%`);
+    };
+
+    const animateProgress = () => {
+      const elapsed = Date.now() - startedAt;
+      setProgress((elapsed / progressDuration) * 100);
+      if (!completed && elapsed < progressDuration) {
+        window.requestAnimationFrame(animateProgress);
+      }
+    };
+
+    animateProgress();
+
+    const dismissLoader = () => {
+      if (dismissScheduled) return;
+      dismissScheduled = true;
+      if (!loader) return;
+      const remaining = Math.max(0, minimumDisplayMs - (Date.now() - startedAt));
+      window.setTimeout(() => {
+        completed = true;
+        setProgress(100);
+        loader.style.pointerEvents = "none";
+        loader.setAttribute("aria-hidden", "true");
+        loader.classList.add("is-ready");
+        window.setTimeout(() => {
+          restoreScrolling();
+          loader.remove();
+        }, 700);
+      }, remaining);
+    };
+
+    if (document.readyState === "complete") {
+      dismissLoader();
+    } else {
+      window.addEventListener("load", dismissLoader, { once: true });
+      window.setTimeout(dismissLoader, 3500);
+    }
+  })();
+</script>
+
+<style>
+  #site-loader {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #070a0f;
+    color: #f5f7ff;
+    isolation: isolate;
+    transition:
+      opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 620ms step-end;
+  }
+
+  #site-loader::before {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      linear-gradient(115deg, transparent 20%, rgba(34, 96, 231, 0.09) 50%, transparent 78%),
+      radial-gradient(circle at 50% 47%, rgba(39, 105, 255, 0.16), transparent 32%);
+    content: "";
+  }
+
+  .site-loader-orbit {
+    position: absolute;
+    width: min(76vw, 60rem);
+    aspect-ratio: 1;
+    border: 1px solid rgba(158, 190, 255, 0.1);
+    border-radius: 50%;
+    box-shadow: 0 0 8rem rgba(22, 93, 255, 0.1), inset 0 0 6rem rgba(54, 121, 255, 0.06);
+    animation: loader-orbit 2.4s ease-in-out infinite;
+  }
+
+  .site-loader-orbit::before,
+  .site-loader-orbit::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(158, 190, 255, 0.07);
+    border-radius: 50%;
+    content: "";
+    transform: translate(-50%, -50%);
+  }
+
+  .site-loader-orbit::before { width: 68%; height: 68%; }
+  .site-loader-orbit::after { width: 38%; height: 38%; }
+
+  .site-loader-content {
+    display: grid;
+    justify-items: center;
+    gap: 1.6rem;
+    animation: loader-content-in 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .site-loader-logo {
+    width: auto;
+    height: clamp(3rem, 5vw, 5.5rem);
+    filter: brightness(0) invert(1);
+  }
+
+  .site-loader-footer {
+    position: absolute;
+    right: clamp(1.25rem, 3vw, 3rem);
+    bottom: clamp(1.25rem, 3vw, 2.5rem);
+    left: clamp(1.25rem, 3vw, 3rem);
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .site-loader-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(235, 240, 255, 0.68);
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.65rem;
+    font-weight: 650;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .site-loader-status span:last-child {
+    color: #f4f7ff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .site-loader-progress {
+    width: 100%;
+    height: 1px;
+    overflow: hidden;
+    background: rgba(221, 230, 255, 0.2);
+  }
+
+  .site-loader-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #2368ff, #afd0ff);
+    box-shadow: 0 0 1rem #2368ff;
+    transition: width 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #site-loader.is-ready {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @keyframes loader-content-in {
+    from { opacity: 0; transform: translateY(0.9rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes loader-orbit {
+    0%, 100% { transform: scale(0.96); opacity: 0.48; }
+    50% { transform: scale(1.04); opacity: 0.9; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-loader-orbit,
+    .site-loader-content {
+      animation: none;
+    }
+  }
+</style>
