@@ -585,9 +585,28 @@
   }
 }
 
+/* Align the carousel with the shared site container at every viewport width. */
+.work-label {
+  margin-inline: 5%;
+}
+
+.work-track {
+  padding-inline: 5%;
+}
+
+@media (min-width: 1440px) {
+  .work-label {
+    margin-inline: 15vw;
+  }
+
+  .work-track {
+    padding-inline: 15vw;
+  }
+}
+
 /* Leave room for the section label and spacing while the carousel is pinned. */
 .work-card {
-  height: min(62svh, calc(100svh - 16.5rem));
+  height: min(52svh, calc(100svh - 19rem));
   min-height: 13rem;
 }
 
@@ -1058,5 +1077,35 @@
   .journey-item,
   .work-card {
     scroll-snap-align: center;
+  }
+}
+
+.confidential-work-wave-fallback {
+  background:
+    radial-gradient(ellipse 58% 35% at 24% 92%, color-mix(in srgb, var(--color-blue-500) 45%, transparent), transparent 68%),
+    radial-gradient(ellipse 52% 32% at 78% 82%, color-mix(in srgb, var(--color-blue-400) 38%, transparent), transparent 70%),
+    repeating-radial-gradient(ellipse 130% 52% at 50% 120%, transparent 0 5.5rem, color-mix(in srgb, var(--color-blue-400) 22%, transparent) 5.7rem 5.9rem, transparent 6.2rem 9.5rem);
+  background-size: 135% 120%, 145% 130%, 170% 150%;
+  background-position: 0% 100%, 100% 100%, 50% 100%;
+  filter: blur(0.5px);
+  opacity: 0.72;
+  transform: scale(1.08);
+  animation: confidential-wave-drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes confidential-wave-drift {
+  from {
+    background-position: 0% 100%, 100% 100%, 45% 100%;
+    transform: scale(1.08) translate3d(-1%, 1%, 0);
+  }
+  to {
+    background-position: 14% 86%, 84% 92%, 56% 86%;
+    transform: scale(1.14) translate3d(1%, -1%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confidential-work-wave-fallback {
+    animation: none;
   }
 }

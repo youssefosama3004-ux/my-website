@@ -9,6 +9,7 @@ const {
   description = "Helping agencies and founders launch websites, apps, and brands - from strategy to design to development.",
   bodyClass = "",
   showCvInfo = true,
+  showLoader = true,
 } = Astro.props;
 
 const siteUrl = "https://youssefkader.me";
@@ -96,7 +97,7 @@ const personSchema = {
     <slot name="head" />
   </head>
   <body class={bodyClass}>
-    <SiteLoader />
+    {showLoader && <SiteLoader />}
     <SiteCursor client:load />
     <ThemeTogglerButton client:load className="site-theme-toggle" />
     {showCvInfo && (

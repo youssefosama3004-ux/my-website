@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Blocks, BriefcaseBusiness, Send, UserRound } from "lucide-react";
+import { Blocks, Send, UserRound } from "lucide-react";
 import { StaggeredMenu } from "./StaggeredMenu/StaggeredMenu";
 import ThemeTogglerButton from "./ui/ThemeTogglerButton";
 import logo from "../assets/youssef-logo.svg";
@@ -26,7 +26,7 @@ export default function Nav() {
       );
 
       const railFocusLine = window.innerHeight * 0.45;
-      const currentSection = ["work", "about", "services", "contact"].find((id) => {
+      const currentSection = ["about", "services", "contact"].find((id) => {
         const section = document.getElementById(id);
         if (!section) return false;
         const bounds = section.getBoundingClientRect();
@@ -110,7 +110,6 @@ export default function Nav() {
   const menuItems = [
     { label: "About", link: "/#about", icon: UserRound },
     { label: "Services", link: "/#services", icon: Blocks },
-    { label: "Work", link: "/#work", icon: BriefcaseBusiness },
     { label: "Contact", link: "/#contact", icon: Send },
   ];
 

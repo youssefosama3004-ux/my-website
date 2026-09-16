@@ -71,7 +71,7 @@ export default function ProjectsCarousel({ projects = [] }) {
       className="work-section relative flex min-h-screen flex-col justify-center gap-8 overflow-hidden pb-12 pt-24 md:gap-12 md:pb-16 md:pt-32"
       onMouseMove={handleMouseMove}
     >
-      <div className="relative z-20 mx-[5%] flex shrink-0 items-center gap-3">
+      <div className="work-label relative z-20 flex shrink-0 items-center gap-3">
         <span
           className="h-2.5 w-2.5 rounded-full bg-[var(--eyebrow-dot)]"
           aria-hidden="true"
@@ -84,14 +84,14 @@ export default function ProjectsCarousel({ projects = [] }) {
       <div className="work-viewport relative z-10 flex shrink-0 items-center max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory">
         <div
           ref={trackRef}
-          className="flex w-max gap-6 px-[5vw] will-change-transform"
+          className="work-track flex w-max gap-5 will-change-transform"
         >
           {projects.map((project) => (
             <a
               key={project.slug}
               href={`/work/${project.slug}`}
               data-cursor="hidden"
-              className="work-card group relative w-[80vw] shrink-0 overflow-hidden rounded-2xl max-md:snap-center md:w-[60vw] lg:w-[42vw]"
+              className="work-card group relative w-[72vw] shrink-0 overflow-hidden rounded-2xl max-md:snap-center md:w-[46vw] lg:w-[32vw]"
               onMouseEnter={() => setCursorVisible(true)}
               onMouseLeave={() => setCursorVisible(false)}
             >
