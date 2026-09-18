@@ -19,7 +19,7 @@ export default function ConfidentialWork() {
         amplitude={1.4}
         waveScale={0.52}
         brightness={1.1}
-        opacity={0.5}
+        opacity={0.7}
         grain={0.025}
       />
       <div className="site-container relative z-10">
@@ -36,8 +36,8 @@ export default function ConfidentialWork() {
             >
               Selected work is confidential
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-fg-secondary sm:text-lg">
-              Much of my recent work is covered by NDA. Public case studies are in progress, but I’m happy to discuss relevant work, process, and outcomes in a private conversation.
+            <p className="mt-4 text-base leading-relaxed text-fg-secondary dark:text-[var(--color-grey-100)] sm:text-lg">
+              Most of my recent work is covered by NDA. Public case studies are in progress, but I’m happy to discuss relevant work, process, and outcomes in a private conversation.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
               <FlipAction

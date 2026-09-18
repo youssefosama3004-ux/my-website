@@ -3,25 +3,29 @@ const services = [
     kicker: "Connection",
     title: "Product Design",
     desc: "End to end product design, research, journeys, IA, wireframes, and high-fidelity UI for web and mobile products that convert.",
-    image: "/images/services/product-design-character.jpeg",
+    image: "/images/services/product-design.webp",
+    alt: "Product designer mapping a digital user flow.",
   },
   {
     kicker: "Development",
     title: "Web Development",
     desc: "I build what I design. Same person, same week, no handoff, no waiting on dev. The site goes live looking exactly like the comp.",
-    image: "/images/services/web-development-character.jpeg",
+    image: "/images/services/web-development.webp",
+    alt: "Web developer building a digital interface at a computer.",
   },
   {
     kicker: "Conversion",
     title: "Ecommerce",
     desc: "Conversion-focused online stores, storefront UX, product pages, and checkout flows designed and built to turn visitors into customers.",
-    image: "/images/services/ecommerce-character.jpeg",
+    image: "/images/services/ecommerce.webp",
+    alt: "Ecommerce specialist with a shopping bag and conversion dashboard.",
   },
   {
     kicker: "Direction",
     title: "UX Consulting",
     desc: "Expert UX strategy, audits, and design-thinking workshops, tailored guidance to sharpen journeys and align design with business goals.",
-    image: "/images/services/ux-consulting-character.jpeg",
+    image: "/images/services/ux-consulting.webp",
+    alt: "UX consultant facilitating a customer journey workshop.",
   },
 ];
 
@@ -74,8 +78,7 @@ export default function Services() {
             >
               <img
                 src={service.image}
-                alt=""
-                aria-hidden="true"
+                alt={service.alt}
                 loading="lazy"
                 className="service-card-image absolute inset-0 -z-20 h-full w-full scale-105 object-cover opacity-100 transition-all duration-700 ease-out group-hover:scale-100 lg:opacity-0 lg:group-hover:opacity-100"
               />

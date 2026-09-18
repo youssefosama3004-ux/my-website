@@ -1093,6 +1093,10 @@
   animation: confidential-wave-drift 14s ease-in-out infinite alternate;
 }
 
+:root.light .confidential-work-wave-fallback {
+  opacity: 0.4;
+}
+
 @keyframes confidential-wave-drift {
   from {
     background-position: 0% 100%, 100% 100%, 45% 100%;

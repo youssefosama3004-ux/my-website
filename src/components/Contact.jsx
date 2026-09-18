@@ -4,8 +4,13 @@ import FlipAction from "./ui/FlipAction.jsx";
 
 const SLIDE_DURATION = 6000;
 // Add the real event URL when the booking calendar is ready.
-const CALENDLY_EVENT_URL = "";
+const CALENDLY_EVENT_URL = "https://calendly.com/youssefosama3004/30-min-discovery-call";
 const CONTACT_EMAIL = "youssefosama3004@gmail.com";
+const EMAILJS_CONFIG = {
+  serviceId: import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY,
+};
 
 const sourceOptions = [
   "Referral",
@@ -46,6 +51,7 @@ export default function Contact() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [submissionState, setSubmissionState] = useState("idle");
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -78,8 +84,8 @@ export default function Contact() {
     if (window.ScrollTrigger?.refresh) {
       window.ScrollTrigger.refresh();
     }
-  }, []);
 
+  }, []);
   useEffect(() => {
     latestTickRef.current = Date.now();
 
@@ -109,7 +115,7 @@ export default function Contact() {
     setForm((current) => ({ ...current, [field]: event.target.value }));
   };
 
-  const submitForm = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
 
     const bookingUrl =
@@ -120,16 +126,41 @@ export default function Contact() {
       `&a2=${encodeURIComponent(form.help)}` +
       `&a3=${encodeURIComponent(form.source)}`;
 
-    if (CALENDLY_EVENT_URL && window.Calendly?.initPopupWidget) {
-      window.Calendly.initPopupWidget({ url: bookingUrl });
+    if (!EMAILJS_CONFIG.serviceId || !EMAILJS_CONFIG.templateId || !EMAILJS_CONFIG.publicKey) {
+      setSubmissionState("configuration-error");
       return;
     }
 
-    const subject = encodeURIComponent(`New project inquiry from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nCompany: ${form.company || "Not provided"}\nEmail: ${form.email}\nHow they heard about you: ${form.source || "Not provided"}\n\nProject details:\n${form.help}`,
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    setSubmissionState("submitting");
+
+    try {
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service_id: EMAILJS_CONFIG.serviceId,
+          template_id: EMAILJS_CONFIG.templateId,
+          user_id: EMAILJS_CONFIG.publicKey,
+          template_params: {
+            name: form.name,
+            email: form.email,
+            company: form.company || "Not provided",
+            message: form.help || "Not provided",
+            source: form.source || "Not provided",
+            calendly_link: CALENDLY_EVENT_URL,
+          },
+        }),
+      });
+
+      if (!response.ok) throw new Error("EmailJS request failed");
+
+      setSubmissionState("success");
+      if (CALENDLY_EVENT_URL && window.Calendly?.initPopupWidget) {
+        window.Calendly.initPopupWidget({ url: bookingUrl });
+      }
+    } catch {
+      setSubmissionState("error");
+    }
   };
 
   const fieldClassName =
@@ -265,7 +296,6 @@ export default function Contact() {
               <label className="block">
                 <span className="sr-only">How can I help?</span>
                 <textarea
-                  required
                   value={form.help}
                   onChange={updateField("help")}
                   placeholder="Tell me about your project..."
@@ -292,18 +322,28 @@ export default function Contact() {
 
               <FlipAction
                 type="submit"
-                backLabel="Let’s talk →"
-                className="inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl bg-[var(--accent)] px-5 py-4 font-bold tracking-wide text-[var(--accent-fg)] transition-colors duration-300 hover:bg-[var(--color-blue-600)] hover:text-white font-[family-name:var(--font-display)]"
+                disabled={submissionState === "submitting" || submissionState === "success"}
+                aria-busy={submissionState === "submitting"}
+                backLabel={submissionState === "success" ? "Inquiry sent" : "Book 30-min discovery call →"}
+                className={`inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-2xl px-5 py-4 font-bold tracking-wide transition-colors duration-300 font-[family-name:var(--font-display)] ${submissionState === "success" ? "bg-emerald-500 text-white" : "bg-[var(--accent)] text-[var(--accent-fg)] hover:bg-[var(--color-blue-600)] hover:text-white"}`}
               >
-                Proceed with call booking <span aria-hidden="true">→</span>
+                {submissionState === "success" ? "You will receive an email" : <>Proceed with call booking <span aria-hidden="true">→</span></>}
               </FlipAction>
 
-              <p className="text-sm leading-relaxed text-fg-muted">
-                Your details will open in an email to Youssef. Prefer email?{" "}
-                <a className="underline underline-offset-4 hover:text-fg" href={`mailto:${CONTACT_EMAIL}`}>
+              <p className="text-sm leading-relaxed text-white">
+                Your details will be sent to Youssef. Prefer email?{" "}
+                <a className="underline underline-offset-4 hover:text-white" href={`mailto:${CONTACT_EMAIL}`}>
                   {CONTACT_EMAIL}
                 </a>
               </p>
+              {submissionState !== "idle" && (
+                <p className="text-sm leading-relaxed text-white" aria-live="polite">
+                  {submissionState === "submitting" && "Sending your inquiry…"}
+                  {submissionState === "success" && "Thanks — your inquiry has been sent. Check your inbox for the booking link."}
+                  {submissionState === "error" && "Your inquiry could not be sent. Please try again or email Youssef directly."}
+                  {submissionState === "configuration-error" && "The contact form is being set up. Please email Youssef directly for now."}
+                </p>
+              )}
             </form>
           </div>
         </div>
